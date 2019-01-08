@@ -1,0 +1,5 @@
+build/
+node_modules/
+etc/
+finaldb2milktea/
+restheart.jar
