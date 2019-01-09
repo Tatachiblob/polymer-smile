@@ -21,12 +21,10 @@ class MyModal extends PolymerElement {
 		<paper-dialog id="dialog">
 			<h2>{{title}} - [[imgs.length]]</h2>
 			<paper-dialog-scrollable>
-				<dom-repeat items="[[imgs]]" as="imgSrc">
-					<template>
-						<iron-image style="width:150px; height:150px; background-color: lightgray;"
-							sizing="cover" preload fade src="{{imgSrc}}" alt="Image cannot be loaded"></iron-image>
-					</template>
-				</dom-repeat>
+				<template is="dom-repeat" items="[[imgs]]" as="imgSrc">
+					<iron-image style="width:150px; height:150px; background-color: lightgray;"
+						sizing="cover" preload fade src="{{imgSrc}}" alt="Image cannot be loaded"></iron-image>
+				</template>
 			</paper-dialog-scrollable>
 			<div class="buttons">
 				<paper-button dialog-dismiss>Close</paper-button>
@@ -36,17 +34,13 @@ class MyModal extends PolymerElement {
 		<paper-dialog id="dialog2">
 			<h1>{{title}}</h1>
 			<paper-dialog-scrollable>
-				<dom-repeat items="[[imgs]]" as="img">
-					<template>
-						<h2>[[img.desc]] - [[img.ig.length]]</h2>
-						<dom-repeat items="[[img.ig]]" as="ig">
-							<template>
-								<iron-image style="width:150px; height:150px; background-color: lightgray;"
-									sizing="cover" preload fade src="{{ig.ig_url}}" alt="Image cannot be loaded"></iron-image>
-							</template>
-						</dom-repeat>
+				<template is="dom-repeat" items="[[imgs]]" as="img">
+					<h2>[[img.desc]] - [[img.ig.length]]</h2>
+					<template is="dom-repeat" items="[[img.ig]]" as="ig">
+						<iron-image style="width:150px; height:150px; background-color: lightgray;"
+							sizing="cover" preload fade src="{{ig.ig_url}}" alt="Image cannot be loaded"></iron-image>
 					</template>
-				</dom-repeat>
+				</template>
 			</paper-dialog-scrollable>
 			<div class="buttons">
 				<paper-button dialog-dismiss>Close</paper-button>

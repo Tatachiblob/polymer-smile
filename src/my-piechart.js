@@ -114,6 +114,9 @@ class MyPieChart extends PolymerElement {
 					point:{
 						events:{
 							click: function(e) {
+								let p = e.point;
+								console.log(p);
+								console.log(this.finalArray);
 								/*var imagesArray = getCategoryImages(this.index);
 								console.log(imagesArray);
 								var i, tempstring, images = "", node;
@@ -140,7 +143,7 @@ class MyPieChart extends PolymerElement {
 								document.getElementById("title").innerHTML = this.name + " Category Images";
 								document.getElementById("pics").innerHTML = images + '</div>';
 								$('#myModal').modal('show');*/
-							}
+							}.bind(this)
 						}
 					}
 				}]
@@ -605,10 +608,10 @@ class MyPieChart extends PolymerElement {
 			for (j = 0; j < array2.length; j ++) {
 				k = 0;
 
-				console.log(array2[j].ig_id);
+				//console.log(array2[j].ig_id);
 				
 				while (k < array1.length && array2[j].ig_id != array1[k].ig_id) {
-					console.log(array1[k].ig_id);
+					//console.log(array1[k].ig_id);
 					k ++;
 				}
 				
@@ -617,8 +620,8 @@ class MyPieChart extends PolymerElement {
 				}
 			}
 		}
-		console.log(this.occurences);
-		console.log(mappingArray);
+		//console.log(this.occurences);
+		//console.log(mappingArray);
 		return mappingArray;
 	}
 	
