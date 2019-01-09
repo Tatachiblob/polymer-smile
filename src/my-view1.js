@@ -13,6 +13,7 @@ import './my-wordcloud';
 import './my-genderchart';
 import './my-histogram';
 import './my-emotion';
+import './my-piechart';
 import './my-modal';
 
 class MyView1 extends PolymerElement {
@@ -72,6 +73,7 @@ class MyView1 extends PolymerElement {
 		</div>
 		
 		<my-basic id="basicViews" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-basic>
+		<my-piechart id="piechart" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-piechart>
 		<my-linechart id="linechart" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-linechart>
 		<my-wordcloud id="wordcloud" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-wordcloud>
 		<my-genderchart id="gender" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-genderchart>
@@ -128,7 +130,6 @@ class MyView1 extends PolymerElement {
 	__handleResponse(event, res){
 		this.mediaIdArr = [];
 		res = res.response._embedded;
-		
 		for(let node of res)
 			this.push('mediaIdArr', node.ig_object.id);
 		
@@ -151,6 +152,7 @@ class MyView1 extends PolymerElement {
 		this.$.gender.generateGenderRequest();
 		this.$.age.generateAgeRequest();
 		this.$.emo.generateEmoRequest();
+		this.$.piechart.generatePieRequest();
 	}
 	
 	//Add the listeners of the element
