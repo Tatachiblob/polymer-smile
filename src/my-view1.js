@@ -15,6 +15,7 @@ import './my-histogram';
 import './my-emotion';
 import './my-piechart';
 import './my-modal';
+import './my-map';
 
 class MyView1 extends PolymerElement {
 	static get template() {
@@ -79,6 +80,7 @@ class MyView1 extends PolymerElement {
 		<my-genderchart id="gender" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-genderchart>
 		<my-histogram id="age" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-histogram>
 		<my-emotion id="emo" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-emotion>
+		<my-map id="googleMap" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-map>
 		`;
 	}
 	
@@ -153,6 +155,7 @@ class MyView1 extends PolymerElement {
 		this.$.age.generateAgeRequest();
 		this.$.emo.generateEmoRequest();
 		this.$.piechart.generatePieRequest();
+		this.$.googleMap.generateMapRequest();
 	}
 	
 	//Add the listeners of the element

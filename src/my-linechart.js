@@ -42,7 +42,7 @@ class MyLinechart extends PolymerElement {
 	
 	generateLinechartRequest(){
 		//console.log("Generating Request my-linechart");
-		this.ajaxUrl = this.__createUrl()
+		this.ajaxUrl = this.__createUrl();
 		//console.log(this.ajaxUrl);
 		this.$.lineAjax.generateRequest();
 	}
