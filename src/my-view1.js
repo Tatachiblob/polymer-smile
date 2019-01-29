@@ -7,6 +7,7 @@ import '@polymer/paper-dropdown-menu/paper-dropdown-menu.js';
 import '@polymer/paper-item/paper-item.js';
 import '@polymer/paper-listbox/paper-listbox.js';
 import './shared-styles.js';
+import './bootstrap-style.js';
 import './my-basic';
 import './my-linechart';
 import './my-wordcloud';
@@ -20,7 +21,7 @@ import './my-map';
 class MyView1 extends PolymerElement {
 	static get template() {
 		return html`
-		<style include="granite-bootstrap"></style>
+		<style include="bootstrap-style"></style>
 		<style include="shared-styles">
 			:host {
 				display: block;
@@ -48,34 +49,38 @@ class MyView1 extends PolymerElement {
 		
 		<my-modal id="mymodal"></my-modal>
 		
-		<div class="card col-3">
-			<paper-dropdown-menu label="Hashtags" noink no-animations value={{hashtag}}>
-				<paper-listbox slot="dropdown-content" class="dropdown-content">
-					<dom-repeat items="[[availHashtags]]" as="hash">
-						<template>
-							<paper-item>[[hash._id]]</paper-item>
-						</template>
-				</paper-listbox>
-			</paper-dropdown-menu>
-		</div>
-		
-		<div class="card col-6">
-			<h1>Select Date Range</h1>
-			<datetime-picker value="{{startDate}}" default="{{defaultStart}}"></datetime-picker>
-			<!--<p>Start Date: {{startDate}}</p>-->
-			<p>Formatted Start Date: {{formattedStartDate}}</p>
-			<datetime-picker value="{{endDate}}" default="{{defaultEnd}}"></datetime-picker>
-			<!--<p>End Date: {{endDate}}</p>-->
-			<p>Formatted End Date: {{formattedEndDate}}</p>
-			<div class="row">
-				<paper-button raised class="indigo col-3" on-click="__handleClick">Get Data</paper-button>
-				<paper-button raised class="indigo col-3" on-click="__popDialog">Show Images</paper-button>
+		<div class="row">
+			<div class="card col-md-6">
+				<div class="card">
+					<paper-dropdown-menu label="Select Hashtag" noink no-animations value={{hashtag}}>
+						<paper-listbox slot="dropdown-content" class="dropdown-content">
+							<dom-repeat items="[[availHashtags]]" as="hash">
+								<template>
+									<paper-item>[[hash._id]]</paper-item>
+								</template>
+						</paper-listbox>
+					</paper-dropdown-menu>
+				</div>
+				
+				<h1>Select Date Range</h1>
+				<datetime-picker date="{{sDate}}" value="{{startDate}}" default="{{defaultStart}}"></datetime-picker>
+				<p>Start Date: {{sDate}}</p>
+				<datetime-picker date="{{eDate}}" value="{{endDate}}" default="{{defaultEnd}}"></datetime-picker>
+				<p>End Date: {{eDate}}</p>
+				<div class="row">
+					<paper-button raised class="indigo col-3" on-click="__handleClick">Get Data</paper-button>
+					<!--<paper-button raised class="indigo col-3" on-click="__popDialog">Show Images</paper-button>-->
+				</div>
 			</div>
 		</div>
 		
-		<my-basic id="basicViews" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-basic>
-		<my-piechart id="piechart" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-piechart>
-		<my-linechart id="linechart" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-linechart>
+		<div class="row">
+			<my-basic id="basicViews" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-basic>
+		</div>
+		<div class="row">
+			<my-linechart id="linechart" class="col-md-6" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-linechart>
+			<my-piechart id="piechart" class="col-md-6" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-piechart>
+		</div>
 		<my-wordcloud id="wordcloud" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-wordcloud>
 		<my-genderchart id="gender" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-genderchart>
 		<my-histogram id="age" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-histogram>

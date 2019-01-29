@@ -148,6 +148,10 @@
                 background-color: #fff;
                 box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
             }
+			
+			.navbar-default{
+				z-index: 100;
+			}
         </style>
     </head>
     <body>
@@ -233,51 +237,38 @@
                 </div>
                 <!-- /.navbar-static-side -->
             </nav>
-        </div>
-        <div id="page-wrapper">
-            <div id="graphs">
-                <div class="col_12">
-                    <div class="xs form-horizontal form-group">
-                        <label for="focusedinput" class="col-sm-2 control-label"><h3>Search</h3></label>
-                        <div class="col-sm-8">
-                            <input id="searchBar" type="text" class="form-control1" id="focusedinput"
-                                   placeholder='Enter hashtag here... e.g. "animolasalle"'>
+            <div id="page-wrapper">
+                <div class="graphs">
+                    <div class="col_12">
+                        <div class="xs form-horizontal form-group">
+                            <label for="focusedinput" class="col-sm-2 control-label"><h3>Search</h3></label>
+                            <div class="col-sm-8">
+                                <input id="searchBar" type="text" class="form-control1" id="focusedinput"
+                                       placeholder='Enter hashtag here... e.g. "animolasalle"'>
+                            </div>
+                            <div class="col-sm-2">
+                                <p class="help-block">No need to put '#'</p>
+                            </div>
                         </div>
-                        <div class="col-sm-2">
-                            <p class="help-block">No need to put '#'</p>
+                        <div class="clearfix"></div>
+                        <div class="xs form-horizontal form-group form-inline">
+                            <div class="col-sm-12">
+                            </div>
                         </div>
+
+                        <div class="clearfix"></div>
                     </div>
-                    <div class="clearfix"></div>
-                    <!--<div class="row">
-                        <my-date id="date1" class="col-md-4"></my-date>
-                        <my-date id="date2" class="col-md-4"></my-date>
-                    </div>-->
 
-                    <my-view1></my-view1>
+                    <div class="content_bottom">
+                        <my-view1 hashtag="lpep2k18" />
+                    </div>
 
-                    <div class="clearfix"></div>
-                </div><!-- /.col_12 -->
-
-                <div class="content_bottom">
-
+                    <div class="copy">
+                        <p>Copyright &copy; 2018 SMILE</p>
+                    </div>
                 </div>
-            </div><!-- /#graph -->
+            </div>
+            <!-- /#page-wrapper -->
         </div>
-        <script type="text/javascript">
-            /*var date1 = document.querySelector("#date1");
-            var date2 = document.querySelector("#date2");
-
-            date1.addEventListener('focusout', function(e){
-                console.log(date1.getStartDate());
-                console.log(date1.getEndDate());
-            });
-
-            date2.addEventListener('focusout', function(e){
-                console.log(date2.getStartDate());
-                console.log(date2.getEndDate());
-            });
-
-            console.log(date1);*/
-        </script>
     </body>
 </html>

@@ -1,14 +1,18 @@
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 import '@polymer/iron-ajax/iron-ajax.js';
-import '@granite-elements/granite-bootstrap/granite-bootstrap.js';
 import 'highcharts/highcharts.js';
 import 'highcharts/modules/histogram-bellcurve.js';
 import './shared-styles.js';
+import './bootstrap-style.js';
+import './font-awesome.js';
+import './style.js';
 
 class MyBasic extends PolymerElement {
 	static get template() {
 		return html`
-		<style include="granite-bootstrap"></style>
+		<style include="bootstrap-style"></style>
+		<style include="font-awesome"></style>
+		<style include="style"></style>
 		<style include="shared-styles">
         :host {
 			display: block;
@@ -25,20 +29,43 @@ class MyBasic extends PolymerElement {
 			debounce-duration="300">
 		</iron-ajax>
 		
-		<div class="card" on-click="__handleImgClick">
-			<h1>{{totalImgs}}</h1>
-			<h2>Instagram Images</h2>
-			<h3>Total Volumes of Images Collected</h3>
+		<div class="col-sm-4 widget_1_box set_display" on-click="__handleImgClick">
+			<div class="wid-social flickr" id="imagesScraped">
+				<div class="social-icon">
+					<i class="fa fa-instagram text-light icon-lg pull-right" style="font-size: 72px;"></i>
+				</div>
+				<div class="social-info">
+					<h3 id="total-dataset" class="number_counter bold count text-light start_timer counted">{{totalImgs}}</h3>
+					<h4 class="counttype text-light">Instagram Images</h4>
+					<span class="percent">Total Volume of Images Collected</span>
+				</div>
+			</div>
 		</div>
-		<div class="card">
-			<h1>{{totalLikes}}</h1>
-			<h2>Likes</h2>
-			<h3>Total No. of Likes from All Posts</h3>
+		
+		<div class="col-sm-4 widget_1_box set_display">
+			<div class="wid-social bg-secondary" style="color: #fff">
+				<div class="social-icon">
+					<i class="fa fa-thumbs-up text-light icon-lg pull-right" style="font-size: 72px;"></i>
+				</div>
+				<div class="social-info">
+					<h3 id="total-likes" class="number_counter bold count text-light start_timer counted">{{totalLikes}}</h3>
+					<h4 class="counttype text-light">Likes</h4>
+					<span class="percent">Total No. of Likes from all posts</span>
+				</div>
+			</div>
 		</div>
-		<div class="card" on-click="__handleBrandClick">
-			<h1>{{totalBrand}}</h1>
-			<h2>Brand Logos</h2>
-			<h3>Total Brand Logos Spotted</h3>
+		
+		<div class="col-sm-4 widget_1_box set_display" on-click="__handleBrandClick">
+			<div class="wid-social twitter" id="brands">
+				<div class="social-icon">
+					<i class="fa fa-comment text-light icon-lg pull-right" style="font-size: 72px;"></i>
+				</div>
+				<div class="social-info">
+					<h3 id="brands-spotted" class="number_counter bold count text-light start_timer counted">{{totalBrand}}</h3>
+					<h4 class="counttype text-light">Brand Logos</h4>
+					<span class="percent">Total Brand Logos Spotted</span>
+				</div>
+			</div>
 		</div>
 		`;
 	}

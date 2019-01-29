@@ -1,14 +1,16 @@
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 import '@polymer/iron-ajax/iron-ajax.js';
-import '@vaadin/vaadin-grid/vaadin-grid.js';
+import '@polymer/iron-image/iron-image.js';
 import '@google-web-components/google-apis/google-maps-api';
 import { MarkerClusterer } from './markerclusterer.js';
+import './my-caption.js';
 import './shared-styles.js';
+import './bootstrap-style.js';
 
 class MyMap extends PolymerElement {
 	static get template() {
 		return html`
-		<style include="granite-bootstrap"></style>
+		<style include="bootstrap-style"></style>
 		<style include="shared-styles">
         :host {
 			display: block;
@@ -16,7 +18,7 @@ class MyMap extends PolymerElement {
 		}
 		
 		.mappy{
-			height: 600px;
+			height: 500px;
 		}
 		</style>
 		
@@ -35,23 +37,14 @@ class MyMap extends PolymerElement {
 			version="3.exp">
 		</google-maps-api>
 		
-		<div class="card">
-			<!--
-			<vaadin-grid aria-label="Basic Binding Example" items="[[continentCount]]">
-				<vaadin-grid-column width="60px" flex-grow="0">
-					<template class="header">Continents</template>
-					<template>[[item.continent]]</template>
-				</vaadin-grid-column>
-				
-				<vaadin-grid-column>
-					<template class="header">Image Count</template>
-					<template>[[item.count]]</template>
-				</vaadin-grid-column>
-			</vaadin-grid>
-			-->
+		<div class="row">
+			<div class="col-md-5 col-md-offset-7">
+				<div class="card">
+					<my-caption />
+				</div>
+			</div>
 		</div>
-		<div class="card mappy" id="map">
-		</div>
+		<div class="card mappy" id="map"></div>
 		`;
 	}
 	
