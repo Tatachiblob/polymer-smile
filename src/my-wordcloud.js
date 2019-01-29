@@ -1,17 +1,32 @@
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 import '@polymer/iron-ajax/iron-ajax.js';
+import '@vaadin/vaadin-grid';
 import 'highcharts/highcharts.js';
 import 'highcharts/modules/wordcloud.js';
+import './bootstrap-style.js';
 import './shared-styles.js';
 
 
 class MyWordcloud extends PolymerElement {
 	static get template() {
 		return html`
+		<style include="bootstrap-style"></style>
 		<style include="shared-styles">
 			:host {
 				display: block;
 				padding: 10px;
+			}
+			
+			table {
+			  	height: 500px;
+			  	overflow-y: scroll;
+			}
+			
+			.table-wrapper-scroll-y {
+				display: block;
+				max-height: 200px;
+				overflow-y: auto;
+				-ms-overflow-style: -ms-autohiding-scrollbar;
 			}
 		</style>
 		
@@ -31,6 +46,54 @@ class MyWordcloud extends PolymerElement {
 			<div class="card">
 				<div id="wordcloudHashtag"></div>
 			</div>
+			<div class="card">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="table-wrapper-scroll-y">
+							<table class="table table-bordered">
+								<thead class="thead-dark">
+									<tr>
+										<th scope="col">#</th>
+										<th scope="col">Caption</th>
+										<th scope="col">Count</th>
+									</tr>
+								</thead>
+								<tbody>
+									<template is="dom-repeat" items="{{topCaption}}">
+										<tr>
+											<th scope="row">{{__displayIndex(index)}}</th>
+											<td>{{item.name}}</td>
+											<td>{{item.weight}}</td>
+										</tr>
+									</template>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="table-wrapper-scroll-y">
+							<table class="table table-bordered">
+								<thead class="thead-dark">
+									<tr>
+										<th scope="col">#</th>
+										<th scope="col">Hashtag</th>
+										<th scope="col">Count</th>
+									</tr>
+								</thead>
+								<tbody>
+									<template is="dom-repeat" items="{{topHashtag}}">
+										<tr>
+											<th scope="row">{{__displayIndex(index)}}</th>
+											<td>{{item.name}}</td>
+											<td>{{item.weight}}</td>
+										</tr>
+									</template>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 		`;
 	}
@@ -41,7 +104,9 @@ class MyWordcloud extends PolymerElement {
 				type: String
 			},
 			mediaIdArr: Array,
-			ajaxUrl: String
+			ajaxUrl: String,
+			topCaption: Array,
+			topHashtag: Array
 		}
 	}
 	
@@ -209,7 +274,9 @@ class MyWordcloud extends PolymerElement {
 			obj.push(tempObj);
 			tempObj = {};
 		}
-		
+
+		console.log(obj);
+		this.topCaption = obj;
 		return obj;
 	}
 	
@@ -252,11 +319,17 @@ class MyWordcloud extends PolymerElement {
 			tempObj = {};
 		}
 
+		console.log(hashtagArr);
+		this.topHashtag = hashtagArr;
 		return hashtagArr;
 	}
 		
 	__createUrl(){
 		return "http://localhost:8080/smile/ig_media?filter={'hashtag':'" + this.hashtag + "'}&filter={'ig_object.id':{'$in':" + JSON.stringify(this.mediaIdArr) + "}}&keys={'ig_object.taken_at_timestamp':1}&keys={'ig_object.edge_media_to_caption.edges':1}&keys={'ig_object.display_url':1}&pagesize=1000";
+	}
+
+	__displayIndex(index){
+		return index + 1;
 	}
 	
 	__removeStoppingWords(words){

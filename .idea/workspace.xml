@@ -2,16 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="677e1531-0824-4bd1-b5e6-56ec4ec22b4e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/bootstrap-style.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/font-awesome.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/my-caption.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/style.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/my-basic.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/my-basic.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/my-map.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/my-map.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/my-view1.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/my-view1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/my-wordcloud.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/my-wordcloud.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -26,7 +20,7 @@
     <session id="2120677672">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="3" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.16" value="1" />
           <entry key="project.open.time.7" value="1" />
@@ -36,33 +30,33 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="css" value="1" />
-          <entry key="html" value="4" />
-          <entry key="js" value="30" />
+          <entry key="html" value="6" />
+          <entry key="js" value="33" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="1" />
-          <entry key="HTML" value="4" />
-          <entry key="JavaScript" value="30" />
+          <entry key="HTML" value="6" />
+          <entry key="JavaScript" value="33" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="113" />
-          <entry key="js" value="2575" />
+          <entry key="html" value="114" />
+          <entry key="js" value="3910" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="328" />
-          <entry key="JavaScript" value="2360" />
+          <entry key="HTML" value="503" />
+          <entry key="JavaScript" value="3521" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.6088957">
+    <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
@@ -77,8 +71,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/dashboard.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="322">
-                  <caret line="262" column="51" selection-start-line="262" selection-start-column="51" selection-end-line="262" selection-end-column="51" />
+                <state relative-caret-position="357">
+                  <caret line="263" selection-start-line="263" selection-end-line="263" />
                   <folding>
                     <element signature="n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" />
                     <element signature="e#22782#22788#0" expanded="true" />
@@ -88,10 +82,22 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/my-view1.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="51">
+                  <caret line="65" column="37" selection-start-line="65" selection-start-column="37" selection-end-line="65" selection-end-column="37" />
+                  <folding>
+                    <element signature="e#0#75#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/my-map.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="170">
-                  <caret line="40" column="32" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
+                <state relative-caret-position="204">
+                  <caret line="57" column="24" selection-start-line="57" selection-start-column="24" selection-end-line="57" selection-end-column="24" />
                   <folding>
                     <element signature="e#0#75#0" expanded="true" />
                     <element signature="n#!!block;n#ready#0;n#MyMap#0" />
@@ -103,12 +109,13 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/my-view1.js">
+            <entry file="file://$PROJECT_DIR$/src/my-wordcloud.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="51">
-                  <caret line="65" column="37" selection-start-line="65" selection-start-column="37" selection-end-line="65" selection-end-column="37" />
+                <state relative-caret-position="183">
+                  <caret line="75" column="58" lean-forward="true" selection-start-line="75" selection-start-column="58" selection-end-line="75" selection-end-column="58" />
                   <folding>
                     <element signature="e#0#75#0" expanded="true" />
+                    <element signature="n#!!block;n#__removeStoppingWords#0;n#MyWordcloud#0" />
                   </folding>
                 </state>
               </provider>
@@ -121,8 +128,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://C:/xampp/htdocs/SMILE/dashboard.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="209">
-                  <caret line="292" column="38" lean-forward="true" selection-start-line="292" selection-start-column="38" selection-end-line="292" selection-end-column="38" />
+                <state relative-caret-position="-3097">
+                  <caret line="292" column="38" selection-start-line="292" selection-start-column="38" selection-end-line="292" selection-end-column="38" />
                   <folding>
                     <element signature="n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" />
                     <element signature="e#99#105#1" expanded="true" />
@@ -150,10 +157,17 @@
       <find>hashtagAjax</find>
       <find>mediaIdArr</find>
       <find>bootstrap</find>
-      <find>col-</find>
       <find>icon</find>
-      <find>instagram</find>
       <find>col-md-offset-</find>
+      <find>topCaption</find>
+      <find>tabl</find>
+      <find>table-respons</find>
+      <find>table-wrapper-scroll-y</find>
+      <find>scroll-</find>
+      <find>mappy</find>
+      <find>instagram</find>
+      <find>continents</find>
+      <find>col-</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -167,14 +181,15 @@
         <option value="$PROJECT_DIR$/src/my-fullcalendar.js" />
         <option value="$PROJECT_DIR$/src/bootstrap-style.js" />
         <option value="$PROJECT_DIR$/src/style.js" />
-        <option value="$PROJECT_DIR$/dashboard.html" />
         <option value="$PROJECT_DIR$/src/my-linechart.js" />
         <option value="$PROJECT_DIR$/src/my-piechart.js" />
         <option value="$PROJECT_DIR$/src/font-awesome.js" />
         <option value="$PROJECT_DIR$/src/my-basic.js" />
         <option value="$PROJECT_DIR$/src/my-caption.js" />
-        <option value="$PROJECT_DIR$/src/my-map.js" />
         <option value="$PROJECT_DIR$/src/my-view1.js" />
+        <option value="$PROJECT_DIR$/src/my-wordcloud.js" />
+        <option value="$PROJECT_DIR$/src/my-map.js" />
+        <option value="$PROJECT_DIR$/dashboard.html" />
       </list>
     </option>
   </component>
@@ -194,10 +209,10 @@
       <path value="$PROJECT_DIR$/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-10" />
-    <option name="width" value="1940" />
-    <option name="height" value="1050" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-8" />
+    <option name="width" value="977" />
+    <option name="height" value="1038" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -259,18 +274,18 @@
       <updated>1548417603116</updated>
       <workItem from="1548417608586" duration="4436000" />
       <workItem from="1548425765698" duration="4380000" />
-      <workItem from="1548731050038" duration="9675000" />
+      <workItem from="1548731050038" duration="16489000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18491000" />
+    <option name="totallyTimeSpent" value="25305000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="0" width="1552" height="840" extended-state="0" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13927393" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13945803" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -373,17 +388,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="262" column="51" selection-start-line="262" selection-start-column="51" selection-end-line="262" selection-end-column="51" />
-          <folding>
-            <element signature="n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="e#22782#22788#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/my-linechart.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -411,17 +415,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/xampp/htdocs/SMILE/dashboard.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="292" column="38" lean-forward="true" selection-start-line="292" selection-start-column="38" selection-end-line="292" selection-end-column="38" />
-          <folding>
-            <element signature="n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="e#99#105#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/markerclusterer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-6732">
@@ -435,13 +428,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="1346" column="20" lean-forward="true" selection-start-line="1346" selection-start-column="20" selection-end-line="1346" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bootstrap-style.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="11" column="27327" selection-start-line="11" selection-start-column="27313" selection-end-line="11" selection-end-column="27327" />
         </state>
       </provider>
     </entry>
@@ -471,16 +457,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/my-map.js">
+    <entry file="file://$PROJECT_DIR$/src/bootstrap-style.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="40" column="32" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#75#0" expanded="true" />
-            <element signature="n#!!block;n#ready#0;n#MyMap#0" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="200">
+          <caret line="11" column="34076" selection-start-line="11" selection-start-column="34070" selection-end-line="11" selection-end-column="34076" />
         </state>
       </provider>
     </entry>
@@ -490,6 +470,52 @@
           <caret line="65" column="37" selection-start-line="65" selection-start-column="37" selection-end-line="65" selection-end-column="37" />
           <folding>
             <element signature="e#0#75#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/my-map.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="57" column="24" selection-start-line="57" selection-start-column="24" selection-end-line="57" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#75#0" expanded="true" />
+            <element signature="n#!!block;n#ready#0;n#MyMap#0" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="263" selection-start-line="263" selection-end-line="263" />
+          <folding>
+            <element signature="n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#22782#22788#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/xampp/htdocs/SMILE/dashboard.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3097">
+          <caret line="292" column="38" selection-start-line="292" selection-start-column="38" selection-end-line="292" selection-end-column="38" />
+          <folding>
+            <element signature="n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#99#105#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/my-wordcloud.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="75" column="58" lean-forward="true" selection-start-line="75" selection-start-column="58" selection-end-line="75" selection-end-column="58" />
+          <folding>
+            <element signature="e#0#75#0" expanded="true" />
+            <element signature="n#!!block;n#__removeStoppingWords#0;n#MyWordcloud#0" />
           </folding>
         </state>
       </provider>

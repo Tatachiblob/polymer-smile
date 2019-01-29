@@ -45,6 +45,24 @@ class MyMap extends PolymerElement {
 			</div>
 		</div>
 		<div class="card mappy" id="map"></div>
+		<div class="card">
+			<table class="table table-bordered">
+				<thead class="thead-dark">
+					<tr>
+						<template is="dom-repeat" items="{{continents}}">
+						<th scope="col">{{item.continent}}</th>
+						</template>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<template is="dom-repeat" items="{{continents}}">
+						<td>{{item.count}}</td>
+						</template>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 		`;
 	}
 	
@@ -58,7 +76,8 @@ class MyMap extends PolymerElement {
 			mapData: Array,
 			regionszxc: Object,
 			continentCount: Array,
-			google: Object
+			google: Object,
+			continents: Array
 		}
 	}
 	
@@ -388,14 +407,9 @@ class MyMap extends PolymerElement {
                 {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
 			
         }
-		
-		/*
-		for(let key of sort(continents)){
-			console.log(key + " : " + continents[key]);
-			//tableHeading += '<th>' + key + '</th>';
-			//tableBody += '<td>' + continents[key] + '</td>'
-		}
-		*/
+
+		console.log(continents);
+		this.continents = continents;
 	}
 	
 	__filterGeocode(response){
