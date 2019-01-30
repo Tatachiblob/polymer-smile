@@ -52,11 +52,16 @@
         <!--<link href="css/font-awesome.css" rel="stylesheet">-->
         <!-- jQuery -->
         <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
         <!----webfonts--->
         <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet'type='text/css'>
         <!---//webfonts--->
         <!-- Nav CSS -->
         <link href="css/custom.css" rel="stylesheet">
+
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+        <link rel='stylesheet' href='fullcalendar/fullcalendar.css' />
+        <script src='fullcalendar/fullcalendar.js'></script>
 
         <script>
         window.MyAppGlobals = { rootPath: '/' };
@@ -74,7 +79,8 @@
         <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
 
         <!-- Load your application shell -->
-        <script type="module" src="src/my-view1.js"></script>
+        <script type="module" src="src/my-dashboard.js"></script>
+        <script type="module" src="node_modules/@polymer/iron-ajax/iron-ajax.js"></script>
 
         <!-- Add any global styles for body, document, etc. -->
         <style>
@@ -152,6 +158,15 @@
         </style>
     </head>
     <body>
+        <iron-ajax
+            id="eventAjax"
+            url="http://localhost:8080/smile/event_calendar"
+            method="GET"
+            handle-as="json"
+            on-response="handleResponse"
+            debounce-duration="300">
+        </iron-ajax>
+
         <div id="wrapper">
             <!-- Navigation -->
             <nav class="top1 navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
@@ -257,8 +272,12 @@
                     </div>
 
                     <div class="content_bottom">
-                        <my-view1 hashtag="lpep2k18" />
-
+                        <div class="row">
+                            <div class="col-md-12 span_4 custom set_display">
+                                <div id="calendar_events" style="font-family: 'Roboto';"></div>
+                            </div>
+                        </div>
+                        <my-dashboard hashtag="lpep2k18"></my-dashboard>
                     </div>
 
                     <div class="copy">
@@ -268,5 +287,55 @@
             </div>
             <!-- /#page-wrapper -->
         </div>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                var events = [];
+                var a = document.querySelector('iron-ajax');
+                a.generateRequest();
+                a.addEventListener('iron-ajax-response', function(e){
+                    var tempEvent = {};
+                    for(let z of e.detail.__data.response._embedded){
+                        tempEvent.title = z.event_name;
+                        tempEvent.desc = z.event_desc;
+                        tempEvent.hashtag = z.hashtags;
+                        tempEvent.start = formatDate(z.start_period);
+                        tempEvent.end = formatDate(z.end_period) + "T23:59:00";
+                        events.push(tempEvent);
+                        tempEvent = {};
+                    }
+                    renderCalendar(events);
+                }, false);
+            });
+
+            function renderCalendar(events){
+                $('#calendar_events').fullCalendar({
+                    height: 480,
+                    width: 550,
+                    events: events,
+                    displayEventTime: false,
+                    eventRender: function(eventObj, el) {
+                        $(el).popover({
+                            title: eventObj.title,
+                            content: "#" + eventObj.hashtag + ".\n" + eventObj.desc,
+                            trigger: 'hover',
+                            placement: 'top',
+                            container: 'body'
+                        });
+                    },
+                });
+            }
+
+            function formatDate(date) {
+                var d = new Date(date * 1000),
+                    month = '' + (d.getMonth() + 1),
+                    day = '' + d.getDate(),
+                    year = d.getFullYear();
+
+                if (month.length < 2) month = '0' + month;
+                if (day.length < 2) day = '0' + day;
+
+                return [year, month, day].join('-');
+            }
+        </script>
     </body>
 </html>

@@ -18,7 +18,7 @@ import './my-piechart';
 import './my-modal';
 import './my-map';
 
-class MyView1 extends PolymerElement {
+class MyDashboard extends PolymerElement {
 	static get template() {
 		return html`
 		<style include="bootstrap-style"></style>
@@ -46,8 +46,6 @@ class MyView1 extends PolymerElement {
 			on-response="__handleHashtagResponse"
 			debounce-duration="300">
 		</iron-ajax>
-		
-		<my-modal id="mymodal"></my-modal>
 		
 		<div class="row">
 			<div class="card col-md-6">
@@ -86,6 +84,7 @@ class MyView1 extends PolymerElement {
 		<my-histogram id="age" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-histogram>
 		<my-emotion id="emo" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-emotion>
 		<my-map id="googleMap" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-map>
+		<my-modal id="mymodal"></my-modal>	
 		`;
 	}
 	
@@ -207,4 +206,4 @@ class MyView1 extends PolymerElement {
 
 }
 
-window.customElements.define('my-view1', MyView1);
+window.customElements.define('my-dashboard', MyDashboard);

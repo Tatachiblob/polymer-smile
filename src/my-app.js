@@ -155,7 +155,7 @@ class MyApp extends PolymerElement {
     // statement, so break it up.
     switch (page) {
       case 'view1':
-        import('./my-view1.js');
+        import('./my-dashboard.js');
         break;
       case 'view2':
         import('./my-view2.js');
