@@ -8,6 +8,7 @@ import '@polymer/paper-item/paper-item.js';
 import '@polymer/paper-listbox/paper-listbox.js';
 import './shared-styles.js';
 import './bootstrap-style.js';
+import './my-label-wordcloud';
 import './my-genderchart';
 import './my-piechart';
 import './my-modal';
@@ -62,11 +63,8 @@ class MyContent extends PolymerElement {
 				</div>
 			</div>
 		</div>
-		
-		<div class="row">
-            <my-piechart id="piechart" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-piechart>
-            <my-genderchart id="gender" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-genderchart>
-		</div>
+		<my-piechart id="piechart" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-piechart>
+		<my-label-wordcloud id="labelWordcloud" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-label-wordcloud>
 		`;
     }
 
@@ -134,11 +132,13 @@ class MyContent extends PolymerElement {
     __generateElementRequest(){
         this.$.gender.generateGenderRequest();
         this.$.piechart.generatePieRequest();
+        this.$.labelWordcloud.generateLabelWordcloudRequest();
     }
 
     //Add the listeners of the element
     __createListeners(){
         this.$.gender.addEventListener('modal1', this.__listenModal.bind(this));
+        this.$.labelWordcloud.addEventListener('modal1', this.__listenModal.bind(this));
     }
 
     __listenModal(event){
