@@ -3,25 +3,6 @@ import '@polymer/iron-ajax/iron-ajax.js';
 import 'highcharts/highcharts.js';
 import './shared-styles.js';
 
-class Chart {  
-
-  static get properties() {
-	  return {
-		  id: String,  
-		  data: Object,  
-		  height: any, 
-		  width: any 
-	  }
-  }
-  
-  constructor(id, data, height, width) {  
-    this.id = id;  
-    this.data = data;   
-    this.height = height || 300;  
-    this.width = width || 600; 
-  }  
-}
-
 class MyBarChart extends PolymerElement {
 	static get template() {
 		return html`
@@ -78,8 +59,8 @@ class MyBarChart extends PolymerElement {
 		this.mapped = true;
 		this.occurences = [[], [], [], [], [], [], []];
 		this.finalArray = [[], [], [], [], [], [], [], []];
-		//this.likesArray = [[], [], [], [], [], [], [], []];
-		this.likesArray = [10, 20, 30, 10, 5, 5, 15, 5];
+		this.likesArray = [];
+		//this.likesArray = [10, 20, 30, 10, 5, 5, 15, 5];
 	}
 	
 	generateBarRequest(){
@@ -106,6 +87,7 @@ class MyBarChart extends PolymerElement {
 		console.log(res.response._embedded);
 		this.finalArray = this.__mappingGoogleLabels(res.response._embedded, this.finalArray);
 		
+		this.__mappingID();
 		this.__renderBarChart();
 	}
 	
@@ -646,6 +628,42 @@ class MyBarChart extends PolymerElement {
 		//console.log(this.occurences);
 		//console.log(mappingArray);
 		return mappingArray;
+	}
+	
+	__mappingID() {
+		var h, i, j, sum, totalLikes;
+		var igMediaData, mappingArray;
+		
+		totalLikes = 0;
+		sum = 0;
+		
+		igMediaData = this.rawMediaData;
+		mappingArray = this.finalArray;
+		
+		for (h = 0; h < mappingArray.length; h ++) {
+			sum = 0;
+			for (i = 0; i < mappingArray[h].length; i ++) {
+				for (j = 0; j < igMediaData.length; j ++) {
+					if (mappingArray[h][i].ig_id == igMediaData[j].ig_object.id) {
+						sum += igMediaData[j].ig_object.edge_liked_by.count;
+					}
+				}
+			}
+			this.likesArray.push(sum);
+		}
+		console.log(this.likesArray);
+		
+		for (i = 0; i < igMediaData.length; i ++) {
+			sum = igMediaData[i].ig_object.edge_liked_by.count;
+			totalLikes += sum;
+		}
+		
+		for (i = 0; i < this.likesArray.length; i ++) {
+			this.likesArray[i] = Math.round(this.likesArray[i] / totalLikes * 10000) / 100;
+		}
+		
+		console.log(totalLikes);
+		console.log(this.likesArray);
 	}
 	
 	__createUrl(){
