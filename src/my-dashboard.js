@@ -15,6 +15,7 @@ import './my-genderchart';
 import './my-histogram';
 import './my-emotion';
 import './my-piechart';
+import './my-barchart';
 import './my-modal';
 import './my-map';
 
@@ -84,6 +85,7 @@ class MyDashboard extends PolymerElement {
 		<my-histogram id="age" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-histogram>
 		<my-emotion id="emo" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-emotion>
 		<my-map id="googleMap" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-map>
+		<my-barchart id="barchart" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-barchart>
 		<my-modal id="mymodal"></my-modal>	
 		`;
 	}
@@ -142,6 +144,7 @@ class MyDashboard extends PolymerElement {
 		//console.log("After: " + this.mediaIdArr.length);
 		
 		this.$.basicViews.setRawMediaData(res);
+		this.$.barchart.setRawMediaData(res);
 		
 		this.__generateElementRequest();
 	}
@@ -159,6 +162,7 @@ class MyDashboard extends PolymerElement {
 		this.$.age.generateAgeRequest();
 		this.$.emo.generateEmoRequest();
 		this.$.piechart.generatePieRequest();
+		this.$.barchart.generateBarRequest();
 		this.$.googleMap.generateMapRequest();
 	}
 	
