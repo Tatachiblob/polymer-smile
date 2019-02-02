@@ -56,6 +56,7 @@ class MyDashboard extends PolymerElement {
 								<template>
 									<paper-item>[[hash._id]]</paper-item>
 								</template>
+							</dom-repeat>
 						</paper-listbox>
 					</paper-dropdown-menu>
 				</div>

@@ -130,14 +130,12 @@ class MyContent extends PolymerElement {
 
     //Add the generateRequest of the element.
     __generateElementRequest(){
-        this.$.gender.generateGenderRequest();
         this.$.piechart.generatePieRequest();
         this.$.labelWordcloud.generateLabelWordcloudRequest();
     }
 
     //Add the listeners of the element
     __createListeners(){
-        this.$.gender.addEventListener('modal1', this.__listenModal.bind(this));
         this.$.labelWordcloud.addEventListener('modal1', this.__listenModal.bind(this));
     }
 

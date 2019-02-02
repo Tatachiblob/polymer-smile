@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="677e1531-0824-4bd1-b5e6-56ec4ec22b4e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/my-comparison.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/my-date-selector.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/my-content.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/my-content.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/my-label.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/my-label-wordcloud.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/my-view2.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/my-view2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/my-dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/my-dashboard.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -21,55 +22,90 @@
     <session id="2120677672">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="4" />
-          <entry key="project.open.time.10" value="1" />
+          <entry key="project.closed" value="6" />
+          <entry key="project.open.time.10" value="2" />
+          <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.12" value="1" />
+          <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.16" value="1" />
           <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="4" />
+          <entry key="project.opened" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="css" value="1" />
-          <entry key="html" value="9" />
-          <entry key="js" value="56" />
+          <entry key="html" value="10" />
+          <entry key="js" value="68" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="1" />
-          <entry key="HTML" value="9" />
-          <entry key="JavaScript" value="56" />
+          <entry key="HTML" value="10" />
+          <entry key="JavaScript" value="68" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="2093" />
-          <entry key="js" value="5443" />
+          <entry key="html" value="2186" />
+          <entry key="js" value="7492" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="2524" />
-          <entry key="JavaScript" value="5012" />
+          <entry key="HTML" value="2693" />
+          <entry key="JavaScript" value="6985" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.63824886">
+    <splitter split-orientation="horizontal" split-proportion="0.7296467">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/dashboard.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="184">
-                  <caret line="320" column="45" lean-forward="true" selection-start-line="320" selection-start-column="45" selection-end-line="320" selection-end-column="45" />
+                <state relative-caret-position="765">
+                  <caret line="45" column="8" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="77" />
                   <folding>
                     <element signature="n#style#0;n#head#0;n#html#0;n#!!top" />
                     <element signature="n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/my-comparison.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="555">
+                  <caret line="64" column="8" selection-start-line="64" selection-start-column="8" selection-end-line="64" selection-end-column="8" />
+                  <folding>
+                    <element signature="e#0#75#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/my-dashboard.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="378">
+                  <caret line="156" column="8" selection-start-line="156" selection-start-column="8" selection-end-line="156" selection-end-column="52" />
+                  <folding>
+                    <element signature="e#0#75#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/index.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1836">
+                  <caret line="108" column="19" selection-start-line="108" selection-start-column="19" selection-end-line="108" selection-end-column="19" />
                 </state>
               </provider>
             </entry>
@@ -79,10 +115,46 @@
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/my-date-selector.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="187">
+                  <caret line="81" column="30" selection-start-line="81" selection-start-column="12" selection-end-line="81" selection-end-column="30" />
+                  <folding>
+                    <element signature="e#0#75#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/my-content.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="456">
-                  <caret line="65" column="97" selection-start-line="65" selection-start-column="97" selection-end-line="65" selection-end-column="97" />
+                <state relative-caret-position="623">
+                  <caret line="137" column="24" selection-start-line="137" selection-start-column="24" selection-end-line="137" selection-end-column="24" />
+                  <folding>
+                    <element signature="e#0#75#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/my-label-wordcloud.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="2737">
+                  <caret line="167" column="50" selection-start-line="167" selection-start-column="50" selection-end-line="167" selection-end-column="50" />
+                  <folding>
+                    <element signature="e#0#75#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/my-basic.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state>
+                  <caret selection-end-line="8" />
                   <folding>
                     <element signature="e#0#75#0" expanded="true" />
                   </folding>
@@ -104,14 +176,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>topCaption</find>
-      <find>tabl</find>
-      <find>table-respons</find>
-      <find>table-wrapper-scroll-y</find>
-      <find>scroll-</find>
-      <find>mappy</find>
-      <find>instagram</find>
-      <find>continents</find>
       <find>col-</find>
       <find>basci</find>
       <find>calendar</find>
@@ -133,7 +197,15 @@
       <find>console.log</find>
       <find>getLabels</find>
       <find>gene</find>
+      <find>gender</find>
+      <find>my</find>
+      <find>handleHashtagRes</find>
       <find>bootstrap</find>
+      <find>repeat</find>
+      <find>handleClick</find>
+      <find>mediaAjax</find>
+      <find>ajaxUrl</find>
+      <find>generateElement</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -149,21 +221,24 @@
         <option value="$PROJECT_DIR$/src/my-linechart.js" />
         <option value="$PROJECT_DIR$/src/my-piechart.js" />
         <option value="$PROJECT_DIR$/src/font-awesome.js" />
-        <option value="$PROJECT_DIR$/src/my-basic.js" />
         <option value="$PROJECT_DIR$/src/my-caption.js" />
         <option value="$PROJECT_DIR$/src/my-view1.js" />
         <option value="$PROJECT_DIR$/src/my-map.js" />
         <option value="$PROJECT_DIR$/content.html" />
         <option value="$PROJECT_DIR$/face-content.html" />
         <option value="$PROJECT_DIR$/src/my-face-content.js" />
-        <option value="$PROJECT_DIR$/src/my-dashboard.js" />
         <option value="$PROJECT_DIR$/dashboard.html" />
         <option value="$PROJECT_DIR$/src/my-label.js" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/src/my-view2.js" />
         <option value="$PROJECT_DIR$/src/my-wordcloud.js" />
-        <option value="$PROJECT_DIR$/src/my-label-wordcloud.js" />
+        <option value="$PROJECT_DIR$/src/my-basic.js" />
         <option value="$PROJECT_DIR$/src/my-content.js" />
+        <option value="$PROJECT_DIR$/src/my-label-wordcloud.js" />
+        <option value="$PROJECT_DIR$/src/my-half-comparison.js" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/src/my-dashboard.js" />
+        <option value="$PROJECT_DIR$/src/my-date-selector.js" />
+        <option value="$PROJECT_DIR$/src/my-comparison.js" />
       </list>
     </option>
   </component>
@@ -184,9 +259,9 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="width" value="977" />
-    <option name="height" value="523" />
+    <option name="x" value="-10" />
+    <option name="width" value="980" />
+    <option name="height" value="525" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -246,17 +321,20 @@
       <workItem from="1548425765698" duration="4380000" />
       <workItem from="1548731050038" duration="16489000" />
       <workItem from="1548833184015" duration="16327000" />
+      <workItem from="1548909711472" duration="266000" />
+      <workItem from="1549020775661" duration="4774000" />
+      <workItem from="1549080032551" duration="3082000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41632000" />
+    <option name="totallyTimeSpent" value="49754000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13945803" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.0687376" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -270,7 +348,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32907802" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -325,22 +403,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/my-date.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#75#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/my-linechart.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="24" column="26" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#75#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -348,16 +414,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="39" column="28" lean-forward="true" selection-start-line="39" selection-start-column="28" selection-end-line="39" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#75#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/style.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="526">
-          <caret line="2712" lean-forward="true" selection-start-line="2712" selection-end-line="2713" selection-end-column="55" />
         </state>
       </provider>
     </entry>
@@ -373,20 +429,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/my-basic.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-51">
-          <caret line="21" column="8" lean-forward="true" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#75#0" expanded="true" />
-            <element signature="n#style#0;n#i#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#0;n#div#0;n#div#0;n#div#2;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/bootstrap-style.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
@@ -398,10 +440,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="850">
           <caret line="57" column="24" selection-start-line="57" selection-start-column="24" selection-end-line="57" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#75#0" expanded="true" />
-            <element signature="n#!!block;n#ready#0;n#MyMap#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -409,9 +447,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="354">
           <caret line="259" column="60" selection-start-line="259" selection-start-column="60" selection-end-line="259" selection-end-column="60" />
-          <folding>
-            <element signature="n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -419,9 +454,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="351">
           <caret line="259" column="70" selection-start-line="259" selection-start-column="70" selection-end-line="259" selection-end-column="70" />
-          <folding>
-            <element signature="n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -439,11 +471,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
           <caret line="492" selection-start-line="492" selection-end-line="492" selection-end-column="43" />
-          <folding>
-            <element signature="n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#style#0;n#div#0;n#div#7;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#99#105#1" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -461,19 +488,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="439">
           <caret line="32" column="46" selection-start-line="32" selection-start-column="46" selection-end-line="32" selection-end-column="46" />
-          <folding>
-            <element signature="e#0#75#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/my-dashboard.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="29" column="16" lean-forward="true" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#75#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -491,17 +505,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="388">
           <caret line="250" column="22" lean-forward="true" selection-start-line="250" selection-start-column="22" selection-end-line="250" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#75#0" expanded="true" />
-            <element signature="n#!!block;n#__removeStoppingWords#0;n#MyWordcloud#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="89" column="57" selection-start-line="89" selection-start-column="57" selection-end-line="89" selection-end-column="57" />
         </state>
       </provider>
     </entry>
@@ -516,26 +519,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
           <caret line="141" column="13" selection-start-line="141" selection-start-column="13" selection-end-line="141" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#52#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/my-label-wordcloud.js">
+    <entry file="file://$PROJECT_DIR$/src/style.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="834">
-          <caret line="82" column="43" lean-forward="true" selection-start-line="82" selection-start-column="43" selection-end-line="82" selection-end-column="43" />
-          <folding>
-            <element signature="e#0#75#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="10033">
+          <caret line="2697" column="20" lean-forward="true" selection-start-line="2697" selection-start-column="20" selection-end-line="2697" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/my-content.js">
+    <entry file="file://$PROJECT_DIR$/src/my-half-comparison.js" />
+    <entry file="file://$PROJECT_DIR$/src/my-date.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="65" column="97" selection-start-line="65" selection-start-column="97" selection-end-line="65" selection-end-column="97" />
+        <state>
           <folding>
             <element signature="e#0#75#0" expanded="true" />
           </folding>
@@ -544,11 +541,78 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dashboard.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="320" column="45" lean-forward="true" selection-start-line="320" selection-start-column="45" selection-end-line="320" selection-end-column="45" />
+        <state relative-caret-position="765">
+          <caret line="45" column="8" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="77" />
           <folding>
             <element signature="n#style#0;n#head#0;n#html#0;n#!!top" />
             <element signature="n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1836">
+          <caret line="108" column="19" selection-start-line="108" selection-start-column="19" selection-end-line="108" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/my-label-wordcloud.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2737">
+          <caret line="167" column="50" selection-start-line="167" selection-start-column="50" selection-end-line="167" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#75#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/my-basic.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="8" />
+          <folding>
+            <element signature="e#0#75#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/my-content.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="623">
+          <caret line="137" column="24" selection-start-line="137" selection-start-column="24" selection-end-line="137" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#75#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/my-date-selector.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="81" column="30" selection-start-line="81" selection-start-column="12" selection-end-line="81" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#75#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/my-dashboard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="156" column="8" selection-start-line="156" selection-start-column="8" selection-end-line="156" selection-end-column="52" />
+          <folding>
+            <element signature="e#0#75#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/my-comparison.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="64" column="8" selection-start-line="64" selection-start-column="8" selection-end-line="64" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#75#0" expanded="true" />
           </folding>
         </state>
       </provider>
