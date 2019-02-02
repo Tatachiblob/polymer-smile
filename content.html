@@ -257,7 +257,7 @@
             </div>
 
             <div class="content_bottom">
-                <my-content hashtag="lpep2k18"></my-content>
+                <my-content></my-content>
             </div>
 
             <div class="copy">
@@ -266,6 +266,13 @@
         </div>
     </div>
     <!-- /#page-wrapper -->
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var curHashtag = sessionStorage.getItem('hashtagInput');
+            document.querySelector('my-content').setAttribute('hashtag', curHashtag);
+            document.querySelector('my-content').__handleClick();
+        });
+    </script>
 </div>
 </body>
 </html>

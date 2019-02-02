@@ -1,0 +1,383 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>SMILE: A Social Media Image Listening Engine</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="Modern Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design"/>
+    <script type="application/x-javascript"> addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
+
+    <!-- Calendar Zingchart CSS -->
+    <link rel="stylesheet" type="text/css" href="css/calendar-chart.css">
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel='stylesheet' type='text/css'/>
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel='stylesheet' type='text/css'/>
+    <!-- Graph CSS -->
+    <link href="css/lines.css" rel='stylesheet' type='text/css'/>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <!--<link href="css/font-awesome.css" rel="stylesheet">-->
+    <!-- jQuery -->
+    <script src="js/jquery.min.js"></script>
+    <!----webfonts--->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet'
+          type='text/css'>
+    <!---//webfonts--->
+    <!-- Nav CSS -->
+    <link href="css/custom.css" rel="stylesheet">
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="js/metisMenu.min.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/dataRetrieve.js" type="module"></script>
+    <!-- Graph JavaScript -->
+    <script src="js/d3.v3.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/variwide.js"></script>
+
+    <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+    <script> zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
+    ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "ee6b7db5b51705a13dc2339db3edaf6d"];</script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+    <script src="js/rickshaw.js"></script>
+    <style>
+        /** SPINNER CREATION **/
+        #loadMe{
+            margin-top:25vh;
+        }
+        .loader {
+            position: relative;
+            text-align: center;
+            margin: 15px auto 35px auto;
+            z-index: 9999;
+            display: block;
+            width: 80px;
+            height: 80px;
+            border: 10px solid rgba(87, 172, 83, .3);
+            border-radius: 50%;
+            border-top-color: #57ac53;
+            animation: spin 1s ease-in-out infinite;
+            -webkit-animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        @-webkit-keyframes spin {
+            to {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="wrapper">
+    <!-- Navigation -->
+    <nav class="top1 navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="home"><img src="smile_logo.png" style="height: 30px; display: inline;">
+                SMILE &nbsp<span style="font-size: 20px;">A Social Media Image Listener Engine</span></a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <!-- /.navbar-header -->
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-comments-o"></i><span class="badge" id="notif-count">0</span></a>
+                <ul class="dropdown-menu" id="notif-dropdowns">
+                </ul>
+            </li>
+        </ul>
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li>
+                        <a href="dashboard"><i class="fa fa-dashboard fa-fw nav_icon"></i>Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="media-analysis"><i class="fa fa-picture-o fa-fw nav_icon"></i>Content Analysis</a>
+                    </li>
+                    <li>
+                        <a href="face-demographics"><i class="fa fa-smile-o fa-fw nav_icon"></i>Face Analysis</a>
+                    </li>
+                    <li>
+                        <a href="summary"><i class="fa fa-file-text fa-fw nav_icon"></i>General Summary</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-clone fa-fw nav_icon"></i>Generate Reports<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="marketing-proposal">Marketing Proposal Template</a>
+                            </li>
+                            <li>
+                                <a href="expected-actual">Expected vs. Actual Monitoring</a>
+                            </li>
+                            <li>
+                                <a href="consumer-analysis">Face and Content Analysis Report</a>
+                            </li>
+                            <li>
+                                <a href="post-event">Post Event Report</a>
+                            </li>
+                            <!--<li>-->
+                            <!--<a href="engagement-report">Engagement Report</a>-->
+                            <!--</li>-->
+                            <li>
+                                <a href="comparison-report">Comparison Report</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="customize"><i class="fa fa-pencil-square-o fa-fw nav_icon"></i>Customize Visualizations</a>
+                    </li>
+                    <li>
+                        <a href="search-archive"><i class="fa fa-search fa-fw nav_icon"></i>Search Archive</a>
+                    </li>
+                    <li>
+                        <a href="calendar-event"><i class="fa fa-plus fa-fw nav_icon"></i>Create Calendar Event</a>
+                    </li>
+                    <li>
+                        <a href="threshold-target"><i class="fa fa-bullseye fa-fw nav_icon"></i>Add Threshold Target</a>
+                    </li>
+                    <li>
+                        <a href="reports-archive"><i class="fa fa-archive fa-fw nav_icon"></i>Reports Archive</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.sidebar-collapse -->
+        </div>
+        <!-- /.navbar-static-side -->
+    </nav>
+    <div id="page-wrapper">
+        <div class="graphs">
+            <div class="col_12">
+                <!-- SEARCH BAR -->
+                <!--<form id="inputForm" class="navbar-form navbar-right">
+                <input id="searchBar" type="text" class="navbar-form form-control" value="ex. animolasalle" size="100%"
+                       onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'ex. animolasalle';}">
+                <!--</form>-->
+                <div class="xs form-horizontal form-group">
+                    <label for="focusedinput" class="col-sm-2 control-label"><h3>Search</h3></label>
+                    <div class="col-sm-8">
+                        <input id="searchBar" type="text" class="form-control1" id="focusedinput"
+                               placeholder='Enter hashtag here... e.g. "animolasalle"'>
+                    </div>
+                    <div class="col-sm-2">
+                        <p class="help-block">No need to put '#'</p>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="xs form-horizontal form-group">
+                    <label id="more-details" class="control-label"><h3>Search Archive</h3></label>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="content_bottom">
+                <!--<h3>Recent Searches</h3>-->
+                <div class="bs-example4" data-example-id="contextual-table">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Hashtag</th>
+                            <th>Date</th>
+                            <th>Total No. of Images in Store</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody id="recentSearches">
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="copy">
+                <p>Copyright &copy; 2018 SMILE</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Modal -->
+    <div class="modal fade" id="loadMe" tabindex="-1" role="dialog" aria-labelledby="loadMeLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <div class="loader"></div>
+                    <div clas="loader-txt">
+                        <p>Collecting and processing images... <br><br><small>This might take a while to finish, please wait.</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- /#page-wrapper -->
+</div>
+<!-- /#wrapper -->
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+<script src="js/dbUtils.js" type="module"></script>
+<script src="js/dbUtils2.js" type="module"></script>
+<script src="js/scraper.js" type="module"></script>
+<script src="js/showDbPath.js" type="module"></script>
+<script src="js/event-notif2.js" type="module"></script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        getIGHistory();
+    });
+
+    function getIGHistory(){
+
+        var domain = window.dbPath();
+        var rest = domain + "/smile/user_search";
+        var history = {};
+
+        var tbodyHtml = "";
+        var hastagName, oldestDate, totalPosts, totalPostsUrl;
+
+        $.ajax({
+            async: false,
+            type: "GET",
+            url: rest,
+            dataType: "json",
+            success: function(response){
+                history = response._embedded;
+                for(var i = 0; i < history.length; i++){
+                    hastagName = history[i].search_hashtag;
+                    oldestDate = history[i].search_history[0].searched_date;
+                    totalPostsUrl = domain + '/smile/ig_media?filter={"hashtag":"' + hastagName + '"}&pagesize=0&count';
+
+                    $.ajax({
+                        async: false,
+                        type: "GET",
+                        url: totalPostsUrl,
+                        dataType: "json",
+                        success: function(response){
+                            totalPosts = response._size;
+                        }
+                    });
+                    if(i % 2 == 0){
+                        tbodyHtml += '<tr class="active"><th scope="row">' + (i + 1) + '</th><td>' + hastagName + '</td><td>' + timeConverter(oldestDate) + '</td><td>' + totalPosts + '</td><td><button class="btn btn-sm btn-default" onclick="hello(\'' + hastagName + '\')">View</button></td><td><button class="btn btn-sm btn-default" onclick="update(\'' + hastagName + '\')">Update Likes</button></td></tr>';
+                    }
+                    else{
+                        tbodyHtml += '<tr><th scope="row">' + (i + 1) + '</th><td>' + hastagName + '</td><td>' + timeConverter(oldestDate) + '</td><td>' + totalPosts + '<td><button class="btn btn-sm btn-default" onclick="hello(\'' + hastagName + '\')">View</button></td><td><button class="btn btn-sm btn-default" onclick="update(\'' + hastagName + '\')">Update Likes</button></td></tr>';
+                    }
+                }
+
+                $('#recentSearches').html(tbodyHtml);
+            }
+        });
+
+    }
+
+    function hello(hashtag){
+        // Check browser support
+        if (typeof(Storage) !== "undefined") {
+            sessionStorage.setItem("hashtagInput", hashtag);
+        }
+
+        location.href = "http://localhost:8081/dashboard.html";
+    }
+
+    function update(hashtag){
+        var domain = window.dbPath();
+        var rest = domain + "/smile/ig_media?filter={'hashtag':'" + hashtag + "'}&pagesize=1000";
+        var igRest = '';
+        var igShortCodes = [], tempShortCode = {};
+
+        $.ajax({
+            async: false,
+            type: "GET",
+            url: rest,
+            dataType: "json",
+            success: function(response){
+                for(let a of response._embedded){
+                    tempShortCode.oid = a._id.$oid;
+                    tempShortCode.shortcode = a.ig_object.shortcode;
+                    igShortCodes.push(tempShortCode);
+                    tempShortCode = {};
+                }
+            }
+        });
+
+        console.log(igShortCodes);
+        var restBodies = [], tempBody = {};
+        for(let shortCode of igShortCodes){
+            igRest = "https://www.instagram.com/p/" + shortCode.shortcode + "/?__a=1";
+            $.ajax({
+                async: false,
+                type: "GET",
+                url: igRest,
+                dataType: "json",
+                success: function(response){
+                    response = response.graphql.shortcode_media;
+                    tempBody.objectId = shortCode.oid;
+                    tempBody.restBody = {};
+                    tempBody.restBody.edge_liked_by = response.edge_media_preview_like.count;
+                    tempBody.restBody.edge_media_preview_like = response.edge_media_preview_like.count;
+                    tempBody.restBody.edge_media_to_comment = response.edge_media_to_comment.count;
+                    restBodies.push(tempBody);
+                    tempBody = {};
+                }
+            });
+        }
+        console.log(restBodies);
+        var tempUrl = "", finalBody = {};
+        for(let body of restBodies){
+            tempUrl = domain + '/smile/ig_media/' + body.objectId;
+            finalBody = {
+                "ig_object.edge_liked_by.count": body.restBody.edge_liked_by,
+                "ig_object.edge_media_preview_like.count": body.restBody.edge_media_preview_like,
+                "ig_object.edge_media_to_comment.count": body.restBody.edge_media_to_comment,
+            };
+            console.log(JSON.stringify(finalBody));
+            console.log(tempUrl)
+            $.ajax({
+                async: true,
+                type: "PATCH",
+                url: tempUrl,
+                processData: false,
+                contentType: "application/json",
+                data: JSON.stringify(finalBody),
+                complete: function (xhr, status) {}
+            });
+
+            finalBody = {};
+        }
+    }
+
+    function timeConverter(UNIX_timestamp){
+        var a = new Date(UNIX_timestamp * 1000);
+        var months = ['01','02','03','04','05','06','07','08','09','10','11','12'];
+        var year = a.getFullYear();
+        var month = months[a.getMonth()];
+        var date = a.getDate();
+        var hour = a.getHours();
+        var min = a.getMinutes();
+        var sec = a.getSeconds();
+        var time = year + '-' + month + '-' + date + ' ' + hour + ':' + min;
+        time = time.replace(/\b(\d{1})\b/g, '0$1');
+        return time;
+    }
+</script>
+</body>
+</html>

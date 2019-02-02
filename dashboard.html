@@ -272,12 +272,12 @@
                     </div>
 
                     <div class="content_bottom">
+                        <my-dashboard></my-dashboard>
                         <div class="row">
                             <div class="col-md-12 span_4 custom set_display">
                                 <div id="calendar_events" style="font-family: 'Roboto';"></div>
                             </div>
                         </div>
-                        <my-dashboard hashtag="lpep2k18"></my-dashboard>
                     </div>
 
                     <div class="copy">
@@ -289,6 +289,11 @@
         </div>
         <script type="text/javascript">
             $(document).ready(function(){
+                var curHashtag = sessionStorage.getItem('hashtagInput');
+
+                document.querySelector('my-dashboard').setAttribute('hashtag', curHashtag);
+                document.querySelector('my-dashboard').__handleClick();
+
                 var events = [];
                 var a = document.querySelector('iron-ajax');
                 a.generateRequest();

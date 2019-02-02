@@ -262,9 +262,14 @@
                 </div>
 
                 <div class="content_bottom">
+                    <center>
+                        <div class="col-sm-12">
+                            <label id="more-details"><strong>Comparison Report for #<span id="firstHashtag">animolasalle</span> and #<span id="secondHashtag">onebigfight</span></strong></label>
+                        </div>
+                    </center>
                     <div class="row">
-                        <my-comparison></my-comparison>
-                        <my-comparison></my-comparison>
+                        <my-comparison id="hashtag1" hashtag="animolasalle"></my-comparison>
+                        <my-comparison id="hashtag2" hashtag="onebigfight"></my-comparison>
                     </div>
                 </div>
 
@@ -275,5 +280,20 @@
         </div>
         <!-- /#page-wrapper -->
     </div>
+    <script type="text/javascript">
+        $(document).ready(function(){
+           document.querySelector('#hashtag1').addEventListener('hashtagChanged', function(event){
+               var first = event.detail.hashtag;
+               $('#firstHashtag').text(first);
+               console.log(first);
+           });
+
+            document.querySelector('#hashtag2').addEventListener('hashtagChanged', function(event){
+                var second = event.detail.hashtag;
+                $('#secondHashtag').text(second);
+                console.log(second);
+            });
+        });
+    </script>
 </body>
 </html>

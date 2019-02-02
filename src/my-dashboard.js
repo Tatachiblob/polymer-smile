@@ -50,27 +50,31 @@ class MyDashboard extends PolymerElement {
 		
 		<div class="row">
 			<div class="card col-md-6">
-				<div class="card">
-					<paper-dropdown-menu label="Select Hashtag" noink no-animations value={{hashtag}}>
-						<paper-listbox slot="dropdown-content" class="dropdown-content">
-							<dom-repeat items="[[availHashtags]]" as="hash">
-								<template>
-									<paper-item>[[hash._id]]</paper-item>
-								</template>
-							</dom-repeat>
-						</paper-listbox>
-					</paper-dropdown-menu>
-				</div>
-				
-				<h1>Select Date Range</h1>
-				<datetime-picker date="{{sDate}}" value="{{startDate}}" default="{{defaultStart}}"></datetime-picker>
-				<p>Start Date: {{sDate}}</p>
-				<datetime-picker date="{{eDate}}" value="{{endDate}}" default="{{defaultEnd}}"></datetime-picker>
-				<p>End Date: {{eDate}}</p>
 				<div class="row">
-					<paper-button raised class="indigo col-3" on-click="__handleClick">Get Data</paper-button>
-					<!--<paper-button raised class="indigo col-3" on-click="__popDialog">Show Images</paper-button>-->
-				</div>
+                    <div class="col-md-4">
+                        <paper-dropdown-menu label="Select Hashtag" noink no-animations value={{hashtag}} vertical-offset="60">
+                            <paper-listbox slot="dropdown-content" class="dropdown-content">
+                                <dom-repeat items="[[availHashtags]]" as="hash">
+                                    <template>
+                                    <paper-item>[[hash._id]]</paper-item>
+                                    </template>
+                                </dom-repeat>
+                            </paper-listbox>
+                        </paper-dropdown-menu>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        Start Time: <datetime-picker date="{{sDate}}" value="{{startDate}}" default="{{defaultStart}}"></datetime-picker>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-3">
+                        End Time: <datetime-picker date="{{eDate}}" value="{{endDate}}" default="{{defaultEnd}}"></datetime-picker>
+                    </div>
+                </div>
+                <br />
+                <paper-button raised class="indigo col-3" on-click="__handleClick">Set Date</paper-button>
 			</div>
 		</div>
 		
@@ -86,7 +90,6 @@ class MyDashboard extends PolymerElement {
 		<my-histogram id="age" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-histogram>
 		<my-emotion id="emo" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-emotion>
 		<my-map id="googleMap" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-map>
-		<my-barchart id="barchart" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-barchart>
 		<my-modal id="mymodal"></my-modal>	
 		`;
 	}
@@ -145,7 +148,6 @@ class MyDashboard extends PolymerElement {
 		//console.log("After: " + this.mediaIdArr.length);
 		
 		this.$.basicViews.setRawMediaData(res);
-		this.$.barchart.setRawMediaData(res);
 		
 		this.__generateElementRequest();
 	}
@@ -163,7 +165,6 @@ class MyDashboard extends PolymerElement {
 		this.$.age.generateAgeRequest();
 		this.$.emo.generateEmoRequest();
 		this.$.piechart.generatePieRequest();
-		this.$.barchart.generateBarRequest();
 		this.$.googleMap.generateMapRequest();
 	}
 	

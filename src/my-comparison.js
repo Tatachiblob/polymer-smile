@@ -67,7 +67,7 @@ class MyComparison extends PolymerElement {
 		        <paper-button raised on-click="__handleClick">Get Data</paper-button>
 		    </div>    
 		    <my-linechart id="linechart" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-linechart>
-		    <my-wordcloud-table id="wordcloud" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-wordcloud-table>
+		    <my-wordcloud id="wordcloud" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-wordcloud>
 		</div>
         `;
     }
@@ -75,6 +75,8 @@ class MyComparison extends PolymerElement {
     ready() {
         super.ready();
         this.$.hashtagAjax.generateRequest();
+        this.ajaxUrl = "http://localhost:8080/smile/ig_media?filter={'hashtag':'" + this.hashtag + "'}&filter={'ig_object.taken_at_timestamp':{'$gte':" + this.formattedStartDate + "}}&filter={'ig_object.taken_at_timestamp':{'$lte':" + this.formattedEndDate + "}}&keys={'ig_object.id':1}&keys={'ig_object.display_url':1}&keys={'ig_object.edge_liked_by':1}&pagesize=1000";
+        this.$.mediaAjax.generateRequest();
     }
 
     static get properties(){
@@ -114,6 +116,7 @@ class MyComparison extends PolymerElement {
     }
 
     __handleClick(){
+        this.dispatchEvent(new CustomEvent('hashtagChanged', {detail: {hashtag: this.hashtag}}));
         this.ajaxUrl = "http://localhost:8080/smile/ig_media?filter={'hashtag':'" + this.hashtag + "'}&filter={'ig_object.taken_at_timestamp':{'$gte':" + this.formattedStartDate + "}}&filter={'ig_object.taken_at_timestamp':{'$lte':" + this.formattedEndDate + "}}&keys={'ig_object.id':1}&keys={'ig_object.display_url':1}&keys={'ig_object.edge_liked_by':1}&pagesize=1000";
         this.$.mediaAjax.generateRequest();
     }
