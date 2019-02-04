@@ -7,7 +7,7 @@ import '@polymer/paper-item/paper-item.js';
 import '@polymer/paper-listbox/paper-listbox.js';
 import '@fooloomanzoo/datetime-picker/datetime-picker.js';
 import './my-linechart';
-import './my-wordcloud';
+import './my-comparison-wordcloud';
 import './shared-styles.js';
 import './bootstrap-style.js';
 import './font-awesome.js';
@@ -67,7 +67,7 @@ class MyComparison extends PolymerElement {
 		        <paper-button raised on-click="__handleClick">Get Data</paper-button>
 		    </div>    
 		    <my-linechart id="linechart" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-linechart>
-		    <my-wordcloud id="wordcloud" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-wordcloud>
+		    <my-comparison-wordcloud id="wordcloud" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-comparison-wordcloud>
 		</div>
         `;
     }
