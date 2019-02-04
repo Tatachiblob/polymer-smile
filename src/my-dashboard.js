@@ -135,7 +135,9 @@ class MyDashboard extends PolymerElement {
 				type: Array,
 				value: function(){return [];}
 			},
-			availHashtags: Array
+			availHashtags: Array,
+            sDate: String,
+            eDate: String
 		}
 	}
 	

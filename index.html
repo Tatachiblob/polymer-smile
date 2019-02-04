@@ -87,9 +87,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <!-- Load webcomponents-loader.js to check and load any polyfills your browser needs -->
     <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="node_modules/@polymer/paper-input/paper-textarea.js"></script>
+    <script src="node_modules/@polymer/paper-input/paper-input.js"></script>
 
     <!-- Load your application shell -->
-    <script type="module" src="src/my-view2.js"></script>
+    <script type="module" src="src/my-view404.js"></script>
     <script type="module" src="src/my-comparison.js"></script>
 
     <!-- Add any global styles for body, document, etc. -->
@@ -104,9 +106,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </style>
   </head>
   <body>
+  <my-view404 id="view"></my-view404>
+  <my-view404 id="view2"></my-view404>
+  <button onclick="check()">Check</button>
   <div class="row">
+    <!--
     <my-comparison></my-comparison>
     <my-comparison></my-comparison>
+    -->
   </div>
+  <script type="text/javascript">
+    function check(){
+        console.log(document.getElementById('view').textValue);
+        document.getElementById('view2').textValue = document.getElementById('view').textValue;
+    }
+  </script>
   </body>
 </html>

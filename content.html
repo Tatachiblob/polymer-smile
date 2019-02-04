@@ -75,6 +75,7 @@
 
     <!-- Load your application shell -->
     <script type="module" src="src/my-content.js"></script>
+    <script type="module" src="src/my-insight-input.js"></script>
 
     <!-- Add any global styles for body, document, etc. -->
     <style>
@@ -257,7 +258,22 @@
             </div>
 
             <div class="content_bottom">
+                <center>
+                    <div class="col-sm-12">
+                        <label id="more-details"><strong>Content Analysis for #<span id="mainHashtag"></span></strong></label>
+                    </div>
+                </center>
+
                 <my-content></my-content>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <my-insight-input></my-insight-input>
+                        <div class="pull-right">
+                            <button type="button" class="btn btn_5 btn-lg btn-primary" onclick="saveComment()">Next: View Face Demographics >></button>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="copy">
@@ -269,9 +285,43 @@
     <script type="text/javascript">
         $(document).ready(function(){
             var curHashtag = sessionStorage.getItem('hashtagInput');
+            var insights = sessionStorage.getItem('generalInsights');
+            var start = sessionStorage.getItem('startDate');
+            var end = sessionStorage.getItem('endDate');
+
+            if(insights != null){
+                document.querySelector('my-insight-input').textValue = insights;
+            }
+
+            if(curHashtag == null){
+                curHashtag = "animolasalle";
+            }
+
+            if(start != null){
+                document.querySelector('my-content').startDate = start;
+            }
+
+            if(end != null){
+                document.querySelector('my-content').endDate = end;
+            }
+
+            $('#mainHashtag').text(curHashtag);
+
             document.querySelector('my-content').setAttribute('hashtag', curHashtag);
             document.querySelector('my-content').__handleClick();
         });
+
+        function saveComment(){
+            var insights = document.querySelector('my-insight-input').textValue;
+            var start = document.querySelector('my-content').startDate;
+            var end = document.querySelector('my-content').endDate;
+
+            sessionStorage.setItem('generalInsights', insights);
+            sessionStorage.setItem('startDate', start);
+            sessionStorage.setItem('endDate', end);
+
+            //window.location.href = './content.html';
+        }
     </script>
 </div>
 </body>

@@ -269,6 +269,7 @@
     <script type="text/javascript">
         $(document).ready(function(){
             var curHashtag = sessionStorage.getItem('hashtagInput');
+            
             document.querySelector('my-face-content').setAttribute('hashtag', curHashtag);
             document.querySelector('my-face-content').__handleClick();
         });

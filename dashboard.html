@@ -80,10 +80,19 @@
 
         <!-- Load your application shell -->
         <script type="module" src="src/my-dashboard.js"></script>
+        <script type="module" src="src/my-insight-input.js"></script>
         <script type="module" src="node_modules/@polymer/iron-ajax/iron-ajax.js"></script>
 
         <!-- Add any global styles for body, document, etc. -->
         <style>
+            .card {
+                margin: 24px;
+                padding: 16px;
+                color: #757575;
+                border-radius: 5px;
+                background-color: #fff;
+                box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+            }
             .dropdown-menu{
                 max-width: 400px;
             }
@@ -272,10 +281,23 @@
                     </div>
 
                     <div class="content_bottom">
+                        <center>
+                            <div class="col-sm-12">
+                                <label id="more-details"><strong>Dashboard for #<span id="mainHashtag"></span> from <span id="dateRange"></span></strong></label>
+                            </div>
+                        </center>
+
                         <my-dashboard></my-dashboard>
+                        <div class="card">
+                            <div id="calendar_events" style="font-family: 'Roboto';"></div>
+                        </div>
+
                         <div class="row">
-                            <div class="col-md-12 span_4 custom set_display">
-                                <div id="calendar_events" style="font-family: 'Roboto';"></div>
+                            <div class="col-md-12">
+                                <my-insight-input></my-insight-input>
+                                <div class="pull-right">
+                                    <button type="button" class="btn btn_5 btn-lg btn-primary" onclick="saveComment()">Next: View Content Analysis >></button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -290,6 +312,28 @@
         <script type="text/javascript">
             $(document).ready(function(){
                 var curHashtag = sessionStorage.getItem('hashtagInput');
+                var insights = sessionStorage.getItem('generalInsights');
+                var start = sessionStorage.getItem('startDate');
+                var end = sessionStorage.getItem('endDate');
+
+                if(insights != null){
+                    document.querySelector('my-insight-input').textValue = insights;
+                }
+
+                if(curHashtag == null){
+                    curHashtag = "animolasalle";
+                }
+
+                if(start != null){
+                    document.querySelector('my-dashboard').startDate = start;
+                }
+
+                if(end != null){
+                    document.querySelector('my-dashboard').endDate = end;
+                }
+
+                $('#mainHashtag').text(curHashtag);
+                $('#dateRange').text(document.querySelector('my-dashboard').sDate + " to " + document.querySelector('my-dashboard').eDate);
 
                 document.querySelector('my-dashboard').setAttribute('hashtag', curHashtag);
                 document.querySelector('my-dashboard').__handleClick();
@@ -328,6 +372,18 @@
                         });
                     },
                 });
+            }
+
+            function saveComment(){
+                var insights = document.querySelector('my-insight-input').textValue;
+                var start = document.querySelector('my-dashboard').startDate;
+                var end = document.querySelector('my-dashboard').endDate;
+
+                sessionStorage.setItem('generalInsights', insights);
+                sessionStorage.setItem('startDate', start);
+                sessionStorage.setItem('endDate', end);
+
+                window.location.href = './content.html';
             }
 
             function formatDate(date) {
