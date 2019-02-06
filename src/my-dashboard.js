@@ -85,6 +85,7 @@ class MyDashboard extends PolymerElement {
 			<my-linechart id="linechart" class="col-md-6" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-linechart>
 			<my-piechart id="piechart" class="col-md-6" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-piechart>
 		</div>
+		<my-barchart id="barchart" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-barchart>
 		<my-wordcloud id="wordcloud" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-wordcloud>
 		<my-genderchart id="gender" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-genderchart>
 		<my-histogram id="age" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-histogram>
@@ -150,6 +151,7 @@ class MyDashboard extends PolymerElement {
 		//console.log("After: " + this.mediaIdArr.length);
 		
 		this.$.basicViews.setRawMediaData(res);
+		this.$.barchart.setRawMediaData(res);
 		
 		this.__generateElementRequest();
 	}
@@ -162,6 +164,7 @@ class MyDashboard extends PolymerElement {
 	__generateElementRequest(){
 		this.$.basicViews.generateGoogleRequest();
 		this.$.linechart.generateLinechartRequest();
+		this.$.barchart.generateBarRequest();
 		this.$.wordcloud.generateWordcloudRequest();
 		this.$.gender.generateGenderRequest();
 		this.$.age.generateAgeRequest();

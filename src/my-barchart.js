@@ -59,7 +59,6 @@ class MyBarChart extends PolymerElement {
 		this.mapped = true;
 		this.occurences = [[], [], [], [], [], [], []];
 		this.finalArray = [[], [], [], [], [], [], [], []];
-		this.likesArray = [];
 		//this.likesArray = [10, 20, 30, 10, 5, 5, 15, 5];
 	}
 	
@@ -73,6 +72,7 @@ class MyBarChart extends PolymerElement {
 	__handleResponse(event, res){
 		//console.log(res.response);
 		
+		this.likesArray = [];
 		this.finalArray = this.__mappingLabels(res.response._embedded);
 		console.log(this.finalArray);
 		
