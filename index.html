@@ -85,13 +85,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
     </script>
 
+
+    <!-- jQuery -->
+    <script src="js/jquery.min.js"></script>
     <!-- Load webcomponents-loader.js to check and load any polyfills your browser needs -->
     <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-    <script src="node_modules/@polymer/paper-input/paper-textarea.js"></script>
-    <script src="node_modules/@polymer/paper-input/paper-input.js"></script>
+    <script src="./html2canvas.min.js"></script>
 
     <!-- Load your application shell -->
-    <script type="module" src="src/my-view404.js"></script>
     <script type="module" src="src/my-comparison.js"></script>
 
     <!-- Add any global styles for body, document, etc. -->
@@ -106,20 +107,57 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </style>
   </head>
   <body>
-  <my-view404 id="view"></my-view404>
-  <my-view404 id="view2"></my-view404>
-  <button onclick="check()">Check</button>
-  <div class="row">
-    <!--
-    <my-comparison></my-comparison>
-    <my-comparison></my-comparison>
-    -->
-  </div>
-  <script type="text/javascript">
-    function check(){
-        console.log(document.getElementById('view').textValue);
-        document.getElementById('view2').textValue = document.getElementById('view').textValue;
-    }
-  </script>
+    <button id="download2">Download</button>
+    <div id="downloaded"></div>
+    <div id="canvas">
+      <my-comparison hashtag="animolasalle"></my-comparison>
+      <my-comparison hashtag="onebigfight"></my-comparison>
+    </div>
   </body>
+  <script type="text/javascript">
+      $('#download').click(function() {
+          console.log("Before");
+          html2canvas(document.querySelector('#canvas'), {
+              onrendered: function(canvas) {
+                  console.log(canvas);
+                  theCanvas = canvas;
+                  document.body.appendChild(canvas);
+
+                  // Convert and download as image
+                  //Canvas2Image.saveAsPNG(canvas);
+                  //$("#img-out").append(canvas);
+                  // Clean up
+                  //document.body.removeChild(canvas);
+              }
+          });
+          console.log("after");
+          /*
+          html2canvas(document.querySelector('#canvas')).then(function(canvas) {
+              document.querySelector('#downloaded').appendChild(canvas);
+          });
+          /*
+          html2canvas($("#canvas"), {
+              onrendered: function(canvas) {
+                  var imgData = canvas.toDataURL(
+                      'image/png');
+                  var doc = new jsPDF('p', 'mm');
+                  doc.addImage(imgData, 'PNG', 10, 10);
+                  doc.save('sample-file.pdf');
+              }
+          });
+          */
+      });
+
+      $('#download2').click(function() {
+          console.log("Before");
+          html2canvas(document.querySelector('#canvas'), {
+              onrendered: function(canvas) {
+                  console.log("Inside");
+                  console.log(canvas);
+                  var img = canvas.toDataURL()
+                  window.open(img);
+              }
+          });
+      });
+  </script>
 </html>

@@ -43,7 +43,7 @@ class MyContent extends PolymerElement {
 		<div class="row">
 			<div class="card col-11">
 				<div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <paper-dropdown-menu label="Select Hashtag" noink no-animations value={{hashtag}} vertical-offset="60">
                             <paper-listbox slot="dropdown-content" class="dropdown-content">
                                 <dom-repeat items="[[availHashtags]]" as="hash">
@@ -54,16 +54,15 @@ class MyContent extends PolymerElement {
                             </paper-listbox>
                         </paper-dropdown-menu>
                     </div>
-                    <div class="col-md-4" style="padding-top: 20px">
+                    <div class="col-md-3" style="padding-top: 20px">
                         Start Time: <datetime-picker date="{{sDate}}" value="{{startDate}}" default="{{defaultStart}}"></datetime-picker>
                     </div>
-                    <div class="col-md-4" style="padding-top: 20px">
+                    <div class="col-md-3" style="padding-top: 20px">
                         End Time: <datetime-picker date="{{eDate}}" value="{{endDate}}" default="{{defaultEnd}}"></datetime-picker>
                     </div>
-                </div>
-                <br />
-                <div class="row">
-                    <paper-button raised class="pull-right indigo col-3" on-click="__handleClick">Set Date</paper-button>
+                    <div class="col-md-3">
+                		<paper-button raised class="indigo col-3" on-click="__handleClick" style="margin-top: 20px">Set Date</paper-button>
+                	</div>
                 </div>
 			</div>
 		</div>
