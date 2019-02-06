@@ -21,7 +21,10 @@ class MyInisghtInput extends PolymerElement {
 
     static get properties(){
         return{
-            textValue: String
+            textValue: {
+                type: String,
+                value: ""
+            }
         }
     }
 

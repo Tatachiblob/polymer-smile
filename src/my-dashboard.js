@@ -15,7 +15,6 @@ import './my-genderchart';
 import './my-histogram';
 import './my-emotion';
 import './my-piechart';
-import './my-barchart';
 import './my-modal';
 import './my-map';
 
@@ -49,7 +48,7 @@ class MyDashboard extends PolymerElement {
 		</iron-ajax>
 		
 		<div class="row">
-			<div class="card col-md-6">
+			<div class="card col-11">
 				<div class="row">
                     <div class="col-md-4">
                         <paper-dropdown-menu label="Select Hashtag" noink no-animations value={{hashtag}} vertical-offset="60">
@@ -62,19 +61,17 @@ class MyDashboard extends PolymerElement {
                             </paper-listbox>
                         </paper-dropdown-menu>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-4" style="padding-top: 20px">
                         Start Time: <datetime-picker date="{{sDate}}" value="{{startDate}}" default="{{defaultStart}}"></datetime-picker>
                     </div>
-                    <div class="col-md-1"></div>
-                    <div class="col-md-1"></div>
-                    <div class="col-md-3">
+                    <div class="col-md-4" style="padding-top: 20px">
                         End Time: <datetime-picker date="{{eDate}}" value="{{endDate}}" default="{{defaultEnd}}"></datetime-picker>
                     </div>
                 </div>
                 <br />
-                <paper-button raised class="indigo col-3" on-click="__handleClick">Set Date</paper-button>
+                <div class="row">
+                	<paper-button raised class="pull-right indigo col-3" on-click="__handleClick">Set Date</paper-button>
+                </div>
 			</div>
 		</div>
 		
@@ -85,7 +82,6 @@ class MyDashboard extends PolymerElement {
 			<my-linechart id="linechart" class="col-md-6" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-linechart>
 			<my-piechart id="piechart" class="col-md-6" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-piechart>
 		</div>
-		<my-barchart id="barchart" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-barchart>
 		<my-wordcloud id="wordcloud" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-wordcloud>
 		<my-genderchart id="gender" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-genderchart>
 		<my-histogram id="age" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-histogram>
@@ -151,7 +147,6 @@ class MyDashboard extends PolymerElement {
 		//console.log("After: " + this.mediaIdArr.length);
 		
 		this.$.basicViews.setRawMediaData(res);
-		this.$.barchart.setRawMediaData(res);
 		
 		this.__generateElementRequest();
 	}
@@ -164,7 +159,6 @@ class MyDashboard extends PolymerElement {
 	__generateElementRequest(){
 		this.$.basicViews.generateGoogleRequest();
 		this.$.linechart.generateLinechartRequest();
-		this.$.barchart.generateBarRequest();
 		this.$.wordcloud.generateWordcloudRequest();
 		this.$.gender.generateGenderRequest();
 		this.$.age.generateAgeRequest();

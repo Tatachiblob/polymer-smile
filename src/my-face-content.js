@@ -50,7 +50,7 @@ class MyFaceContent extends PolymerElement {
 		<my-modal id="mymodal"></my-modal>
 		
 		<div class="row">
-			<div class="card col-md-6">
+			<div class="card col-11">
 				<div class="row">
                     <div class="col-md-4">
                         <paper-dropdown-menu label="Select Hashtag" noink no-animations value={{hashtag}} vertical-offset="60">
@@ -63,19 +63,17 @@ class MyFaceContent extends PolymerElement {
                             </paper-listbox>
                         </paper-dropdown-menu>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-4" style="padding-top: 20px">
                         Start Time: <datetime-picker date="{{sDate}}" value="{{startDate}}" default="{{defaultStart}}"></datetime-picker>
                     </div>
-                    <div class="col-md-1"></div>
-                    <div class="col-md-1"></div>
-                    <div class="col-md-3">
+                    <div class="col-md-4" style="padding-top: 20px">
                         End Time: <datetime-picker date="{{eDate}}" value="{{endDate}}" default="{{defaultEnd}}"></datetime-picker>
                     </div>
                 </div>
                 <br />
-                <paper-button raised class="indigo col-3" on-click="__handleClick">Set Date</paper-button>
+                <div class="row">
+                	<paper-button raised class="pull-right indigo col-3" on-click="__handleClick">Set Date</paper-button>
+                </div>
 			</div>
 		</div>
 		
