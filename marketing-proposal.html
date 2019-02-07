@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="generator" content="Polymer Starter Kit">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>SMILE: A Social Media Image Listening Engine</title>
+    <meta name="description" content="My App description">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+    <base href="/">
+
+    <link rel="icon" href="images/favicon.ico">
+
+    <!-- See https://goo.gl/OOhYW5 -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- See https://goo.gl/qRE0vM -->
+    <meta name="theme-color" content="#3f51b5">
+
+    <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="My App">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="My App">
+
+    <!-- Homescreen icons -->
+    <link rel="apple-touch-icon" href="images/manifest/icon-48x48.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/manifest/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="images/manifest/icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="images/manifest/icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="images/manifest/icon-192x192.png">
+
+    <!-- Tile icon for Windows 8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="images/manifest/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#3f51b5">
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <!-- Calendar Zingchart CSS -->
+    <link rel="stylesheet" type="text/css" href="css/calendar-chart.css">
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel='stylesheet' type='text/css'/>
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel='stylesheet' type='text/css'/>
+    <!-- Graph CSS -->
+    <link href="css/lines.css" rel='stylesheet' type='text/css'/>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <!--<link href="css/font-awesome.css" rel="stylesheet">-->
+    <!-- jQuery -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!----webfonts--->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet'type='text/css'>
+    <!---//webfonts--->
+    <!-- Nav CSS -->
+    <link href="css/custom.css" rel="stylesheet">
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <link rel='stylesheet' href='fullcalendar/fullcalendar.css' />
+    <script src='fullcalendar/fullcalendar.js'></script>
+
+    <script>
+        window.MyAppGlobals = { rootPath: '/' };
+        // Load and register pre-caching Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('service-worker.js', {
+                    scope: MyAppGlobals.rootPath
+                });
+            });
+        }
+    </script>
+
+    <!-- Load webcomponents-loader.js to check and load any polyfills your browser needs -->
+    <script type="module" src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script type="module" src="node_modules/@fooloomanzoo/datetime-picker/datetime-picker.js"></script>
+    <script type="module" src="node_modules/@polymer/paper-dialog/paper-dialog.js"></script>
+    <script type="module" src="node_modules/@polymer/paper-button/paper-button.js"></script>
+
+    <!-- Load your application shell -->
+
+    <!-- Add any global styles for body, document, etc. -->
+    <style>
+        /*
+        @media print {
+            #forPrinting {
+                background-color: white;
+                height: 100%;
+                width: 100%;
+                position: fixed;
+                top: 0;
+                left: 0;
+                margin: 0;
+                padding: 15px;
+                font-size: 14px;
+                line-height: 18px;
+            }
+        }
+        */
+        .card {
+            margin: 24px;
+            padding: 16px;
+            color: #757575;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+        }
+        .dropdown-menu{
+            max-width: 400px;
+        }
+        .dropdown-menu li div {
+            display: block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .padding-10 {
+            padding: 5px;
+            margin: auto;
+        }
+        /* makes the font 33% larger relative to the icon container */
+        .icon-lg {
+            font-size: 4em;
+            line-height: 0.75em;
+            vertical-align: -15%;
+        }
+
+        .form-inline .input-group {
+            width: auto;
+        }
+        #map {
+            height: 400px;  /* The height is 400 pixels */
+            width: 100%;  /* The width is the width of the web page */
+        }
+
+        /** SPINNER CREATION **/
+        #loadMe{
+            margin-top:25vh;
+        }
+        .loader {
+            position: relative;
+            text-align: center;
+            margin: 15px auto 35px auto;
+            z-index: 9999;
+            display: block;
+            width: 80px;
+            height: 80px;
+            border: 10px solid rgba(87, 172, 83, .3);
+            border-radius: 50%;
+            border-top-color: #57ac53;
+            animation: spin 1s ease-in-out infinite;
+            -webkit-animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        @-webkit-keyframes spin {
+            to {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        .card {
+            margin: 24px;
+            padding: 16px;
+            color: #757575;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar-default{
+            z-index: 100;
+        }
+
+        paper-dialog.colored {
+            border: 2px solid;
+            border-color: #ebcccc; ;
+            background-color: #f2dede ;
+            color: #a94442 ;
+        }
+
+        paper-dialog.success{
+            border: 2px solid;
+            border-color: #d0e9c6; ;
+            background-color: #dff0d8 ;
+            color: #3c763d ;
+        }
+    </style>
+</head>
+<body>
+<div id="wrapper">
+    <paper-dialog id="errorModal" class="colored" modal>
+        <h2 id="errorTitle" style="padding:10px;margin:10px;"></h2>
+        <hr/>
+        <div id="errorMsg"></div>
+        <div class="buttons">
+            <paper-button dialog-confirm autofocus>Tap me to close</paper-button>
+        </div>
+    </paper-dialog>
+
+    <paper-dialog id="successModal" class="success" modal>
+        <h2 style="padding:10px;margin:10px;">Report Template Created!</h2>
+        <div class="buttons">
+            <a href="#"><paper-button id="successBtn" dialog-confirm autofocus>Tap me to close</paper-button></a>
+        </div>
+    </paper-dialog>
+    <!-- Navigation -->
+    <nav class="top1 navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="home"><img src="smile_logo.png" style="height: 30px; display: inline;">
+                SMILE &nbsp<span style="font-size: 20px;">A Social Media Image Listener Engine</span></a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <!-- /.navbar-header -->
+        <ul class="nav navbar-nav navbar-right">
+
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-comments-o"></i><span class="badge" id="notif-count">0</span></a>
+                <ul class="dropdown-menu" id="notif-dropdowns">
+                </ul>
+            </li>
+
+        </ul>
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li>
+                        <a href="./dashboard.html"><i class="fa fa-dashboard fa-fw nav_icon"></i>Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="./content.html"><i class="fa fa-picture-o fa-fw nav_icon"></i>Content Analysis</a>
+                    </li>
+                    <li>
+                        <a href="./face-content.html"><i class="fa fa-smile-o fa-fw nav_icon"></i>Face Analysis</a>
+                    </li>
+                    <li>
+                        <a href="summary"><i class="fa fa-file-text fa-fw nav_icon"></i>General Summary</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-clone fa-fw nav_icon"></i>Generate Reports<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="marketing-proposal">Marketing Proposal Template</a>
+                            </li>
+                            <li>
+                                <a href="expected-actual">Expected vs. Actual Monitoring</a>
+                            </li>
+                            <li>
+                                <a href="consumer-analysis">Face and Content Analysis Report</a>
+                            </li>
+                            <li>
+                                <a href="post-event">Post Event Report</a>
+                            </li>
+                            <!--<li>-->
+                            <!--<a href="engagement-report">Engagement Report</a>-->
+                            <!--</li>-->
+                            <li>
+                                <a href="comparison-report">Comparison Report</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="customize"><i class="fa fa-pencil-square-o fa-fw nav_icon"></i>Customize Visualizations</a>
+                    </li>
+                    <li>
+                        <a href="search-archive"><i class="fa fa-search fa-fw nav_icon"></i>Search Archive</a>
+                    </li>
+                    <li>
+                        <a href="calendar-event"><i class="fa fa-plus fa-fw nav_icon"></i>Create Calendar Event</a>
+                    </li>
+                    <li>
+                        <a href="threshold-target"><i class="fa fa-bullseye fa-fw nav_icon"></i>Add Threshold Target</a>
+                    </li>
+                    <li>
+                        <a href="reports-archive"><i class="fa fa-archive fa-fw nav_icon"></i>Reports Archive</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.sidebar-collapse -->
+        </div>
+        <!-- /.navbar-static-side -->
+    </nav>
+    <div id="page-wrapper">
+        <div class="graphs">
+            <div class="col_12">
+                <div class="xs form-horizontal form-group">
+                    <label for="focusedinput" class="col-sm-2 control-label"><h3>Search</h3></label>
+                    <div class="col-sm-8">
+                        <input id="searchBar" type="text" class="form-control1" id="focusedinput"
+                               placeholder='Enter hashtag here... e.g. "animolasalle"'>
+                    </div>
+                    <div class="col-sm-2">
+                        <p class="help-block">No need to put '#'</p>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="xs form-horizontal form-group form-inline">
+                    <div class="col-sm-12">
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="content_bottom">
+                <!--PUT REPORT CONTENT HERE-->
+                <div class="form-group">
+                    <label for="proposalType" class="col-sm-2 control-label" style="padding-left: 100px;">Proposal Type</label>
+                    <div class="col-sm-8">
+                        <select class="form-control1" id="proposalType" name="proposalType">
+                            <option value="Event" selected>Event</option>
+                            <option value="Marketing">Marketing</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div id="forPrinting" class="tab-content">
+                    <div class="xs form-horizontal form-group">
+                        <div class="col-sm-12" style="text-align: center">
+                            <label id="more-details"></label><br>
+                            <label id="datetoday"></label><br>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane active" id="horizontal-form">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label for="focusedinput" class="col-sm-2 control-label" id="label1">Event Name</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control1" id="eventName" placeholder="Enter event name...">
+                                </div>
+                                <div class="col-sm-2">
+                                    <!--<p class="help-block">Your help text!</p>-->
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="eventDesc" class="col-sm-2 control-label" id="label2">Event Description</label>
+                                <div class="col-sm-8"><textarea name="txtarea1" id="eventDesc" cols="50" rows="40" class="form-control1" placeholder="Enter description e.g. objectives, target demographics, etc. here..."></textarea></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="focusedinput" class="col-sm-2 control-label" id="label3">Event Duration</label>
+                                <div class="col-sm-8">
+                                    <div class="input-group">
+                                        <!--<input type="text" class="form-control1 date-own" id="eventdaterange">-->
+                                        <p id="eventdaterange" style="margin-top: 5px;"><span id="startTime"></span> ~ <span id="endTime"></span></p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <!--<p class="help-block">Your help text!</p>-->
+                                </div>
+                            </div>
+
+                            <div id="toBeHidden">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" id="labelStart">Start Date</label>
+                                    <div class="col-sm-8">
+                                        <datetime-picker id="start"></datetime-picker>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" id="labelEnd">End Date</label>
+                                    <div class="col-sm-8">
+                                        <datetime-picker id="end"></datetime-picker>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="focusedinput" class="col-sm-2 control-label">Suggested Hashtags</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control1" id="eventHashtags" placeholder="e.g. myNewHashtag, wonderFulEvent">
+                                </div>
+                                <div class="col-sm-2">
+                                    <!--<p class="help-block">Your help text!</p>-->
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="focusedinput" class="col-sm-2 control-label">Color Shade</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control1" id="eventColorShade" placeholder="e.g. magenta, teal">
+                                </div>
+                                <div class="col-sm-2">
+                                    <!--<p class="help-block">Your help text!</p>-->
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="focusedinput" class="col-sm-2 control-label">Suggested Location</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control1" id="eventLocation" placeholder="e.g. Ayala Malls Makati Circuit">
+                                </div>
+                                <div class="col-sm-2">
+                                    <!--<p class="help-block">Your help text!</p>-->
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="eventDesc" class="col-sm-2 control-label">Other Comments</label>
+                                <div class="col-sm-8">
+                                    <textarea name="otherComments" id="otherComments" cols="50" rows="40" class="form-control1"></textarea>
+                                </div>
+                            </div><br><br><br>
+
+                            <div class="form-group">
+                                <label for="preparedBy" class="col-sm-2 control-label">Prepared By: </label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control1" id="preparedBy">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="approvedBy" class="col-sm-2 control-label">Approved By: </label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control1" id="approvedBy">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <div class="pull-right">
+
+                    <a href="#">
+                        <button type="button" class="btn btn_5 btn-lg btn-default" onclick="printPage('forPrinting'); return false;">Print</button>
+                    </a>
+                    <!--<a href="calendar-event">-->
+                        <button id="createNewEvent" type="button" class="btn btn_5 btn-lg btn-primary">Save & Create New Event</button>
+                    <!--</a>-->
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="copy">
+                <p>Copyright &copy; 2018 SMILE</p>
+            </div>
+        </div>
+    </div>
+    <!-- /#page-wrapper -->
+</div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        document.getElementById("more-details").innerHTML = '<label id="more-details" class="control-label"><h3 id="proposalTitle">Event Proposal Template</h3></label>';
+        document.querySelector('#start').default = new Date((new Date().getFullYear()), 0, 1);
+        document.querySelector('#end').default = new Date();
+        $('#otherComments').val(sessionStorage.getItem("generalInsights"));
+
+        $('#startTime').text(formatDate(dateFormatter(document.querySelector('#start').value)));
+        $('#endTime').text(formatDate(dateFormatter(document.querySelector('#end').value)));
+
+        document.querySelector('#start').addEventListener('input-picker-closed', function(e){
+            $('#startTime').text(formatDate(dateFormatter(document.querySelector('#start').value)));
+        });
+
+        document.querySelector('#end').addEventListener('input-picker-closed', function(e){
+            $('#endTime').text(formatDate(dateFormatter(document.querySelector('#end').value)))
+        });
+
+        $('#proposalType').on('change', function(){
+            var type= $('#proposalType').val();
+            $('#proposalTitle').text(type + " Proposal Template");
+            $('#label1').text(type + " Name");
+            $('#label2').text(type + " Description");
+            $('#label3').text(type + " Duration");
+            $('#eventName').attr('placeholder', "Enter " + type + " name...");
+        });
+
+        $('#createNewEvent').click(function(){
+            if(!marketChecker()){
+                var url = 'http://localhost:8080/smile/marketing_reports';
+                /*
+                console.log($('#eventName').val());
+                console.log(dateFormatter(document.querySelector('#start').value));
+                console.log(dateFormatter(document.querySelector('#end').value));
+                //console.log($('#eventdaterange').val());
+                console.log($('#eventColorShade').val());
+                console.log($('#eventLocation').val());
+                */
+
+                var marketingReport = {};
+                var start = dateFormatter(document.querySelector('#start').value);
+                var end = dateFormatter(document.querySelector('#end').value);
+                marketingReport.event_name = $('#eventName').val();
+                marketingReport.event_desc = $('#eventDesc').val();
+                marketingReport.start_period = start;
+                marketingReport.end_period = end;
+                marketingReport.suggested_hashtag = $('#eventHashtags').val();
+                marketingReport.color_shade = $('#eventColorShade').val();
+                marketingReport.location = $('#eventLocation').val();
+                marketingReport.other_comments = $('#otherComments').val();
+                if($('#preparedBy').val())
+                    marketingReport.prepared_by = $('#preparedBy').val();
+                else
+                    marketingReport.prepared_by = "";
+                if($('#approvedBy').val())
+                    marketingReport.approved_by = $('#approvedBy').val();
+                else
+                    marketingReport.approved_by = "";
+                marketingReport.type= $('#proposalType').val();
+                marketingReport.data_start_time = Math.round(new Date(new Date().getFullYear(), 0, 1).getTime() / 1000);
+                marketingReport.data_end_time = Math.round(new Date().getTime() / 1000);
+                marketingReport.created_timestamp = new Date().getTime();
+
+                $.ajax({
+                    async: false,
+                    url: url,
+                    type: "POST",
+                    contentType: "application/json",
+                    data: JSON.stringify(marketingReport),
+                    success: function(result){
+                        // alert('Marketing Proposal Template Created!');
+
+                        $('#successMsg').html("<p>Marketing Proposal Template Created!</p>");
+                        document.querySelector('#successModal').open();
+                        // window.location.href = "/smile/calendar-event";
+                    },
+                    error: function(jqXHR, textStatus, errorThrown){
+                        if(jqXHR.status == 201){
+                            $('#successMsg').html("<p>Marketing Proposal Template Created!</p>");
+                            document.querySelector('#successModal').open();
+                            // alert('Marketing Proposal Template Created!');
+                            // window.location.href = "/smile/calendar-event";
+                        }
+                        else{
+                            $('#errorTitle').text("Duplicate Event/Marketing Name");
+                            $('#errorMsg').html("<p>Please Enter Another Event/Marketing Name.</p>");
+                            document.querySelector('#errorModal').open();
+                        }
+                    }
+                });
+
+                console.log(marketingReport);
+            }
+            console.log('clicked');
+        });
+    });
+
+    function marketChecker(){
+        var msg = "";
+        var error = false;
+        if(!$('#eventName').val()) {
+            msg += '<p>Please enter the Event Name.</p>';
+            error = true;
+        }
+        //if(!$('#eventdaterange').val()) msg += 'Please enter the Event Duration.\n';
+        if(!$('#eventColorShade').val()) {
+            msg += '<p>Please enter the Color scheme.</p>';
+            error = true;
+        }
+        if(!$('#eventLocation').val()) {
+            msg += '<p>Please enter the Event\'s main location.</p>';
+            error = true;
+        }
+
+        if(error){
+            console.log(msg);
+            $('#errorTitle').text('Incomplete Form');
+            $('#errorMsg').html(msg);
+            document.querySelector('#errorModal').open();
+        }
+
+        return error;
+    }
+
+    function printPage(id) {
+        var start = document.querySelector('#start').value;
+        var end = document.querySelector('#end').value;
+        var marketingReport = {};
+        marketingReport.event_name = $('#eventName').val();
+        marketingReport.event_desc = $('#eventDesc').val();
+        marketingReport.suggested_hashtag = $('#eventHashtags').val();
+        marketingReport.color_shade = $('#eventColorShade').val();
+        marketingReport.location = $('#eventLocation').val();
+        marketingReport.other_comments = $('#otherComments').val();
+        if($('#preparedBy').val())
+            marketingReport.prepared_by = $('#preparedBy').val();
+        else
+            marketingReport.prepared_by = "";
+        if($('#approvedBy').val())
+            marketingReport.approved_by = $('#approvedBy').val();
+        else
+            marketingReport.approved_by = "";
+        marketingReport.type= $('#proposalType').val();
+
+        console.log(marketingReport);
+
+        var restorepage = $('body').html();
+        $('#toBeHidden').remove();
+        var printcontent = $('#' + id).clone();
+        $('body').empty().html(printcontent);
+
+        window.print();
+        $('body').html(restorepage);
+
+        document.querySelector('#start').value = start;
+        document.querySelector('#end').value = end;
+        $('#startTime').text(formatDate(dateFormatter(document.querySelector('#start').value)));
+        $('#endTime').text(formatDate(dateFormatter(document.querySelector('#end').value)));
+        $('#eventName').val(marketingReport.event_name);
+        $('#eventDesc').val(marketingReport.event_desc);
+        $('#eventHashtags').val(marketingReport.suggested_hashtag);
+        $('#eventColorShade').val(marketingReport.color_shade);
+        $('#eventLocation').val(marketingReport.location);
+        $('#otherComments').val(marketingReport.other_comments);
+        $('#preparedBy').val(marketingReport.prepared_by);
+        $('#approvedBy').val(marketingReport.approved_by);
+        $('#proposalType').val(marketingReport.type);
+    }
+
+    function dateFormatter(date){
+        return ((date - (date % 1000)) / 1000);
+    }
+
+    function formatDate(date) {
+        var d = new Date(date * 1000),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear(),
+            hh = d.getHours(),
+            mm = d.getMinutes(),
+            ss = d.getSeconds();
+
+        if (month.length < 2) month = '0' + month;
+        if (day.length < 2) day = '0' + day;
+        if (hh < 10) hh = '0' + hh;
+        if (mm < 10) mm = '0' + mm;
+        if (ss < 10) ss = '0' + ss;
+
+
+        var first = [year, month, day].join('/');
+        var second = first + "  " + [hh, mm, ss].join(':');
+        return second;
+    }
+</script>
+</body>
+</html>
