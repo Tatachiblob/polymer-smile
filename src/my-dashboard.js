@@ -13,7 +13,6 @@ import './my-linechart';
 import './my-wordcloud';
 import './my-genderchart';
 import './my-histogram';
-import './my-emotion';
 import './my-piechart';
 import './my-modal';
 import './my-map';
@@ -84,7 +83,6 @@ class MyDashboard extends PolymerElement {
 		<my-wordcloud id="wordcloud" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-wordcloud>
 		<my-genderchart id="gender" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-genderchart>
 		<my-histogram id="age" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-histogram>
-		<my-emotion id="emo" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-emotion>
 		<my-map id="googleMap" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-map>
 		<my-modal id="mymodal"></my-modal>	
 		`;
@@ -161,7 +159,6 @@ class MyDashboard extends PolymerElement {
 		this.$.wordcloud.generateWordcloudRequest();
 		this.$.gender.generateGenderRequest();
 		this.$.age.generateAgeRequest();
-		this.$.emo.generateEmoRequest();
 		this.$.piechart.generatePieRequest();
 		this.$.googleMap.generateMapRequest();
 	}
@@ -173,7 +170,6 @@ class MyDashboard extends PolymerElement {
 		this.$.linechart.addEventListener('modal1', this.__listenModal.bind(this));
 		this.$.gender.addEventListener('modal1', this.__listenModal.bind(this));
 		this.$.age.addEventListener('modal1', this.__listenModal.bind(this));
-		this.$.emo.addEventListener('modal1', this.__listenModal.bind(this));
 		this.$.wordcloud.addEventListener('modal1', this.__listenModal.bind(this));
 		this.$.wordcloud.addEventListener('modal1', this.__listenModal.bind(this));
 	}

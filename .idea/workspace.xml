@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="677e1531-0824-4bd1-b5e6-56ec4ec22b4e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/my-marketing.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/marketing-proposal.html" beforeDir="false" afterPath="$PROJECT_DIR$/marketing-proposal.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/my-dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/my-dashboard.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -35,52 +34,83 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="css" value="1" />
-          <entry key="html" value="34" />
-          <entry key="js" value="109" />
+          <entry key="html" value="40" />
+          <entry key="js" value="113" />
           <entry key="rnc" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="1" />
-          <entry key="HTML" value="34" />
-          <entry key="JavaScript" value="109" />
+          <entry key="HTML" value="40" />
+          <entry key="JavaScript" value="113" />
           <entry key="RNG Compact" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="8150" />
+          <entry key="html" value="8548" />
           <entry key="js" value="8969" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="2" />
-          <entry key="HTML" value="8702" />
+          <entry key="HTML" value="9100" />
           <entry key="JavaScript" value="8415" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.61269003">
+    <splitter split-orientation="horizontal" split-proportion="0.5346062">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/dashboard.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="208">
-                  <caret line="343" column="40" selection-start-line="343" selection-start-column="36" selection-end-line="343" selection-end-column="40" />
+                <state relative-caret-position="442">
+                  <caret line="398" column="13" selection-start-line="388" selection-start-column="12" selection-end-line="398" selection-end-column="13" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/calendar-event.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="198">
+                  <caret line="431" column="69" selection-start-line="431" selection-start-column="69" selection-end-line="431" selection-end-column="69" />
+                  <folding>
+                    <element signature="n#style#0;n#head#0;n#html#1;n#!!top" />
+                    <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#1;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#1;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#label#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#1;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#label#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#1;n#!!top" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/my-dashboard.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="191">
+                  <caret line="160" column="40" selection-start-line="160" selection-start-column="40" selection-end-line="160" selection-end-column="40" />
+                  <folding>
+                    <element signature="e#0#75#0" expanded="true" />
+                    <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#paper-button#0;n#div#3;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/marketing-proposal.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="592">
-                  <caret line="624" column="51" selection-start-line="624" selection-start-column="51" selection-end-line="624" selection-end-column="51" />
+                <state relative-caret-position="1286">
+                  <caret line="630" selection-start-line="630" selection-end-line="630" />
                   <folding>
                     <element signature="n#style#0;n#h2#0;n#paper-dialog#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                     <element signature="n#style#0;n#h2#0;n#paper-dialog#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -91,36 +121,27 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/my-marketing.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="255">
-                  <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
-                  <folding>
-                    <element signature="e#0#75#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
         </leaf>
       </split-first>
       <split-second>
         <leaf>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://C:/xampp/htdocs/SMILE/reports-marketing-proposal.html">
+            <entry file="file://C:/xampp/htdocs/SMILE/calendar-event.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="208">
-                  <caret line="212" column="115" selection-start-line="212" selection-start-column="107" selection-end-line="212" selection-end-column="115" />
+                <state relative-caret-position="1544">
+                  <caret line="244" column="31" selection-start-line="244" selection-start-column="31" selection-end-line="244" selection-end-column="31" />
+                  <folding>
+                    <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://C:/xampp/htdocs/SMILE/js/printing.js">
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://C:/xampp/htdocs/SMILE/js/calendar-event.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="102">
-                  <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+                <state relative-caret-position="303">
+                  <caret line="78" column="10" selection-start-line="78" selection-start-column="10" selection-end-line="78" selection-end-column="10" />
                 </state>
               </provider>
             </entry>
@@ -128,20 +149,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://C:/xampp/htdocs/SMILE/js/reports.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state>
+                <state relative-caret-position="-340">
                   <caret line="15" column="44" selection-start-line="15" selection-start-column="39" selection-end-line="15" selection-end-column="44" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/my-dashboard.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-1278">
-                  <caret line="105" column="70" selection-start-line="105" selection-start-column="36" selection-end-line="105" selection-end-column="70" />
-                  <folding>
-                    <element signature="e#0#75#0" expanded="true" />
-                  </folding>
                 </state>
               </provider>
             </entry>
@@ -153,18 +162,13 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>barch</find>
-      <find>title</find>
-      <find>handleResponse</find>
-      <find>mediaId</find>
-      <find>generateWordcloud</find>
       <find>my-dashboar</find>
       <find>barchart</find>
       <find>hashtagAjax</find>
@@ -188,8 +192,13 @@
       <find>proposalType</find>
       <find>daterange</find>
       <find>forPrinting</find>
-      <find>listener</find>
       <find>duration</find>
+      <find>toBe</find>
+      <find>listener</find>
+      <find>events</find>
+      <find>content_b</find>
+      <find>emotion</find>
+      <find>emo</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -223,7 +232,6 @@
         <option value="$PROJECT_DIR$/src/my-comparison-wordcloud.js" />
         <option value="$PROJECT_DIR$/src/my-insight-input.js" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/src/my-dashboard.js" />
         <option value="$PROJECT_DIR$/src/my-content.js" />
         <option value="$PROJECT_DIR$/src/my-face-content.js" />
         <option value="$PROJECT_DIR$/content.html" />
@@ -232,6 +240,9 @@
         <option value="$PROJECT_DIR$/src/my-marketing.js" />
         <option value="$PROJECT_DIR$/dashboard.html" />
         <option value="$PROJECT_DIR$/marketing-proposal.html" />
+        <option value="C:/xampp/htdocs/SMILE/calendar-event.html" />
+        <option value="$PROJECT_DIR$/calendar-event.html" />
+        <option value="$PROJECT_DIR$/src/my-dashboard.js" />
       </list>
     </option>
   </component>
@@ -320,18 +331,18 @@
       <workItem from="1549112284806" duration="591000" />
       <workItem from="1549268490234" duration="8632000" />
       <workItem from="1549454292073" duration="7866000" />
-      <workItem from="1549521646157" duration="10146000" />
+      <workItem from="1549521646157" duration="14321000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="85299000" />
+    <option name="totallyTimeSpent" value="89474000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.16920027" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16920027" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" weight="0.32980832" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -378,7 +389,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/node_modules/@google-web-components/google-signin/google-signin.js" />
     <entry file="file://$PROJECT_DIR$/src/my-fullcalendar.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -435,13 +445,6 @@
     </entry>
     <entry file="file://C:/xampp/htdocs/SMILE/js/dbPath.js">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://C:/xampp/htdocs/SMILE/js/calendar-event.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1683">
-          <caret line="99" column="18" lean-forward="true" selection-start-line="99" selection-start-column="18" selection-end-line="99" selection-end-column="18" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/my-caption.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -669,6 +672,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://C:/xampp/htdocs/SMILE/js/printing.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/my-marketing.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -681,51 +691,78 @@
     </entry>
     <entry file="file://C:/xampp/htdocs/SMILE/js/reports.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="-340">
           <caret line="15" column="44" selection-start-line="15" selection-start-column="39" selection-end-line="15" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/xampp/htdocs/SMILE/js/printing.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://C:/xampp/htdocs/SMILE/reports-marketing-proposal.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
+        <state relative-caret-position="-819">
           <caret line="212" column="115" selection-start-line="212" selection-start-column="107" selection-end-line="212" selection-end-column="115" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/my-dashboard.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1278">
-          <caret line="105" column="70" selection-start-line="105" selection-start-column="36" selection-end-line="105" selection-end-column="70" />
-          <folding>
-            <element signature="e#0#75#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dashboard.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="343" column="40" selection-start-line="343" selection-start-column="36" selection-end-line="343" selection-end-column="40" />
+        <state relative-caret-position="442">
+          <caret line="398" column="13" selection-start-line="388" selection-start-column="12" selection-end-line="398" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/xampp/htdocs/SMILE/calendar-event.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1544">
+          <caret line="244" column="31" selection-start-line="244" selection-start-column="31" selection-end-line="244" selection-end-column="31" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/marketing-proposal.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="592">
-          <caret line="624" column="51" selection-start-line="624" selection-start-column="51" selection-end-line="624" selection-end-column="51" />
+        <state relative-caret-position="1286">
+          <caret line="630" selection-start-line="630" selection-end-line="630" />
           <folding>
             <element signature="n#style#0;n#h2#0;n#paper-dialog#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#h2#0;n#paper-dialog#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#label#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#2;n#form#0;n#div#1;n#div#2;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/xampp/htdocs/SMILE/js/calendar-event.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="78" column="10" selection-start-line="78" selection-start-column="10" selection-end-line="78" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/calendar-event.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="431" column="69" selection-start-line="431" selection-start-column="69" selection-end-line="431" selection-end-column="69" />
+          <folding>
+            <element signature="n#style#0;n#head#0;n#html#1;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/my-dashboard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="160" column="40" selection-start-line="160" selection-start-column="40" selection-end-line="160" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#75#0" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#paper-button#0;n#div#3;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
