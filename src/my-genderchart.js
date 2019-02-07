@@ -37,7 +37,8 @@ class MyGenderchart extends PolymerElement {
 			mediaIdArr: Array,
 			ajaxUrl: String,
 			maleSrc: Array,
-			femaleSrc: Array
+			femaleSrc: Array,
+			summary: String
 		}
 	}
 	
@@ -51,7 +52,7 @@ class MyGenderchart extends PolymerElement {
 	}
 	
 	__renderGenderchart(data){
-		new Highcharts.chart(this.$.genderChart, {
+		let myChart = Highcharts.chart(this.$.genderChart, {
 			chart: {
 				plotBackgroundColor: null,
 				plotBorderWidth: 0,
@@ -109,6 +110,14 @@ class MyGenderchart extends PolymerElement {
 				}
 			}]
 		});
+		
+		if (window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "consumer-analysis" || 
+			window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "post-event" || 
+			window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "expected-actual" || 
+			window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "summary.html" || 
+			window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "dashboard.html") {
+			this.__createSummary(myChart);
+		}
 	}
 	
 	__callModal(month, data){
@@ -143,6 +152,52 @@ class MyGenderchart extends PolymerElement {
 		//console.log("Male: " + male);
 		//console.log("Female: " + female);
 		return result;
+	}
+	
+	__createSummary(chart) {
+		var i, j, genderArray, gender, percentage, percentageArray, chartGenderData;
+		
+		genderArray = [];
+		percentageArray = [];
+		chartGenderData = chart.series[0].data;
+		
+		percentage = "";
+		gender = "<b>Gender Facial Recognition</b><br><table class='table'><thead><tr><th>Gender</th><th>Percentage</th></tr></thead><tbody>";
+		
+		for (i = 0; i < chartGenderData.length; i ++) {
+			//genderArray.push(chartGenderData[i].name);
+			if (chartGenderData[i].name != "") {
+				//gender += chartGenderData[i].name.toLowerCase + "s"
+				percentageArray.push(chartGenderData[i].percentage);
+			}
+		}
+		
+		percentageArray.sort(function(a,b){return b-a;});
+		
+		for (i = 0; i < percentageArray.length; i ++) {
+			for (j = 0; j < chartGenderData.length; j ++) {
+				if (chartGenderData[j].percentage == percentageArray[i]) {
+					genderArray.push((chartGenderData[j].name).toLowerCase() + "s");
+				}
+			}
+		}
+		
+		for (i = 0; i < percentageArray.length; i ++) {
+			percentageArray[i] = Math.round(percentageArray[i]);
+		}
+		
+		for (i = 0; i < genderArray.length; i ++) {
+			gender += "<tr><td>" + genderArray[i] + "</td><td>" + percentageArray[i] + "</td></tr>";
+		}
+		
+		gender += "</tbody></table>";
+		
+		this.summary = gender;
+		console.log(this.summary);
+	}
+	
+	__getSummary() {
+		return this.summary;
 	}
 	
 	__createUrl(){

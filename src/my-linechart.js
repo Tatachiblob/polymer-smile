@@ -36,7 +36,8 @@ class MyLinechart extends PolymerElement {
 			mediaIdArr: Array,
 			ajaxUrl: String,
 			modalTitle: String,
-			imgLinks: Array
+			imgLinks: Array,
+			summary: String
 		}
 	}
 	
@@ -134,6 +135,12 @@ class MyLinechart extends PolymerElement {
 			series: this.__getTotalNoOfPosts(data)
 		});
 		//myChart.series[0].setData(this.__getTotalNoOfPosts(data));
+		
+		if (window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "engagement-report" || 
+			window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "summary.html" ||
+			window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "dashboard.html") {
+			this.__createSummary(myChart);
+		}
 	}
 	
 	__callModal(month, data){
@@ -195,6 +202,53 @@ class MyLinechart extends PolymerElement {
 		}//for
 		console.log(theseries);
 		return theseries;
+	}
+	
+	__createSummary(chart) {
+			//Images Posted Heat Map lays out the number of posts made each day, and the most posts were on 2018-10-13 and 2018-10-14 
+			//with 16 and 9 images posted respectively.
+			
+			console.log(chart.series);
+			console.log();
+
+			var i, calendarProcessing, calendarArray, currMax, indices, calendar;
+			
+			calendarArray = chart.series[0].yData;
+			indices = [];
+			//calendar = "<b>Instagram Images Volume Trend</b> compares the number of posts made each year per month, and the most posts were on ";
+			calendarProcessing = chart.series[0].data;
+			/*
+			for (i = 0; i < calendarProcessing.length; i ++) {
+				calendarArray.push(calendarProcessing[i][1]);
+			}
+			*/
+			for (i = 1; i <= 3; i ++) {
+				currMax = calendarArray.indexOf(Math.max(...calendarArray));
+				indices.push(currMax);
+				calendarArray[currMax] = -1;
+			}
+			//console.log(calendarProcessing[indices[0]]);
+			//sessionStorage.setItem("linechartDate", (calendarProcessing[indices[0]].category + " " + chart.series[0].name));
+			//sessionStorage.setItem("linechartValue", calendarProcessing[indices[0]].y);
+			//calendar += calendarProcessing[indices[0]].category + " " + chart.series[0].name + " and " + calendarProcessing[indices[1]].category + " " + chart.series[0].name + " with " + calendarProcessing[indices[0]].y + " and " + calendarProcessing[indices[1]].y + " images posted respectively.";
+
+			calendar = "<b>Volume Trend</b><br><table class='table'><thead><tr><th>Month</th><th>No. of Images</th></tr></thead><tbody><tr><td>" + calendarProcessing[indices[0]].category + " " + chart.series[0].name + "</td><td>" + calendarProcessing[indices[0]].y  + "</td></tr>";
+			calendar += "<tr><td>" + calendarProcessing[indices[1]].category + " " + chart.series[0].name + "</td><td>" + calendarProcessing[indices[1]].y  + "</td></tr>";
+			calendar += "<tr><td>" + calendarProcessing[indices[2]].category + " " + chart.series[0].name + "</td><td>" + calendarProcessing[indices[2]].y  + "</td></tr></tbody></table>";
+
+			//console.log(sessionStorage.getItem("linechartDate"));
+			//console.log(sessionStorage.getItem("linechartValue"));
+			/*try {
+				document.getElementById("linechart").innerHTML = calendar;
+			} catch (e) {}*/
+			
+			this.summary = calendar;
+			//this.$.sum.innerHTML = this.summary;
+			console.log(this.summary);
+	}
+	
+	__getSummary() {
+		return this.summary;
 	}
 	
 	__createUrl(){
