@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="generator" content="Polymer Starter Kit">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>SMILE: A Social Media Image Listening Engine</title>
+    <meta name="description" content="My App description">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+    <base href="/">
+
+    <link rel="icon" href="images/favicon.ico">
+
+    <!-- See https://goo.gl/OOhYW5 -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- See https://goo.gl/qRE0vM -->
+    <meta name="theme-color" content="#3f51b5">
+
+    <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="My App">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="My App">
+
+    <!-- Homescreen icons -->
+    <link rel="apple-touch-icon" href="images/manifest/icon-48x48.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/manifest/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="images/manifest/icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="images/manifest/icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="images/manifest/icon-192x192.png">
+
+    <!-- Tile icon for Windows 8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="images/manifest/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#3f51b5">
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <!-- Calendar Zingchart CSS -->
+    <link rel="stylesheet" type="text/css" href="css/calendar-chart.css">
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel='stylesheet' type='text/css'/>
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel='stylesheet' type='text/css'/>
+    <!-- Graph CSS -->
+    <link href="css/lines.css" rel='stylesheet' type='text/css'/>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <!--<link href="css/font-awesome.css" rel="stylesheet">-->
+    <!-- jQuery -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!----webfonts--->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet'type='text/css'>
+    <!---//webfonts--->
+    <!-- Nav CSS -->
+    <link href="css/custom.css" rel="stylesheet">
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <link rel='stylesheet' href='fullcalendar/fullcalendar.css' />
+    <script src='fullcalendar/fullcalendar.js'></script>
+
+    <script>
+        window.MyAppGlobals = { rootPath: '/' };
+        // Load and register pre-caching Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('service-worker.js', {
+                    scope: MyAppGlobals.rootPath
+                });
+            });
+        }
+    </script>
+
+    <!-- Load webcomponents-loader.js to check and load any polyfills your browser needs -->
+    <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+
+    <!-- Load your application shell -->
+
+    <!-- Add any global styles for body, document, etc. -->
+    <style>
+        .card {
+            margin: 24px;
+            padding: 16px;
+            color: #757575;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+        }
+        .dropdown-menu{
+            max-width: 400px;
+        }
+        .dropdown-menu li div {
+            display: block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .padding-10 {
+            padding: 5px;
+            margin: auto;
+        }
+        /* makes the font 33% larger relative to the icon container */
+        .icon-lg {
+            font-size: 4em;
+            line-height: 0.75em;
+            vertical-align: -15%;
+        }
+
+        .form-inline .input-group {
+            width: auto;
+        }
+        #map {
+            height: 400px;  /* The height is 400 pixels */
+            width: 100%;  /* The width is the width of the web page */
+        }
+
+        /** SPINNER CREATION **/
+        #loadMe{
+            margin-top:25vh;
+        }
+        .loader {
+            position: relative;
+            text-align: center;
+            margin: 15px auto 35px auto;
+            z-index: 9999;
+            display: block;
+            width: 80px;
+            height: 80px;
+            border: 10px solid rgba(87, 172, 83, .3);
+            border-radius: 50%;
+            border-top-color: #57ac53;
+            animation: spin 1s ease-in-out infinite;
+            -webkit-animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        @-webkit-keyframes spin {
+            to {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        .card {
+            margin: 24px;
+            padding: 16px;
+            color: #757575;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar-default{
+            z-index: 100;
+        }
+
+        .padding-10 {
+            padding: 5px;
+            margin: auto;
+        }
+        .inputGroup{
+            background:#fff;
+            padding:1rem;
+            -ms-box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.2);
+            -o-box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.2);
+            -moz-box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.2);
+            -webkit-box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+<div id="wrapper">
+    <!-- Navigation -->
+    <nav class="top1 navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="home"><img src="smile_logo.png" style="height: 30px; display: inline;">
+                SMILE &nbsp<span style="font-size: 20px;">A Social Media Image Listener Engine</span></a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <!-- /.navbar-header -->
+        <ul class="nav navbar-nav navbar-right">
+
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-comments-o"></i><span class="badge" id="notif-count">0</span></a>
+                <ul class="dropdown-menu" id="notif-dropdowns">
+                </ul>
+            </li>
+
+        </ul>
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li>
+                        <a href="./dashboard.html"><i class="fa fa-dashboard fa-fw nav_icon"></i>Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="./content.html"><i class="fa fa-picture-o fa-fw nav_icon"></i>Content Analysis</a>
+                    </li>
+                    <li>
+                        <a href="./face-content.html"><i class="fa fa-smile-o fa-fw nav_icon"></i>Face Analysis</a>
+                    </li>
+                    <li>
+                        <a href="./summary.html"><i class="fa fa-file-text fa-fw nav_icon"></i>General Summary</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-clone fa-fw nav_icon"></i>Generate Reports<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="marketing-proposal">Marketing Proposal Template</a>
+                            </li>
+                            <li>
+                                <a href="expected-actual">Expected vs. Actual Monitoring</a>
+                            </li>
+                            <li>
+                                <a href="consumer-analysis">Face and Content Analysis Report</a>
+                            </li>
+                            <li>
+                                <a href="post-event">Post Event Report</a>
+                            </li>
+                            <!--<li>-->
+                            <!--<a href="engagement-report">Engagement Report</a>-->
+                            <!--</li>-->
+                            <li>
+                                <a href="comparison-report">Comparison Report</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="customize"><i class="fa fa-pencil-square-o fa-fw nav_icon"></i>Customize Visualizations</a>
+                    </li>
+                    <li>
+                        <a href="search-archive"><i class="fa fa-search fa-fw nav_icon"></i>Search Archive</a>
+                    </li>
+                    <li>
+                        <a href="calendar-event"><i class="fa fa-plus fa-fw nav_icon"></i>Create Calendar Event</a>
+                    </li>
+                    <li>
+                        <a href="threshold-target"><i class="fa fa-bullseye fa-fw nav_icon"></i>Add Threshold Target</a>
+                    </li>
+                    <li>
+                        <a href="reports-archive"><i class="fa fa-archive fa-fw nav_icon"></i>Reports Archive</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.sidebar-collapse -->
+        </div>
+        <!-- /.navbar-static-side -->
+    </nav>
+    <div id="page-wrapper">
+        <div class="graphs">
+            <div class="col_12">
+                <div class="xs form-horizontal form-group">
+                    <label for="focusedinput" class="col-sm-2 control-label"><h3>Search</h3></label>
+                    <div class="col-sm-8">
+                        <input id="searchBar" type="text" class="form-control1" id="focusedinput"
+                               placeholder='Enter hashtag here... e.g. "animolasalle"'>
+                    </div>
+                    <div class="col-sm-2">
+                        <p class="help-block">No need to put '#'</p>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="xs form-horizontal form-group form-inline">
+                    <label id="more-details" class="control-label"><h3>Add Threshold Targets</h3></label>
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="content_bottom">
+                <div class="col-md-12 inputGroup">
+                    <div id='selectors'>
+                        <h4 style="font-family: 'Lucida Grande';">Event Details</h4>
+                        <label>Choose Event: </label><br>
+                        <select class="form-control1" id="eventDropdown">
+                            <option>1</option>
+                        </select>
+                    </div>
+                    <div style="margin-top:0.5rem; font-family: 'Lucida Grande';">
+                        <p id="eventName">Event Name: </p><br>
+                        <p id="eventDesc">Event Description: </p><br>
+                        <p id="eventPeriod">Event Duration: </p><br>
+                        <p id="eventHashtag">Event Hashtag: </p><br>
+                    </div>
+
+                </div>
+                <div class="col-md-12 inputGroup" style="margin-top:1rem;">
+                    <h4 style="font-family: 'Lucida Grande';">Event Targets</h4>
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label for="inputExpectedVolImages" class="col-sm-4 control-label">Expected Volume of Images</label>
+                            <div class="col-sm-6">
+                                <input type="number" class="form-control1" id="inputExpectedVolImages" placeholder="Your total expected number of posts for the event" min="0" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputExpectedVolLikes" class="col-sm-4 control-label">Expected Number of Likes</label>
+                            <div class="col-sm-6">
+                                <input type="number" class="form-control1" id="inputExpectedVolLikes" placeholder="Your expected total number of likes for the event" min="0" required>
+                            </div>
+                        </div>
+                    </form>
+                </div> <!-- Input group box -->
+
+                <div class="clearfix"></div>
+                <div class="clearfix"></div>
+
+                <div class="pull-right" style="margin-top:1rem;">
+                    <!--<a href="expected-actual">-->
+                    <button type="button" class="btn btn_5 btn-lg btn-primary" id="addThreshold">Add Threshold Targets</button>
+                    <!-- TODO NOTE: PLEASE REDIRECT TO EXPECTED VS ACTUAL RESULT PAGE AFTER PROCESSING TARGETS -->
+                    <!--</a>-->
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="copy">
+                <p>Copyright &copy; 2018 SMILE</p>
+            </div>
+        </div>
+    </div>
+    <!-- /#page-wrapper -->
+</div>
+<script type="text/javascript">
+    var events = [];
+    $(document).ready(function(){
+        getEvents();
+        $('#eventDropdown').on('change', function(){
+            for(let e of events){
+                console.log($('#eventDropdown').val());
+                if(e._id.$oid == $('#eventDropdown').val()){
+                    $('#eventName').text('Event Name: ' + e.event_name);
+                    if(e.event_desc)
+                        $('#eventDesc').text('Event Description: ' + e.event_desc);
+                    else
+                        $('#eventDesc').text('Event Description: No Descriptions Provided');
+                    $('#eventPeriod').text('Event Period: ' + formatDate(e.start_period) + " ~ " + formatDate(e.end_period) );
+                    $('#eventHashtag').text('Event Hashtag: #' + e.hashtags );
+                }
+            }
+        });
+
+        $('#addThreshold').click(function(){
+            var volume = $('#inputExpectedVolImages').val(), likes = $('#inputExpectedVolLikes').val();
+            var oid = $('#eventDropdown').val();
+            var data = {};
+            data.expected_volume = volume;
+            data.expected_likes = likes;
+            var patchUrl = getDbPath() + '/smile/event_calendar/' + oid;
+            $.ajax({
+                async: false,
+                type: "PATCH",
+                url: patchUrl,
+                processData: false,
+                contentType: "application/json",
+                data: JSON.stringify(data),
+                complete: function (xhr, status) {
+                    console.log(xhr);
+                    console.log(status);
+                    if(xhr.status == 200) {
+                        // alert('Threshold Target successfully created!');
+                        // window.location.href = "/smile/expected-actual?event=" + oid;
+                    }
+                }
+            });
+        });
+    });
+
+    function getEvents(){
+        var url = 'http://localhost:8080/smile/event_calendar';
+        $.ajax({
+            async: false,
+            type: "GET",
+            url: url,
+            dataType: "json",
+            success: function (response) {
+                events = response._embedded;
+            },
+            error: function (request, status, error) {}
+        });
+
+        var dropdown = '';
+        for(let e of events)
+            dropdown += '<option value="' + e._id.$oid + '">' + e.event_name + '</option>';
+        $('#eventDropdown').html(dropdown);
+
+        for(let e of events){
+            if(e._id.$oid == $('#eventDropdown').val()){
+                $('#eventName').text('Event Name: ' + e.event_name);
+                if(e.event_desc)
+                    $('#eventDesc').text('Event Description: ' + e.event_desc);
+                else
+                    $('#eventDesc').text('Event Description: No Descriptions Provided');
+                $('#eventPeriod').text('Event Period: ' + formatDate(e.start_period) + " ~ " + formatDate(e.end_period) );
+                $('#eventHashtag').text('Event Hashtag: #' + e.hashtags );
+
+                sessionStorage.setItem("event", $('#eventDropdown').val());
+            }
+        }
+    }
+
+    function formatDate(date) {
+        var d = new Date(date * 1000),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+
+        if (month.length < 2) month = '0' + month;
+        if (day.length < 2) day = '0' + day;
+
+        return [year, month, day].join('/');
+    }
+</script>
+</body>
+</html>
