@@ -15,6 +15,7 @@ import './my-genderchart';
 import './my-histogram';
 import './my-piechart';
 import './my-barchart';
+import './my-emotion';
 import './my-modal';
 import './my-map';
 
@@ -85,6 +86,7 @@ class MyDashboard extends PolymerElement {
 		<my-genderchart id="gender" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}} style="display:none"></my-genderchart>
 		<my-histogram id="age" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}} style="display:none"></my-histogram>
 		<my-barchart id="barchart" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}} style="display:none"></my-barchart>
+		<my-emotion id="emo" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}} style="display:none"></my-emotion>
 		<my-map id="googleMap" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}} style="display:none"></my-map>
 		<my-modal id="mymodal" style="display:none"></my-modal>	
 		
@@ -168,6 +170,7 @@ class MyDashboard extends PolymerElement {
 		this.$.age.generateAgeRequest();
 		this.$.piechart.generatePieRequest();
 		this.$.barchart.generateBarRequest();
+        this.$.emo.generateEmoRequest();
 		this.$.googleMap.generateMapRequest();
 		//this.__generateSummary();
 	}
@@ -178,6 +181,7 @@ class MyDashboard extends PolymerElement {
 		var barchart = this.$.barchart;
 		var age = this.$.age;
 		var gender = this.$.gender;
+		var emo = this.$.emo;
 		var generalSummary = this.$.generalSummary;
 		
 		var observer = new MutationObserver(function(mutations) {
@@ -189,6 +193,7 @@ class MyDashboard extends PolymerElement {
 				this.summary += barchart.summary;
 				this.summary += age.summary;
 				this.summary += gender.summary;
+				this.summary += emo.summary;
 				
 				generalSummary.innerHTML = this.summary;
 				//console.log(this.summary);
@@ -206,6 +211,7 @@ class MyDashboard extends PolymerElement {
 		this.$.linechart.addEventListener('modal1', this.__listenModal.bind(this));
 		this.$.gender.addEventListener('modal1', this.__listenModal.bind(this));
 		this.$.age.addEventListener('modal1', this.__listenModal.bind(this));
+        this.$.emo.addEventListener('modal1', this.__listenModal.bind(this));
 		this.$.wordcloud.addEventListener('modal1', this.__listenModal.bind(this));
 		this.$.wordcloud.addEventListener('modal1', this.__listenModal.bind(this));
 	}

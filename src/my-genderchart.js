@@ -165,9 +165,7 @@ class MyGenderchart extends PolymerElement {
 		gender = "<center><b>Gender Facial Recognition: Gender Percentages</b></center><br><table class='table table-bordered'><thead class='thead-dark'><tr><th scope='col'>#</th><th scope='col'>Gender</th><th scope='col'>Percentage</th></tr></thead><tbody>";
 		
 		for (i = 0; i < chartGenderData.length; i ++) {
-			//genderArray.push(chartGenderData[i].name);
 			if (chartGenderData[i].name != "") {
-				//gender += chartGenderData[i].name.toLowerCase + "s"
 				percentageArray.push(chartGenderData[i].percentage);
 			}
 		}

@@ -679,8 +679,6 @@ class MyBarChart extends PolymerElement {
 		x2Array = [];
 		numOfImages = chart.series[0].yData;
 		
-		//ageRanges = "<b>Image Categories and Their Number of Likes</b> displays that the categories of images with the most number of likes are ";
-		
 		for (i = 1; i <= 3; i ++) {
 			currMax = Math.max(...numOfImages);
 			indexOfMax = numOfImages.indexOf(currMax);
@@ -693,44 +691,14 @@ class MyBarChart extends PolymerElement {
 			xArray.push(x);
 			x2Array.push(x2);
 		}
-		
-		/*Facial Emotion Recognition expresses that the usual
-		emotions expressed in the images are joy, sadness and neutral, with the 
-		number of photos being 79, 20 and 1 respectively.*/
-		
-		/*for (i = 0; i < xArray.length; i ++) {
-			if (i === 0) {
-				sessionStorage.setItem("categoryName", xArray[i]);
-			}
-
-			if (xArray.length - 1 == i) {
-				ageRanges += "and " + xArray[i];
-			} else {
-				ageRanges += xArray[i] + ", ";
-			}
-		}
-			
-		ageRanges += " with the percentage of likes being ";
-
-		for (i = 0; i < x2Array.length; i ++) {
-			if (i === 0) {
-				sessionStorage.setItem("categoryValue", x2Array[i]);
-			}
-			if (xArray.length - 1 == i) {
-				ageRanges += "and " + x2Array[i] + "% respectively.";
-			} else {
-				ageRanges += x2Array[i] + "%, ";
-			}
-		}*/
-
+	
 		ageRanges = "<center><b>Image Categories: Top Categories with Most Likes</b></center><br><table class='table table-bordered'><thead class='thead-dark'><tr><th scope='col'>#</th><th scope='col'>Category</th><th scope='col'>Likes Percentage</th></tr></thead><tbody>";
 
 		for (i = 0; i < xArray.length; i ++) {
 			ageRanges += "<tr><th scope='row'>" + (i + 1) + "</th><td>" + xArray[i] + "</td><td>" + x2Array[i] + "%</td></tr>";
 		}
 		ageRanges += "</tbody></table>";
-		//console.log(sessionStorage.getItem("categoryName"));
-		//console.log(sessionStorage.getItem("categoryValue"));
+		
 		this.summary = ageRanges;
 		console.log(this.summary);
 

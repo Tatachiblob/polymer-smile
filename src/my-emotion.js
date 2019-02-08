@@ -35,7 +35,8 @@ class MyEmotion extends PolymerElement {
 			},
 			mediaIdArr: Array,
 			ajaxUrl: String,
-			emotionImageIDs: Object
+			emotionImageIDs: Object,
+			summary: String
 		}
 	}
 	
@@ -51,7 +52,7 @@ class MyEmotion extends PolymerElement {
 	__renderEmoChart(data){
 		let emotionData = this.__calcEmotion(data);
 		
-		Highcharts.chart(this.$.emotionChart, {
+		let myChart = Highcharts.chart(this.$.emotionChart, {
 			chart: {type: 'bar'},
 			title: {text: 'Facial Emotion Recognition'},
 			xAxis: {
@@ -112,8 +113,45 @@ class MyEmotion extends PolymerElement {
 				}
 			}]
 		});
+		
+		if (window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "consumer-analysis" || 
+			window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "post-event" || 
+			window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "summary.html") {
+			this.__createSummary(myChart);
+		}
 	}
 	
+	__createSummary(chart) {
+		var currMax, indexOfMax, x, x2, i, numOfImages, ageRanges, xArray, x2Array;
+		
+		xArray = [];
+		x2Array = [];
+		numOfImages = chart.series[0].yData;
+		
+		ageRanges = "<center><b>Facial Emotion Recognition: Top Emotions in Images Collected</b></center><br><table class='table table-bordered'><thead class='thead-dark'><tr><th scope='col'>#</th><th scope='col'>Emotion</th><th scope='col'>Percentage</th></tr></thead><tbody>";
+		
+		for (i = 1; i <= 3; i ++) {
+			currMax = Math.max(...numOfImages);
+			console.log(currMax);
+			indexOfMax = numOfImages.indexOf(currMax);
+			console.log(indexOfMax);
+			numOfImages[indexOfMax] = 0;
+			
+			x = chart.series[0].data[indexOfMax].category;
+			x2 = Math.round(currMax);
+			
+			xArray.push(x);
+			x2Array.push(x2);
+		}
+		
+		for (i = 0; i < xArray.length; i ++) {
+			ageRanges += "<tr><th scope='row'>" + (i + 1) + "</th><td>" + xArray[i] + "</td><td>" + x2Array[i] + "%</td></tr>";
+		}
+		ageRanges += "</tbody></table>";
+		
+		this.summary = ageRanges;
+		console.log(this.summary);
+	}
 	__callModal(title, data){
 		this.dispatchEvent(new CustomEvent('modal1', {detail: {title: title, imgs: data}}));
 	}
@@ -184,7 +222,7 @@ class MyEmotion extends PolymerElement {
 		//Math.round(num * 100) / 100
 		
 		totalEmotion.anger = Math.round(totalEmotion.anger * 100) / 100;
-		totalEmotion.contempt = Math.round(totalEmotion.contemp * 100) / 100;
+		totalEmotion.contempt = Math.round(totalEmotion.contempt * 100) / 100;
 		totalEmotion.disgust = Math.round(totalEmotion.disgust * 100) / 100;
 		totalEmotion.fear = Math.round(totalEmotion.fear * 100) / 100;
 		totalEmotion.happiness = Math.round(totalEmotion.happiness * 100) / 100;
