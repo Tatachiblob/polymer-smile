@@ -131,53 +131,55 @@ class MyHistogram extends PolymerElement {
 	}
 	
 	__createSummary(chart) {
-			var currMax, indexOfMax, x, x2, i, numOfImages, ageRanges, xArray, x2Array;
+		var currMax, indexOfMax, x, x2, i, numOfImages, ageRanges, xArray, x2Array, x3Array;
+		
+		xArray = [];
+		x2Array = [];
+		x3Array = [];
+		numOfImages = chart.series[0].yData;
+		console.log(numOfImages);
+		//ageRanges = "<b>Age Facial Recognition Histogram</b> shows that users usually post images with ages ranging from ";
+		ageRanges = "<center><b>Age Facial Recognition: Top Ages that Post Images Frequently</b></center><br><table class='table table-bordered'><thead class='thead-dark'><tr><th scope='col'>#</th><th scope='col'>Age range</th><th scope='col'>No. of Images</th></tr></thead><tbody>";
+		
+		for (i = 1; i <= 3; i ++) {
+			currMax = Math.max(...numOfImages);
+			x3Array.push(currMax);
+			indexOfMax = numOfImages.indexOf(currMax);
+			numOfImages[indexOfMax] = 0;
 			
-			xArray = [];
-			x2Array = [];
-			numOfImages = chart.series[0].yData;
+			x = Math.floor(chart.series[0].data[indexOfMax].x);
+			x2 = Math.floor(chart.series[0].data[indexOfMax].x2);
 			
-			//ageRanges = "<b>Age Facial Recognition Histogram</b> shows that users usually post images with ages ranging from ";
-			ageRanges = "<center><b>Age Facial Recognition: Top Ages that Post Images Frequently</b></center><br><table class='table table-bordered'><thead class='thead-dark'><tr><th scope='col'>#</th><th scope='col'>Age range</th></tr></thead><tbody>";
-			
-			for (i = 1; i <= 3; i ++) {
-				currMax = Math.max(...numOfImages);
-				indexOfMax = numOfImages.indexOf(currMax);
-				numOfImages[indexOfMax] = 0;
-				
-				x = Math.floor(chart.series[0].data[indexOfMax].x);
-				x2 = Math.floor(chart.series[0].data[indexOfMax].x2);
-				
-				xArray.push(x);
-				x2Array.push(x2);
-			}
-			
-			xArray.sort();
-			x2Array.sort();
-			
-			for (i = 0; i < xArray.length; i ++) {
-				/*if (i === 0) {
-					sessionStorage.setItem("ageRange", (xArray[i] + " - " + x2Array[i]));
-				}*/
-				ageRanges += "<tr><th scope='row'>" + (i + 1) + "</th><td>" + xArray[i] + " - " + x2Array[i] + " years old</td></tr>";
-			}
-			ageRanges += "</tbody></table>";
-			
-			/*
-			for (i = 0; i < xArray.length; i ++) {
-				//17-23, 23-28, and 28-34
-				switch (i) {
-					case xArray.length - 1: 
-						ageRanges += "and " + xArray[i] + "-" + x2Array[i] + "."; 
-						break;
-					default: 
-						ageRanges += xArray[i] + "-" + x2Array[i] + ", ";
-				}	
-			}
-			*/
-			//console.log(sessionStorage.getItem("ageRange"));
-			this.summary = ageRanges;
-			console.log(this.summary);
+			xArray.push(x);
+			x2Array.push(x2);
+		}
+		
+		//xArray.sort();
+		//x2Array.sort();
+		
+		for (i = 0; i < xArray.length; i ++) {
+			/*if (i === 0) {
+				sessionStorage.setItem("ageRange", (xArray[i] + " - " + x2Array[i]));
+			}*/
+			ageRanges += "<tr><th scope='row'>" + (i + 1) + "</th><td>" + xArray[i] + " - " + x2Array[i] + " years old</td><td>" + x3Array[i] + " images</tr>";
+		}
+		ageRanges += "</tbody></table>";
+		
+		/*
+		for (i = 0; i < xArray.length; i ++) {
+			//17-23, 23-28, and 28-34
+			switch (i) {
+				case xArray.length - 1: 
+					ageRanges += "and " + xArray[i] + "-" + x2Array[i] + "."; 
+					break;
+				default: 
+					ageRanges += xArray[i] + "-" + x2Array[i] + ", ";
+			}	
+		}
+		*/
+		//console.log(sessionStorage.getItem("ageRange"));
+		this.summary = ageRanges;
+		console.log(this.summary);
 	}
 	
 	__callModal(title, data){

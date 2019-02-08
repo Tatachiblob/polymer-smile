@@ -14,6 +14,7 @@ import './my-wordcloud';
 import './my-genderchart';
 import './my-histogram';
 import './my-piechart';
+import './my-barchart';
 import './my-modal';
 import './my-map';
 
@@ -83,6 +84,7 @@ class MyDashboard extends PolymerElement {
 		<my-wordcloud id="wordcloud" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}} style="display:none"></my-wordcloud>
 		<my-genderchart id="gender" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}} style="display:none"></my-genderchart>
 		<my-histogram id="age" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}} style="display:none"></my-histogram>
+		<my-barchart id="barchart" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}} style="display:none"></my-barchart>
 		<my-map id="googleMap" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}} style="display:none"></my-map>
 		<my-modal id="mymodal" style="display:none"></my-modal>	
 		
@@ -148,6 +150,7 @@ class MyDashboard extends PolymerElement {
 		//console.log("After: " + this.mediaIdArr.length);
 		
 		this.$.basicViews.setRawMediaData(res);
+		this.$.barchart.setRawMediaData(res);
 		
 		this.__generateElementRequest();
 	}
@@ -164,6 +167,7 @@ class MyDashboard extends PolymerElement {
 		this.$.gender.generateGenderRequest();
 		this.$.age.generateAgeRequest();
 		this.$.piechart.generatePieRequest();
+		this.$.barchart.generateBarRequest();
 		this.$.googleMap.generateMapRequest();
 		//this.__generateSummary();
 	}
@@ -171,8 +175,9 @@ class MyDashboard extends PolymerElement {
 	__generateSummary() {
 		var basicViews = this.$.basicViews;
 		var linechart = this.$.linechart;
-		var gender = this.$.gender;
+		var barchart = this.$.barchart;
 		var age = this.$.age;
+		var gender = this.$.gender;
 		var generalSummary = this.$.generalSummary;
 		
 		var observer = new MutationObserver(function(mutations) {
@@ -181,8 +186,9 @@ class MyDashboard extends PolymerElement {
 				console.log(mutations);
 				this.summary = basicViews.summary;
 				this.summary += linechart.summary;
-				this.summary += gender.summary;
+				this.summary += barchart.summary;
 				this.summary += age.summary;
+				this.summary += gender.summary;
 				
 				generalSummary.innerHTML = this.summary;
 				//console.log(this.summary);
