@@ -81,7 +81,9 @@ class MyBasic extends PolymerElement {
 			googleLogoData: Array,
 			totalImgs: String,
 			totalLikes: String,
-			totalBrand: String
+			totalBrand: String,
+			totalComments: String,
+			summary: String
 		}
 	}
 	
@@ -132,6 +134,31 @@ class MyBasic extends PolymerElement {
 		
 		this.googleLogoData = finalData;
 		this.totalBrand = finalData.length;
+		
+		sum = 0;
+		let totalComments = 0;
+		
+		for (i = 0; i < this.rawMediaData.length; i ++) {
+			sum = this.rawMediaData[i].ig_object.edge_media_to_comment.count;
+			totalComments += sum;
+		}
+		
+		this.totalComments = totalComments;
+		
+		if (window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "consumer-analysis" || 
+			window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "post-event" || 
+			window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "expected-actual") {
+			this.summary = "The total number of images scraped is " + this.totalImgs + ".<br>";
+			this.summary += "The images altogether have " + this.totalLikes + " likes.<br>";
+			this.summary += "There were " + this.totalBrand + " logos detected in the scraped images.<br>";
+			this.summary += "The total number of user comments from all images is " + this.totalComments + ".<br>";
+		} else if (window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "comparison-report" || 
+				   window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "summary.html") {
+			this.summary = "Total number of images: " + this.totalImgs + "<br>";
+			this.summary += "Total number of likes: " + this.totalLikes + "<br>";
+			this.summary += "Total number of logos: " + this.totalBrand + "<br>";
+			this.summary += "Total number of comments: " + this.totalComments + "<br>";
+		}
 	}
 	
 	__handleResponse(event, res){
@@ -176,6 +203,18 @@ class MyBasic extends PolymerElement {
 		return map;
 	}
 	
+	__getTotalComments(media) {
+		var i, totalComments;
+		
+		totalComments = 0;
+		
+		for (i = 0; i < media.length; i ++) {
+			totalComments += media[i].ig_object.edge_media_to_comment.count;
+		}
+		
+		return totalComments;
+	}
+
 	__createUrl(){
 		return "http://localhost:8080/smile/ig_processing_google?filter={'hashtag':'" + this.hashtag + "'}&filter={'ig_id':{'$in':" + JSON.stringify(this.mediaIdArr) + "}}&pagesize=1000&keys={'google':1}&keys={'ig_url':1}"
 	}

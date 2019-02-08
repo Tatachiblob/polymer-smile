@@ -196,10 +196,6 @@ class MyGenderchart extends PolymerElement {
 		console.log(this.summary);
 	}
 	
-	__getSummary() {
-		return this.summary;
-	}
-	
 	__createUrl(){
 		return "http://localhost:8080/smile/ig_processing_ms?filter={'hashtag':'" + this.hashtag + "'}&filter={'ig_id':{'$in':" + JSON.stringify(this.mediaIdArr) + "}}&pagesize=1000&keys={'face':1}&keys={'ig_url':1}";
 	}

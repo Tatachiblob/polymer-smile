@@ -80,13 +80,13 @@ class MyDashboard extends PolymerElement {
 			<my-linechart id="linechart" class="col-md-6" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}} style="display:none"></my-linechart>
 			<my-piechart id="piechart" class="col-md-6" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}} style="display:none"></my-piechart>
 		</div>
-		<my-wordcloud id="wordcloud" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}} style="display:none"></my-wordcloud>
+		<my-wordcloud id="wordcloud" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-wordcloud>
 		<my-genderchart id="gender" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}} style="display:none"></my-genderchart>
 		<my-histogram id="age" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}} style="display:none"></my-histogram>
 		<my-map id="googleMap" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}} style="display:none"></my-map>
 		<my-modal id="mymodal"></my-modal>	
 		
-		<div id="generalSummary"></div>
+		<div class="card" id="generalSummary"></div>
 		`;
 	}
 	
@@ -168,14 +168,16 @@ class MyDashboard extends PolymerElement {
 	}
 	
 	__generateSummary() {
+		var basicViews = this.$.basicViews;
 		var linechart = this.$.linechart;
 		var gender = this.$.gender;
 		var generalSummary = this.$.generalSummary;
 		
 		var observer = new MutationObserver(function(mutations) {
-		    if (gender.summary != undefined) {
-				this.summary = linechart.__getSummary();
-				this.summary += gender.__getSummary();
+		    if (basicViews.summary != undefined && linechart.summary != undefined && gender.summary != undefined) {
+				this.summary = basicViews.summary;
+				this.summary += linechart.summary;
+				this.summary += gender.summary;
 				
 				generalSummary.innerHTML = this.summary;
 				console.log(this.summary);
@@ -224,7 +226,7 @@ class MyDashboard extends PolymerElement {
 	}
 	
 	__createUrl(hashtag, startDate, endDate){
-		return "http://localhost:8080/smile/ig_media?filter={'hashtag':'" + hashtag + "'}&filter={'ig_object.taken_at_timestamp':{'$gte':" + startDate + "}}&filter={'ig_object.taken_at_timestamp':{'$lte':" + endDate + "}}&keys={'ig_object.id':1}&keys={'ig_object.display_url':1}&keys={'ig_object.edge_liked_by':1}&pagesize=1000"
+		return "http://localhost:8080/smile/ig_media?filter={'hashtag':'" + hashtag + "'}&filter={'ig_object.taken_at_timestamp':{'$gte':" + startDate + "}}&filter={'ig_object.taken_at_timestamp':{'$lte':" + endDate + "}}&keys={'ig_object.id':1}&keys={'ig_object.display_url':1}&keys={'ig_object.edge_liked_by':1}&keys={'ig_object.edge_media_to_comment':1}&pagesize=1000"
 	}
 
 }
