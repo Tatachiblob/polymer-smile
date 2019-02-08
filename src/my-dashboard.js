@@ -27,7 +27,7 @@ class MyDashboard extends PolymerElement {
 				padding: 10px;
 			}
 		</style>
-		
+		<my-modal id="mymodal"></my-modal>
 		<iron-ajax
 			id="mediaAjax"
 			url="{{ajaxUrl}}"
@@ -84,7 +84,6 @@ class MyDashboard extends PolymerElement {
 		<my-genderchart id="gender" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-genderchart>
 		<my-histogram id="age" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-histogram>
 		<my-map id="googleMap" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-map>
-		<my-modal id="mymodal"></my-modal>	
 		`;
 	}
 	

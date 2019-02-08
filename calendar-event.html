@@ -87,6 +87,8 @@
     <!-- Load webcomponents-loader.js to check and load any polyfills your browser needs -->
     <script type="module" src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script type="module" src="node_modules/@fooloomanzoo/datetime-picker/datetime-picker.js"></script>
+    <script type="module" src="node_modules/@polymer/paper-dialog/paper-dialog.js"></script>
+    <script type="module" src="node_modules/@polymer/paper-button/paper-button.js"></script>
     <script type="module" src="node_modules/@polymer/iron-ajax/iron-ajax.js"></script>
 
     <!-- Load your application shell -->
@@ -213,6 +215,21 @@
         on-response="handleResponse"
         debounce-duration="300">
 </iron-ajax>
+<paper-dialog id="errorModal" class="colored" modal>
+    <h2 id="errorTitle" style="padding:10px;margin:10px;"></h2>
+    <hr/>
+    <div id="errorMsg"></div>
+    <div class="buttons">
+        <paper-button dialog-confirm autofocus>Tap me to close</paper-button>
+    </div>
+</paper-dialog>
+
+<paper-dialog id="successModal" class="success" modal>
+    <h2 style="padding:10px;margin:10px;">Event Created!</h2>
+    <div class="buttons">
+        <a href="#"><paper-button id="successBtn" dialog-confirm autofocus>Tap me to close</paper-button></a>
+    </div>
+</paper-dialog>
 <div id="wrapper">
     <!-- Navigation -->
     <nav class="top1 navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
@@ -380,7 +397,7 @@
         });
 
         document.querySelector('#end').addEventListener('input-picker-closed', function(e){
-            $('#endTime').text(formatDate(dateFormatter2(document.querySelector('#end').value)))
+            $('#endTime').text(formatDate2(dateFormatter(document.querySelector('#end').value)))
         });
 
         var events = [];
@@ -402,45 +419,74 @@
     });
 
     function createCalendarEvent(){
-
-        //var url = getDbPath() + '/smile/event_calendar';
+        var url = 'http://localhost:8080/smile/event_calendar';
         var eventName = $('#event').val();
         var start = dateFormatter(document.querySelector('#start').value);
         var end = dateFormatter(document.querySelector('#end').value);
         var eventDesc = $('#txtarea1').val();
         var hashtags = $('#hashtag').val();
+        var error = false;
+        var errorMsg = "";
 
-        var restBody = {
-            'event_name': eventName,
-            'start_period': start,
-            'end_period': end,
-            'event_desc': eventDesc,
-            'hashtags': hashtags,
-            'is_seen': false
-        };
-        console.log(restBody);
+        if(!eventName){
+            errorMsg += "<p>Please enter an Event Name.</p>";
+            // console.log("Empty Event Name");
+            error = true;
+        }
 
-        $.ajax({
-            type: "POST",
-            url: url,
-            data: JSON.stringify(restBody),
-            contentType: "application/json",
-            error: function(jqXHR, textStatus, errorThrown){
-                //console.log(jqXHR);
-                if(jqXHR.status == 201){
-                    alert('Event Created!');
-                    window.location.href = "/smile/threshold-target";
-                }else{
-                    //console.log('event name duplication error');
-                    alert('Event name already in use. Please user a different event name.');
+        if(start > end){
+            errorMsg += "<p>The Start Date must be earlier than the End Date.</p>";
+            // console.log("Start Day is Greater than End Day");
+            error = true;
+        }
+
+        if(!hashtags){
+            errorMsg += "<p>Please enter a Hashtag</p>";
+            // console.log("Empty Hashtag");
+            error = true;
+        }
+
+        if(error) {
+            $('#errorTitle').text("Incomplete Submission");
+            $('#errorMsg').html(errorMsg);
+            document.querySelector('#errorModal').open();
+        }else{
+            var restBody = {
+                'event_name': eventName,
+                'start_period': start,
+                'end_period': end,
+                'event_desc': eventDesc,
+                'hashtags': hashtags,
+                'is_seen': false
+            };
+            // console.log(restBody);
+
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: JSON.stringify(restBody),
+                contentType: "application/json",
+                error: function(jqXHR, textStatus, errorThrown){
+                    //console.log(jqXHR);
+                    if(jqXHR.status == 201){
+                        document.querySelector('#successModal').open();
+                        // alert('Event Created!');
+                        // window.location.href = "/smile/threshold-target";
+                    }else{
+                        $('#errorTitle').text("Duplicate Event Name");
+                        $('#errorMsg').html("<p>Please Enter a Different Event Name.</p>");
+                        document.querySelector('#errorModal').open();
+                        //console.log('event name duplication error');
+                        // alert('Event name already in use. Please user a different event name.');
+                    }
+                },
+                success: function(data){
+                    document.querySelector('#successModal').open();
+                    // alert('Event Created!');
+                    //window.location.href = "/smile/threshold-target";
                 }
-            },
-            success: function(data){
-                alert('Event Created!');
-                window.location.href = "/smile/threshold-target";
-            }
-        });
-
+            });
+        }
     }
 
     function renderCalendar(events){
