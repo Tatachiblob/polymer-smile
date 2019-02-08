@@ -162,7 +162,7 @@ class MyGenderchart extends PolymerElement {
 		chartGenderData = chart.series[0].data;
 		
 		percentage = "";
-		gender = "<b>Gender Facial Recognition</b><br><table class='table'><thead><tr><th>Gender</th><th>Percentage</th></tr></thead><tbody>";
+		gender = "<center><b>Gender Facial Recognition: Gender Percentages</b></center><br><table class='table table-bordered'><thead class='thead-dark'><tr><th scope='col'>#</th><th scope='col'>Gender</th><th scope='col'>Percentage</th></tr></thead><tbody>";
 		
 		for (i = 0; i < chartGenderData.length; i ++) {
 			//genderArray.push(chartGenderData[i].name);
@@ -187,7 +187,7 @@ class MyGenderchart extends PolymerElement {
 		}
 		
 		for (i = 0; i < genderArray.length; i ++) {
-			gender += "<tr><td>" + genderArray[i] + "</td><td>" + percentageArray[i] + "</td></tr>";
+			gender += "<tr><th scope='row'>" + (i + 1) + "</th><td>" + genderArray[i] + "</td><td>" + percentageArray[i] + "%</td></tr>";
 		}
 		
 		gender += "</tbody></table>";

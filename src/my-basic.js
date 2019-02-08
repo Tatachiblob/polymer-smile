@@ -135,29 +135,32 @@ class MyBasic extends PolymerElement {
 		this.googleLogoData = finalData;
 		this.totalBrand = finalData.length;
 		
-		sum = 0;
-		let totalComments = 0;
-		
-		for (i = 0; i < this.rawMediaData.length; i ++) {
-			sum = this.rawMediaData[i].ig_object.edge_media_to_comment.count;
-			totalComments += sum;
-		}
-		
-		this.totalComments = totalComments;
+		try {
+			sum = 0;
+			let totalComments = 0;
+			
+			console.log(this.rawMediaData);
+			for (i = 0; i < this.rawMediaData.length; i ++) {
+				sum = this.rawMediaData[i].ig_object.edge_media_to_comment.count;
+				totalComments += sum;
+			}
+			
+			this.totalComments = totalComments;
+		} catch (e) {}
 		
 		if (window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "consumer-analysis" || 
 			window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "post-event" || 
 			window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "expected-actual") {
-			this.summary = "The total number of images scraped is " + this.totalImgs + ".<br>";
-			this.summary += "The images altogether have " + this.totalLikes + " likes.<br>";
-			this.summary += "There were " + this.totalBrand + " logos detected in the scraped images.<br>";
-			this.summary += "The total number of user comments from all images is " + this.totalComments + ".<br>";
+			this.summary = "<li>The total number of images scraped is " + this.totalImgs + ".</li>";
+			this.summary += "<li>The images altogether have " + this.totalLikes + " likes.</li>";
+			this.summary += "<li>There were " + this.totalBrand + " logos detected in the scraped images.</li>";
+			this.summary += "<li>The total number of user comments from all images is " + this.totalComments + ".</li><br>";
 		} else if (window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "comparison-report" || 
 				   window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "summary.html") {
-			this.summary = "Total number of images: " + this.totalImgs + "<br>";
-			this.summary += "Total number of likes: " + this.totalLikes + "<br>";
-			this.summary += "Total number of logos: " + this.totalBrand + "<br>";
-			this.summary += "Total number of comments: " + this.totalComments + "<br>";
+			this.summary = "<li>Total number of images: " + this.totalImgs + "</li>";
+			this.summary += "<li>Total number of likes: " + this.totalLikes + "</li>";
+			this.summary += "<li>Total number of logos: " + this.totalBrand + "</li>";
+			this.summary += "<li>Total number of comments: " + this.totalComments + "</li><br>";
 		}
 	}
 	

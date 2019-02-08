@@ -58,7 +58,7 @@ class MyLinechart extends PolymerElement {
 				scrollablePlotArea: {
 					minWidth: 400
 				},
-				height: 400,
+				height: 400
 			},
 			title: {
 				text: 'Instagram Images Volume Trend Per Month'
@@ -232,10 +232,10 @@ class MyLinechart extends PolymerElement {
 			//sessionStorage.setItem("linechartValue", calendarProcessing[indices[0]].y);
 			//calendar += calendarProcessing[indices[0]].category + " " + chart.series[0].name + " and " + calendarProcessing[indices[1]].category + " " + chart.series[0].name + " with " + calendarProcessing[indices[0]].y + " and " + calendarProcessing[indices[1]].y + " images posted respectively.";
 
-			calendar = "<b>Volume Trend</b><br><table class='table table-bordered'><thead class='thead-dark'><tr><th scope='col'>#</th><th scope='col'>Month</th><th scope='col'>No. of Images</th></tr></thead><tbody>";
+			calendar = "<center><b>Volume Trend: Top Three Months with Most Number of Images</b></center><br><table class='table table-bordered'><thead class='thead-dark'><tr><th scope='col'>#</th><th scope='col'>Month</th><th scope='col'>No. of Images</th></tr></thead><tbody>";
 			
 			for (i = 0; i < 3; i ++) {
-				calendar += "<tr><th scope='row'>" + (i + 1) + "</th><td>" + calendarProcessing[indices[i]].category + " " + chart.series[0].name + "</td><td>" + calendarProcessing[indices[i]].y  + "</td></tr>";
+				calendar += "<tr><th scope='row'>" + (i + 1) + "</th><td>" + calendarProcessing[indices[i]].category + " " + chart.series[0].name + "</td><td>" + calendarProcessing[indices[i]].y + " images</td></tr>";
 			}
 			calendar += "</tbody></table>";
 			//console.log(sessionStorage.getItem("linechartDate"));

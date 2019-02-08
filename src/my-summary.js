@@ -80,11 +80,11 @@ class MyDashboard extends PolymerElement {
 			<my-linechart id="linechart" class="col-md-6" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}} style="display:none"></my-linechart>
 			<my-piechart id="piechart" class="col-md-6" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}} style="display:none"></my-piechart>
 		</div>
-		<my-wordcloud id="wordcloud" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-wordcloud>
+		<my-wordcloud id="wordcloud" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}} style="display:none"></my-wordcloud>
 		<my-genderchart id="gender" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}} style="display:none"></my-genderchart>
 		<my-histogram id="age" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}} style="display:none"></my-histogram>
 		<my-map id="googleMap" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}} style="display:none"></my-map>
-		<my-modal id="mymodal"></my-modal>	
+		<my-modal id="mymodal" style="display:none"></my-modal>	
 		
 		<div class="card" id="generalSummary"></div>
 		`;
@@ -92,6 +92,7 @@ class MyDashboard extends PolymerElement {
 	
 	ready() {
 		super.ready();
+		this.__generateSummary();
 		this.$.hashtagAjax.generateRequest();
 		this.__createListeners();
 	}
@@ -164,28 +165,32 @@ class MyDashboard extends PolymerElement {
 		this.$.age.generateAgeRequest();
 		this.$.piechart.generatePieRequest();
 		this.$.googleMap.generateMapRequest();
-		this.__generateSummary();
+		//this.__generateSummary();
 	}
 	
 	__generateSummary() {
 		var basicViews = this.$.basicViews;
 		var linechart = this.$.linechart;
 		var gender = this.$.gender;
+		var age = this.$.age;
 		var generalSummary = this.$.generalSummary;
 		
 		var observer = new MutationObserver(function(mutations) {
-		    if (basicViews.summary != undefined && linechart.summary != undefined && gender.summary != undefined) {
+		    if (basicViews.summary != undefined && linechart.summary != undefined && gender.summary != undefined && age.summary != undefined) {
+		    //if (mutations.type == 'attributes') {
+				console.log(mutations);
 				this.summary = basicViews.summary;
 				this.summary += linechart.summary;
 				this.summary += gender.summary;
+				this.summary += age.summary;
 				
 				generalSummary.innerHTML = this.summary;
-				console.log(this.summary);
+				//console.log(this.summary);
 				observer.disconnect();
 			}
 		});
 
-		observer.observe(document, {attributes: true, childList: true, characterData: false, subtree:true});
+		observer.observe(document, {attributes: true, childList: true, characterData: true, subtree:true});
 	}
 	
 	//Add the listeners of the element
