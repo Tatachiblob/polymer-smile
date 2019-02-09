@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="677e1531-0824-4bd1-b5e6-56ec4ec22b4e" name="Default Changelist" comment="" />
+    <list default="true" id="677e1531-0824-4bd1-b5e6-56ec4ec22b4e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/calendar-event.html" beforeDir="false" afterPath="$PROJECT_DIR$/calendar-event.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/threshold-target.html" beforeDir="false" afterPath="$PROJECT_DIR$/threshold-target.html" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -15,16 +19,16 @@
     <session id="2120677672">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="11" />
+          <entry key="project.closed" value="12" />
           <entry key="project.open.time.10" value="3" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.16" value="2" />
           <entry key="project.open.time.18" value="1" />
-          <entry key="project.open.time.20" value="1" />
+          <entry key="project.open.time.20" value="2" />
           <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="11" />
+          <entry key="project.opened" value="12" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -45,14 +49,14 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="9351" />
+          <entry key="html" value="9692" />
           <entry key="js" value="8980" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="2" />
-          <entry key="HTML" value="9908" />
+          <entry key="HTML" value="10249" />
           <entry key="JavaScript" value="8421" />
         </counts>
       </usages-collector>
@@ -65,8 +69,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/dashboard.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="133">
-                  <caret line="284" column="26" lean-forward="true" selection-end-line="402" />
+                <state relative-caret-position="4828">
+                  <caret line="284" column="26" selection-end-line="402" />
                   <folding>
                     <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                   </folding>
@@ -77,8 +81,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/threshold-target.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="374">
-                  <caret line="375" column="24" selection-start-line="375" selection-start-column="24" selection-end-line="375" selection-end-column="24" />
+                <state relative-caret-position="337">
+                  <caret line="423" column="75" lean-forward="true" selection-start-line="423" selection-start-column="75" selection-end-line="423" selection-end-column="75" />
                 </state>
               </provider>
             </entry>
@@ -86,8 +90,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/calendar-event.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="7005">
-                  <caret line="489" column="5" selection-start-line="489" selection-start-column="5" selection-end-line="489" selection-end-column="5" />
+                <state relative-caret-position="191">
+                  <caret line="470" column="44" lean-forward="true" selection-start-line="470" selection-start-column="44" selection-end-line="471" selection-end-column="71" />
                 </state>
               </provider>
             </entry>
@@ -95,7 +99,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/marketing-proposal.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="208">
+                <state relative-caret-position="9231">
                   <caret line="543" column="47" selection-start-line="543" selection-start-column="28" selection-end-line="543" selection-end-column="47" />
                   <folding>
                     <element signature="n#style#0;n#h2#0;n#paper-dialog#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -114,7 +118,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://C:/xampp/htdocs/SMILE/js/reports.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="17">
+                <state relative-caret-position="255">
                   <caret line="15" column="44" selection-start-line="15" selection-start-column="39" selection-end-line="15" selection-end-column="44" />
                 </state>
               </provider>
@@ -123,7 +127,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://C:/xampp/htdocs/SMILE/js/calendar-zingchart.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="5202">
+                <state relative-caret-position="5100">
                   <caret line="306" column="26" selection-start-line="306" selection-start-column="26" selection-end-line="306" selection-end-column="26" />
                   <folding>
                     <element signature="e#0#86#0" expanded="true" />
@@ -135,7 +139,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://C:/xampp/htdocs/SMILE/threshold-target.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-3060">
+                <state relative-caret-position="1020">
                   <caret line="60" column="9" selection-start-line="60" selection-start-column="9" selection-end-line="60" selection-end-column="9" />
                 </state>
               </provider>
@@ -144,8 +148,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://C:/xampp/htdocs/SMILE/js/threshold-target.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="337">
-                  <caret line="77" column="1" lean-forward="true" selection-start-line="77" selection-start-column="1" selection-end-line="77" selection-end-column="1" />
+                <state relative-caret-position="303">
+                  <caret line="39" column="72" selection-start-line="39" selection-start-column="67" selection-end-line="39" selection-end-column="72" />
                 </state>
               </provider>
             </entry>
@@ -153,7 +157,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://C:/xampp/htdocs/SMILE/dashboard.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="208">
+                <state relative-caret-position="8653">
                   <caret line="509" column="34" selection-start-line="509" selection-start-column="25" selection-end-line="509" selection-end-column="34" />
                 </state>
               </provider>
@@ -173,9 +177,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>forPri</find>
-      <find>save</find>
-      <find>proposalType</find>
       <find>daterange</find>
       <find>forPrinting</find>
       <find>duration</find>
@@ -188,8 +189,6 @@
       <find>events</find>
       <find>create</find>
       <find>open</find>
-      <find>errorModal</find>
-      <find>paper</find>
       <find>dateFormatter2</find>
       <find>formatDate2</find>
       <find>click</find>
@@ -201,8 +200,13 @@
       <find>add thresh</find>
       <find>more-details</find>
       <find>fonts</find>
-      <find>input</find>
       <find>font</find>
+      <find>alert</find>
+      <find>session</find>
+      <find>errorModal</find>
+      <find>input</find>
+      <find>paper</find>
+      <find>successModal</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -337,11 +341,12 @@
       <workItem from="1549268490234" duration="8632000" />
       <workItem from="1549454292073" duration="7866000" />
       <workItem from="1549521646157" duration="15920000" />
+      <workItem from="1549679095828" duration="1379000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93962000" />
+    <option name="totallyTimeSpent" value="95469000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -374,11 +379,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/markerclusterer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6732" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/font-awesome.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
@@ -526,13 +526,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/xampp/htdocs/SMILE/dashboard.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="509" column="34" selection-start-line="509" selection-start-column="25" selection-end-line="509" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/xampp/htdocs/SMILE/js/saveComments.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -621,13 +614,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/xampp/htdocs/SMILE/js/reports.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="15" column="44" selection-start-line="15" selection-start-column="39" selection-end-line="15" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/xampp/htdocs/SMILE/reports-marketing-proposal.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-819">
@@ -639,9 +625,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4148">
           <caret line="244" column="31" selection-start-line="244" selection-start-column="31" selection-end-line="244" selection-end-column="31" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -666,9 +649,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4828">
+          <caret line="284" column="26" selection-end-line="402" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/marketing-proposal.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
+        <state relative-caret-position="9231">
           <caret line="543" column="47" selection-start-line="543" selection-start-column="28" selection-end-line="543" selection-end-column="47" />
           <folding>
             <element signature="n#style#0;n#h2#0;n#paper-dialog#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -679,41 +672,55 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/calendar-event.html">
+    <entry file="file://C:/xampp/htdocs/SMILE/js/reports.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7005">
-          <caret line="489" column="5" selection-start-line="489" selection-start-column="5" selection-end-line="489" selection-end-column="5" />
+        <state relative-caret-position="255">
+          <caret line="15" column="44" selection-start-line="15" selection-start-column="39" selection-end-line="15" selection-end-column="44" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard.html">
+    <entry file="file://C:/xampp/htdocs/SMILE/js/calendar-zingchart.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="284" column="26" lean-forward="true" selection-end-line="402" />
+        <state relative-caret-position="5100">
+          <caret line="306" column="26" selection-start-line="306" selection-start-column="26" selection-end-line="306" selection-end-column="26" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#0#86#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://C:/xampp/htdocs/SMILE/threshold-target.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3060">
+        <state relative-caret-position="1020">
           <caret line="60" column="9" selection-start-line="60" selection-start-column="9" selection-end-line="60" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/xampp/htdocs/SMILE/js/threshold-target.js">
+    <entry file="file://C:/xampp/htdocs/SMILE/dashboard.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="77" column="1" lean-forward="true" selection-start-line="77" selection-start-column="1" selection-end-line="77" selection-end-column="1" />
+        <state relative-caret-position="8653">
+          <caret line="509" column="34" selection-start-line="509" selection-start-column="25" selection-end-line="509" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/calendar-event.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="470" column="44" lean-forward="true" selection-start-line="470" selection-start-column="44" selection-end-line="471" selection-end-column="71" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/threshold-target.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="375" column="24" selection-start-line="375" selection-start-column="24" selection-end-line="375" selection-end-column="24" />
+        <state relative-caret-position="337">
+          <caret line="423" column="75" lean-forward="true" selection-start-line="423" selection-start-column="75" selection-end-line="423" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/xampp/htdocs/SMILE/js/threshold-target.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="39" column="72" selection-start-line="39" selection-start-column="67" selection-end-line="39" selection-end-column="72" />
         </state>
       </provider>
     </entry>

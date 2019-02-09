@@ -77,6 +77,8 @@
 
     <!-- Load webcomponents-loader.js to check and load any polyfills your browser needs -->
     <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script type="module" src="node_modules/@polymer/paper-dialog/paper-dialog.js"></script>
+    <script type="module" src="node_modules/@polymer/paper-button/paper-button.js"></script>
 
     <!-- Load your application shell -->
 
@@ -175,9 +177,38 @@
             -webkit-box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.2);
             box-shadow: 0 1px 3px 0px rgba(0, 0, 0, 0.2);
         }
+
+        paper-dialog.colored {
+            border: 2px solid;
+            border-color: #ebcccc; ;
+            background-color: #f2dede ;
+            color: #a94442 ;
+        }
+
+        paper-dialog.success{
+            border: 2px solid;
+            border-color: #d0e9c6; ;
+            background-color: #dff0d8 ;
+            color: #3c763d ;
+        }
     </style>
 </head>
 <body>
+<paper-dialog id="errorModal" class="colored" modal>
+    <h2 id="errorTitle" style="padding:10px;margin:10px;"></h2>
+    <hr/>
+    <div id="errorMsg"></div>
+    <div class="buttons">
+        <paper-button dialog-confirm autofocus>Tap me to close</paper-button>
+    </div>
+</paper-dialog>
+<paper-dialog id="successModal" class="success" modal>
+    <h2 style="padding:10px;margin:10px;"> Threshold Target successfully created! </h2>
+    <div class="buttons">
+        <a href="#"><paper-button id="successBtn" dialog-confirm autofocus>Tap me to close</paper-button></a>
+    </div>
+</paper-dialog>
+
 <div id="wrapper">
     <!-- Navigation -->
     <nav class="top1 navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
@@ -287,7 +318,6 @@
                         <h4 style="font-family: 'Lucida Grande';">Event Details</h4>
                         <label>Choose Event: </label><br>
                         <select class="form-control1" id="eventDropdown">
-                            <option>1</option>
                         </select>
                     </div>
                     <div style="margin-top:0.5rem; font-family: 'Lucida Grande';">
@@ -360,23 +390,44 @@
             var data = {};
             data.expected_volume = volume;
             data.expected_likes = likes;
-            var patchUrl = getDbPath() + '/smile/event_calendar/' + oid;
-            $.ajax({
-                async: false,
-                type: "PATCH",
-                url: patchUrl,
-                processData: false,
-                contentType: "application/json",
-                data: JSON.stringify(data),
-                complete: function (xhr, status) {
-                    console.log(xhr);
-                    console.log(status);
-                    if(xhr.status == 200) {
-                        // alert('Threshold Target successfully created!');
-                        // window.location.href = "/smile/expected-actual?event=" + oid;
+            var patchUrl = 'http://localhost:8080/smile/event_calendar/' + oid;
+
+            var isError = false;
+            var errorMsg = "";
+
+            if(volume < 0){
+                errorMsg += "<p>Target Volume must not be negative value.</p>";
+                isError = true;
+            }
+
+            if(likes < 0){
+                errorMsg += "<p>Target Volume must not be negative value.</p>";
+                isError = true;
+            }
+
+            if(isError){
+                $('#errorTitle').text("Invalid Threshold Submission");
+                $('#errorMsg').html(errorMsg);
+                document.querySelector('#errorModal').open();
+            }else {
+                $.ajax({
+                    async: false,
+                    type: "PATCH",
+                    url: patchUrl,
+                    processData: false,
+                    contentType: "application/json",
+                    data: JSON.stringify(data),
+                    complete: function (xhr, status) {
+                        console.log(xhr);
+                        console.log(status);
+                        if (xhr.status == 200) {
+                            document.querySelector('#successModal').open();
+                            // alert('Threshold Target successfully created!');
+                            // window.location.href = "/smile/expected-actual?event=" + oid;
+                        }
                     }
-                }
-            });
+                });
+            }
         });
     });
 
