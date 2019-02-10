@@ -317,7 +317,28 @@
             </div>
             <!-- /#page-wrapper -->
         </div>
+        <script src="./event-notif.js" type="module"></script>
         <script type="text/javascript">
+            function notif(eventOid, isNew){
+                console.log("notif method inovoked");
+                console.log(eventOid + " " + isNew);
+                var url = "http://localhost:8080/smile/event_calendar/" + eventOid;
+                if(isNew == 1) {
+                    $.ajax({
+                        async: true,
+                        type: "PATCH",
+                        url: url,
+                        processData: false,
+                        contentType: "application/json",
+                        data: '{"is_seen": true}',
+                        complete: function (xhr, status) {
+                        }
+                    });
+                }
+
+                location.href = "./expected-actual.html?event=" + eventOid;
+            }
+
             $(document).ready(function(){
                 var curHashtag = sessionStorage.getItem('hashtagInput');
                 var insights = sessionStorage.getItem('generalInsights');
