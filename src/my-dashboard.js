@@ -140,8 +140,9 @@ class MyDashboard extends PolymerElement {
 		for(let node of res)
 			this.push('mediaIdArr', node.ig_object.id);
 		
-		//console.log("After: " + this.mediaIdArr.length);
-		
+		//console.log(res);
+		this.dispatchEvent(new CustomEvent('calendarDates', {detail: {calendarDates: res}}));
+
 		this.$.basicViews.setRawMediaData(res);
 		
 		this.__generateElementRequest();
@@ -200,7 +201,7 @@ class MyDashboard extends PolymerElement {
 	}
 	
 	__createUrl(hashtag, startDate, endDate){
-		return "http://localhost:8080/smile/ig_media?filter={'hashtag':'" + hashtag + "'}&filter={'ig_object.taken_at_timestamp':{'$gte':" + startDate + "}}&filter={'ig_object.taken_at_timestamp':{'$lte':" + endDate + "}}&keys={'ig_object.id':1}&keys={'ig_object.display_url':1}&keys={'ig_object.edge_liked_by':1}&pagesize=1000"
+		return "http://localhost:8080/smile/ig_media?filter={'hashtag':'" + hashtag + "'}&filter={'ig_object.taken_at_timestamp':{'$gte':" + startDate + "}}&filter={'ig_object.taken_at_timestamp':{'$lte':" + endDate + "}}&keys={'ig_object.id':1}&keys={'ig_object.display_url':1}&keys={'ig_object.taken_at_timestamp':1}&keys={'ig_object.edge_liked_by':1}&pagesize=1000"
 	}
 
 }
