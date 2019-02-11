@@ -189,8 +189,6 @@ class MyDashboard extends PolymerElement {
 		
 		var observer = new MutationObserver(function(mutations) {
 		    if (basicViews.summary != undefined && linechart.summary != undefined && gender.summary != undefined && age.summary != undefined && barchart.summary != undefined && emo.summary != undefined) {
-		    //if (mutations.type == 'attributes') {
-				console.log(mutations);
 				this.summary = '';
 				this.summary += basicViews.summary;
 				this.summary += linechart.summary;
@@ -201,8 +199,7 @@ class MyDashboard extends PolymerElement {
 				this.summary += emo.summary;
 				
 				generalSummary.innerHTML = this.summary;
-				//console.log(this.summary);
-				observer.disconnect();
+				//observer.disconnect();
 			}
 		});
 

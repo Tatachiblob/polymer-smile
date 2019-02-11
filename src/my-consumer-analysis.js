@@ -76,7 +76,7 @@ class MyDashboard extends PolymerElement {
 		</div>
 		
 		<div class="row">
-			<my-basic id="basicViews" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-basic>
+			<my-basic id="basicViews" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}} style="display:none"></my-basic>
 		</div>
 		<div class="row">
 			<my-linechart id="linechart" class="col-md-6" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}} style="display:none"></my-linechart>
@@ -188,41 +188,15 @@ class MyDashboard extends PolymerElement {
 		var generalSummary = this.$.generalSummary;
 		
 		var observer = new MutationObserver(function(mutations) {
-		  //  if (basicViews.summary != undefined && linechart.summary != undefined && gender.summary != undefined && age.summary != undefined) {
-		    //if (mutations.type == 'attributes') {
-				//console.log(mutations);
-				/*do {
+		    if (basicViews.summary != undefined && gender.summary != undefined && age.summary != undefined && emo.summary != undefined) {
 				this.summary = basicViews.summary;
-				this.summary += linechart.summary;
-				this.summary += barchart.summary;
 				this.summary += age.summary;
 				this.summary += gender.summary;
 				this.summary += emo.summary;
-				} while ((this.summary).isNaN);*/
-				//window.addEventListener('load', function() {
+				generalSummary.innerHTML = this.summary;
 					
-				console.log(basicViews.summary);
-					this.summary = basicViews.summary;
-					//this.summary += linechart.summary;
-					//this.summary += barchart.summary;
-					this.summary += age.summary;
-					this.summary += gender.summary;
-					this.summary += emo.summary;
-					generalSummary.innerHTML = this.summary;
-				//});
-				/*setTimeout(function(){
-					this.summary = basicViews.summary;
-					//this.summary += linechart.summary;
-					//this.summary += barchart.summary;
-					this.summary += age.summary;
-					this.summary += gender.summary;
-					this.summary += emo.summary;
-					generalSummary.innerHTML = this.summary;
-				}, 5000);*/
-				
-				//console.log(this.summary);
-			//	observer.disconnect();
-			//}
+				//observer.disconnect();
+			}
 		});
 
 		observer.observe(document, {attributes: true, childList: true, characterData: true, subtree:true});
