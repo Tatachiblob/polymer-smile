@@ -76,28 +76,30 @@ class MyDashboard extends PolymerElement {
 		</div>
 		
 		<div class="row">
-			<my-basic id="basicViews" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}} style="display:none"></my-basic>
+			<my-basic id="basicViews" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-basic>
 		</div>
 		<div class="row">
 			<my-linechart id="linechart" class="col-md-6" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}} style="display:none"></my-linechart>
 			<my-piechart id="piechart" class="col-md-6" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}} style="display:none"></my-piechart>
 		</div>
-		<my-wordcloud id="wordcloud" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}} style="display:none"></my-wordcloud>
-		<my-genderchart id="gender" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}} style="display:none"></my-genderchart>
-		<my-histogram id="age" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}} style="display:none"></my-histogram>
+		<div class="row">
+		<my-genderchart id="gender" class="col-md-6" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-genderchart>
+		<my-histogram id="age" class="col-md-6" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-histogram>
+		</div>
 		<my-barchart id="barchart" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}} style="display:none"></my-barchart>
-		<my-emotion id="emo" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}} style="display:none"></my-emotion>
-		<my-map id="googleMap" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}} style="display:none"></my-map>
+		<my-emotion id="emo" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-emotion>
+		<my-wordcloud id="wordcloud" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-wordcloud>
+		
+		<my-map id="googleMap" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}} style="display:none" onload=""></my-map>
 		<my-modal id="mymodal" style="display:none"></my-modal>	
 		
 		<div class="card" id="generalSummary"></div>
-		<div class="card" id="heatSum" style="display:none"></div>
 		`;
 	}
 	
 	ready() {
 		super.ready();
-		this.__generateSummary();
+		//this.__generateSummary();
 		this.$.hashtagAjax.generateRequest();
 		this.__createListeners();
 	}
@@ -151,8 +153,7 @@ class MyDashboard extends PolymerElement {
 			this.push('mediaIdArr', node.ig_object.id);
 		
 		//console.log("After: " + this.mediaIdArr.length);
-		this.dispatchEvent(new CustomEvent('calendarDates', {detail: {calendarDates: res}}));
-
+		
 		this.$.basicViews.setRawMediaData(res);
 		this.$.barchart.setRawMediaData(res);
 		
@@ -174,7 +175,7 @@ class MyDashboard extends PolymerElement {
 		this.$.barchart.generateBarRequest();
         this.$.emo.generateEmoRequest();
 		this.$.googleMap.generateMapRequest();
-		//this.__generateSummary();
+		this.__generateSummary();
 	}
 	
 	__generateSummary() {
@@ -185,40 +186,67 @@ class MyDashboard extends PolymerElement {
 		var gender = this.$.gender;
 		var emo = this.$.emo;
 		var generalSummary = this.$.generalSummary;
-		var heatSum = this.$.heatSum;
 		
 		var observer = new MutationObserver(function(mutations) {
-		    if (basicViews.summary != undefined && linechart.summary != undefined && gender.summary != undefined && age.summary != undefined && barchart.summary != undefined && emo.summary != undefined) {
+		  //  if (basicViews.summary != undefined && linechart.summary != undefined && gender.summary != undefined && age.summary != undefined) {
 		    //if (mutations.type == 'attributes') {
-				console.log(mutations);
-				this.summary = '';
-				this.summary += basicViews.summary;
+				//console.log(mutations);
+				/*do {
+				this.summary = basicViews.summary;
 				this.summary += linechart.summary;
 				this.summary += barchart.summary;
-				this.summary += heatSum.innerHTML;
 				this.summary += age.summary;
 				this.summary += gender.summary;
 				this.summary += emo.summary;
+				} while ((this.summary).isNaN);*/
+				//window.addEventListener('load', function() {
+					
+				console.log(basicViews.summary);
+					this.summary = basicViews.summary;
+					//this.summary += linechart.summary;
+					//this.summary += barchart.summary;
+					this.summary += age.summary;
+					this.summary += gender.summary;
+					this.summary += emo.summary;
+					generalSummary.innerHTML = this.summary;
+				//});
+				/*setTimeout(function(){
+					this.summary = basicViews.summary;
+					//this.summary += linechart.summary;
+					//this.summary += barchart.summary;
+					this.summary += age.summary;
+					this.summary += gender.summary;
+					this.summary += emo.summary;
+					generalSummary.innerHTML = this.summary;
+				}, 5000);*/
 				
-				generalSummary.innerHTML = this.summary;
 				//console.log(this.summary);
-				observer.disconnect();
-			}
+			//	observer.disconnect();
+			//}
 		});
 
 		observer.observe(document, {attributes: true, childList: true, characterData: true, subtree:true});
+	}
+	
+	__generateSummaryV2(event) {
+		console.log(event);
+		event = event.detail;
+		
+		console.log(event.summary);
 	}
 	
 	//Add the listeners of the element
 	__createListeners(){
 		this.$.basicViews.addEventListener('modal1', this.__listenModal.bind(this));
 		this.$.basicViews.addEventListener('modal2', this.__listenModal2.bind(this));
+		this.$.basicViews.addEventListener('summary', this.__generateSummaryV2.bind(this));
 		this.$.linechart.addEventListener('modal1', this.__listenModal.bind(this));
 		this.$.gender.addEventListener('modal1', this.__listenModal.bind(this));
 		this.$.age.addEventListener('modal1', this.__listenModal.bind(this));
         this.$.emo.addEventListener('modal1', this.__listenModal.bind(this));
 		this.$.wordcloud.addEventListener('modal1', this.__listenModal.bind(this));
 		this.$.wordcloud.addEventListener('modal1', this.__listenModal.bind(this));
+		
 	}
 	
 	__listenModal(event){
@@ -248,7 +276,7 @@ class MyDashboard extends PolymerElement {
 	}
 	
 	__createUrl(hashtag, startDate, endDate){
-		return "http://localhost:8080/smile/ig_media?filter={'hashtag':'" + hashtag + "'}&filter={'ig_object.taken_at_timestamp':{'$gte':" + startDate + "}}&filter={'ig_object.taken_at_timestamp':{'$lte':" + endDate + "}}&keys={'ig_object.id':1}&keys={'ig_object.display_url':1}&keys={'ig_object.taken_at_timestamp':1}&keys={'ig_object.edge_liked_by':1}&keys={'ig_object.edge_media_to_comment':1}&pagesize=1000"
+		return "http://localhost:8080/smile/ig_media?filter={'hashtag':'" + hashtag + "'}&filter={'ig_object.taken_at_timestamp':{'$gte':" + startDate + "}}&filter={'ig_object.taken_at_timestamp':{'$lte':" + endDate + "}}&keys={'ig_object.id':1}&keys={'ig_object.display_url':1}&keys={'ig_object.edge_liked_by':1}&keys={'ig_object.edge_media_to_comment':1}&pagesize=1000"
 	}
 
 }

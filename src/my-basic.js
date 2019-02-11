@@ -70,6 +70,10 @@ class MyBasic extends PolymerElement {
 		`;
 	}
 	
+	/*ready() {
+		super.ready();
+	}*/
+	
 	static get properties() {
 		return {
 			hashtag: {
@@ -110,6 +114,12 @@ class MyBasic extends PolymerElement {
 		this.dispatchEvent(new CustomEvent('modal2', {detail: {title: "Brands Detected", imgs: this.googleLogoData}}));
 	}
 	
+	__sendSummary() {
+		console.log(this.summary);
+		
+		this.dispatchEvent(new CustomEvent('summary', {detail: {summary: this.summary}}));
+	}
+	
 	__displayBasicInfo(googleData){
 		this.totalImgs = this.rawMediaData.length;
 		
@@ -148,7 +158,7 @@ class MyBasic extends PolymerElement {
 			this.totalComments = totalComments;
 		} catch (e) {}
 		
-		if (window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "consumer-analysis" || 
+		if (window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "consumer-analysis.html" || 
 			window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "post-event" || 
 			window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "expected-actual") {
 			this.summary = "<li>The total number of images scraped is " + this.totalImgs + ".</li>";
@@ -162,6 +172,7 @@ class MyBasic extends PolymerElement {
 			this.summary += "<li>Total number of logos: " + this.totalBrand + "</li>";
 			this.summary += "<li>Total number of comments: " + this.totalComments + "</li><br>";
 		}
+		console.log(this.summary);
 	}
 	
 	__handleResponse(event, res){

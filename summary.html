@@ -59,6 +59,10 @@
         <!-- Nav CSS -->
         <link href="css/custom.css" rel="stylesheet">
 
+		<script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+        <script> zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
+        ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "ee6b7db5b51705a13dc2339db3edaf6d"];</script>
+
         <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
         <link rel='stylesheet' href='fullcalendar/fullcalendar.css' />
         <script src='fullcalendar/fullcalendar.js'></script>
@@ -218,13 +222,13 @@
                                 <a href="#"><i class="fa fa-clone fa-fw nav_icon"></i>Generate Reports<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="marketing-proposal">Marketing Proposal Template</a>
+                                        <a href="marketing-proposal.html">Marketing Proposal Template</a>
                                     </li>
                                     <li>
-                                        <a href="expected-actual">Expected vs. Actual Monitoring</a>
+                                        <a href="expected-actual.html">Expected vs. Actual Monitoring</a>
                                     </li>
                                     <li>
-                                        <a href="consumer-analysis">Face and Content Analysis Report</a>
+                                        <a href="consumer-analysis.html">Face and Content Analysis Report</a>
                                     </li>
                                     <li>
                                         <a href="post-event">Post Event Report</a>
@@ -233,7 +237,7 @@
                                     <!--<a href="engagement-report">Engagement Report</a>-->
                                     <!--</li>-->
                                     <li>
-                                        <a href="comparison-report">Comparison Report</a>
+                                        <a href="comparison-report.html">Comparison Report</a>
                                     </li>
                                 </ul>
                             </li>
@@ -241,16 +245,16 @@
                                 <a href="customize"><i class="fa fa-pencil-square-o fa-fw nav_icon"></i>Customize Visualizations</a>
                             </li>
                             <li>
-                                <a href="search-archive"><i class="fa fa-search fa-fw nav_icon"></i>Search Archive</a>
+                                <a href="search-archive.html"><i class="fa fa-search fa-fw nav_icon"></i>Search Archive</a>
                             </li>
                             <li>
-                                <a href="calendar-event"><i class="fa fa-plus fa-fw nav_icon"></i>Create Calendar Event</a>
+                                <a href="calendar-event.html"><i class="fa fa-plus fa-fw nav_icon"></i>Create Calendar Event</a>
                             </li>
                             <li>
-                                <a href="threshold-target"><i class="fa fa-bullseye fa-fw nav_icon"></i>Add Threshold Target</a>
+                                <a href="threshold-target.html"><i class="fa fa-bullseye fa-fw nav_icon"></i>Add Threshold Target</a>
                             </li>
                             <li>
-                                <a href="reports-archive"><i class="fa fa-archive fa-fw nav_icon"></i>Reports Archive</a>
+                                <a href="reports-archive.html"><i class="fa fa-archive fa-fw nav_icon"></i>Reports Archive</a>
                             </li>
                         </ul>
                     </div>
@@ -290,6 +294,10 @@
                         <my-dashboard></my-dashboard>
                         <div class="card" style="display:none">
                             <div id="calendar_events" style="font-family: 'Roboto';"></div>
+                        </div>
+
+						<div class="card" style="display:none">
+                            <div id="calendar-chart"></div>
                         </div>
 
                         <div class="row">
@@ -355,7 +363,51 @@
                     renderCalendar(events);
                 }, false);
             });
+			
+			document.querySelector('my-dashboard').addEventListener('calendarDates', function(event){
 
+                    var calendarDates = formatChartData(event.detail.calendarDates);
+                    initializeCalendarConfig(calendarDates);
+
+                    zingchart.loadModules('calendar', function(){
+                        zingchart.render({
+                            id : 'calendar-chart',
+                            data : calendarConfig,
+                            height: '100%',
+                            width: '100%'
+                        });
+                    });
+					
+					var i, j, calendarProcessing, calendarArray, currMax, indices, calendar;
+	
+					calendarArray = [];
+					indices = [];
+					calendarProcessing = calendarConfig.options.values;
+					
+					for (i = 0; i < calendarProcessing.length; i ++) {
+						calendarArray.push(calendarProcessing[i][1]);
+					}
+					
+					for (i = 1; i <= 3; i ++) {
+						currMax = calendarArray.indexOf(Math.max(...calendarArray));
+						indices.push(currMax);
+						calendarArray[currMax] = -1;
+					}
+					
+					calendar = "<center><b>Images Posted per Day: Top Days with Most Number of Images</b></center><br><table class='table table-bordered'><thead class='thead-dark'><tr><th scope='col'>#</th><th scope='col'>Date</th><th scope='col'>No. of Images</th></tr></thead><tbody>";
+
+					for (i = 0; i < 3; i ++) {
+						calendar += "<tr><th scope='row'>" + (i + 1) + "</th><td>" + calendarProcessing[indices[i]][0] + "</td><td>" + calendarProcessing[indices[i]][1] + " images</td></tr>";
+					}
+					
+					//this.summary = calendar;
+					document.querySelector('my-dashboard').$.heatSum.innerHTML = calendar; 
+					//document.querySelector('my-dashboard').setAttribute("heatSum", calendar); 
+					//console.log(document.querySelector('my-dashboard').$.heatSum.innerHTML = );
+                });
+
+			
+			
             function renderCalendar(events){
                 $('#calendar_events').fullCalendar({
                     height: 480,
@@ -396,6 +448,189 @@
                 if (day.length < 2) day = '0' + day;
 
                 return [year, month, day].join('-');
+            }
+			
+			function formatChartData(igMedia){
+                //console.log(igMedia);
+                var chartData = [];
+                var timestamps = [];
+                var groupByDate = new Map();
+
+                for (let node of igMedia){
+                    chartData.push(node);
+                    timestamps.push(node.ig_object.taken_at_timestamp);
+                }
+                var year = new Date(timeConverter(Math.min( ...timestamps ))).getFullYear();
+                sessionStorage.setItem("year", year);
+
+                for(let a of chartData){
+                    if(groupByDate.has(timeConverter(a.ig_object.taken_at_timestamp))){
+                        //console.log("IF");
+                        var tempA = groupByDate.get(timeConverter(a.ig_object.taken_at_timestamp));
+                        tempA.push(a);
+
+                        groupByDate.set(timeConverter(a.ig_object.taken_at_timestamp), tempA);
+                    }
+                    else{
+                        //console.log("ELSE");
+                        groupByDate.set(timeConverter(a.ig_object.taken_at_timestamp), [a]);
+                    }
+                }
+
+                var formattedData = [];
+                var events = getEvent();
+                // console.log(events);
+                for (var key of groupByDate.keys()) {
+                    var temp = [];
+                    temp.push(key);
+                    temp.push(groupByDate.get(key).length);
+                    var eName = "";
+                    for(let e of events){
+                        if((e.dateRange).includes(key)){
+                            eName += e.eventName + ", ";
+                        }
+                    }
+                    temp.push(eName.substring(0, eName.length - 2));
+                    formattedData.push(temp);
+                }
+                return formattedData;
+            }
+
+            function getEvent(){
+                var url = 'http://localhost:8080/smile/event_calendar?filter={"hashtags":"' + sessionStorage.getItem('hashtagInput') + '"}&np', events = [], temp = {};
+                var getDateArray = function(start, end) {
+                    var arr = new Array();
+                    var dt = new Date(start);
+                    var de = new Date(end);
+                    while (dt <= de) {
+                        arr.push(formatDate2(new Date(dt)));
+                        dt.setDate(dt.getDate() + 1);
+                    }
+                    return arr;
+                }
+
+                $.ajax({
+                    async: false,
+                    type: "GET",
+                    url: url,
+                    contentType: "application/json",
+                    error: function(jqXHR, textStatus, errorThrown){},
+                    success: function(data){
+                        // console.log(data);
+                        for(let a of data){
+                            temp.eventName = a.event_name, temp.eventDesc = a.event_desc;
+                            temp.dateRange = getDateArray(formatDate(a.start_period), formatDate(a.end_period));
+                            events.push(temp);
+                            temp = {};
+                        }
+                    }
+                });
+                return events;
+            }
+
+            function formatDate2(d) {
+                var month = '' + (d.getMonth() + 1),
+                    day = '' + d.getDate(),
+                    year = d.getFullYear();
+
+                if (month.length < 2) month = '0' + month;
+                if (day.length < 2) day = '0' + day;
+
+                return [year, month, day].join('-');
+            }
+
+            function timeConverter(UNIX_timestamp){
+                var a = new Date(UNIX_timestamp * 1000);
+                var months = ['01','02','03','04','05','06','07','08','09','10','11','12'];
+                var year = a.getFullYear();
+                var month = months[a.getMonth()];
+                var date = a.getDate();
+                var hour = a.getHours();
+                var min = a.getMinutes();
+                var sec = a.getSeconds();
+                var time = year + '-' + month + '-' + date;
+                time = time.replace(/\b(\d{1})\b/g, '0$1');
+                return time;
+            }
+
+            function initializeCalendarConfig(calendarDates) {
+                calendarConfig = {
+                    type: 'calendar',
+                    title: {
+                        text: 'Instagram Images Posted Heat Map',
+                        paddingLeft: "0px",
+                        fontColor: '#333333',
+                        fontFamily: 'Helvetica',
+                        fontSize: 18,
+                        fontWeight: 'normal',
+                        textAlign: 'left',
+                        x: '10%',
+                        y: '9%',
+                        width: '60%',
+                    },
+                    subtitle: {
+                        text: "No. of Images: ",
+                        textAlign: 'left',
+                        paddingLeft: "700px"
+                    },
+                    options: {
+                        year: {
+                            text: sessionStorage.getItem('year'),
+                        },
+                        rows: 2,
+                        palette: ['none','#3F51B5'],
+                        scale: {
+                            x: '75%',
+                            y: '15%',
+                            height: 10,
+                            width: '30%'
+                        },
+                        month: {
+                            item: {
+                                fontColor: 'gray',
+                                fontSize: 9
+                            },
+                            outline: {
+                                borderColor: '#BDBDBD',
+                                active: {
+                                    borderColor: '#BDBDBD'
+                                }
+                            }
+                        },
+                        weekday: {
+                            values: ['','Mon','','Wed','','Fri',''],
+                            item:{
+                                fontColor: 'gray',
+                                fontSize:9
+                            }
+                        },
+                        day: {
+                            inactive: {
+                                backgroundColor: '#F5F5F5'
+                            }
+                        },
+                        values: calendarDates//[["2018-10-02",2,"A"],["2018-10-01",6,"A"],["2018-09-30",6,"A"],["2018-09-29",7,"A"],["2018-09-28",7,"A"],["2018-09-27",6,"A"],["2018-09-26",8,"A"],["2018-09-25",5,"A"],["2018-09-24",9,"A"],["2018-09-23",3,"A"],["2018-09-22",3,"A"],["2018-09-21",4,"A"],["2018-09-20",6,"A"],["2018-09-19",9,"A"],["2018-09-18",5,"A"],["2018-09-17",12,"A"],["2018-09-15",2,"A"]]
+                    },
+                    plot: {
+                        tooltip: {
+                            text: '%data-day:<br><br>%v pictures<br>uploaded.<br><br>Events on this day: %data-info0',
+                            alpha: 0.8,
+                            backgroundColor: '#212121',
+                            borderColor: '#212121',
+                            borderRadius: 3,
+                            fontColor: 'white',
+                            fontFamily: 'Lucida Grande',
+                            fontSize: 12,
+                            offsetY: -10,
+                            textAlign: 'center',
+                            textAlpha: 1
+                        }
+                    },
+                    plotarea: {
+                        marginTop: '30%',
+                        marginBottom:'10%'
+                    }
+                };
             }
         </script>
     </body>
