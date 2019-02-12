@@ -1,5 +1,7 @@
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 import '@polymer/iron-ajax/iron-ajax.js';
+import '@polymer/paper-input/paper-input';
+import '@polymer/paper-button/paper-button';
 import '@vaadin/vaadin-grid';
 import 'highcharts/highcharts.js';
 import 'highcharts/modules/wordcloud.js';
@@ -39,6 +41,20 @@ class MyWordcloud extends PolymerElement {
 			debounce-duration="300">
 		</iron-ajax>
 		
+		<div class="row">
+			<div class="col-md-5 col-md-offset-7">
+				<div class="card">
+					<div class="row">
+						<div class="col-md-9">
+							<paper-input label="Wordcloud Count Limit" type="number" error-message="Numbers only!" value="{{wordLimit}}"></paper-input>
+						</div>
+						<div class="col-md-3" style="margin-top: 10px;">
+							<paper-button raised on-click="__wordcloudLimit">OK</paper-button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div class="card">
 			<div class="card">
 				<div id="wordcloudCaption"></div>
@@ -106,7 +122,12 @@ class MyWordcloud extends PolymerElement {
 			mediaIdArr: Array,
 			ajaxUrl: String,
 			topCaption: Array,
-			topHashtag: Array
+			topHashtag: Array,
+			wordcloudData: Array,
+			wordLimit: {
+				type: Number,
+				value: 30,
+			}
 		}
 	}
 	
@@ -114,9 +135,16 @@ class MyWordcloud extends PolymerElement {
 		this.ajaxUrl = this.__createUrl();
 		this.$.wordcloudCaptionHashtagAjax.generateRequest();
 	}
+
+	__wordcloudLimit(){
+		this.wordLimit = Math.abs(this.wordLimit);
+		// console.log(this.data);
+		this.__renderWordcloud(this.data);
+	}
 	
 	__handleResponse(event, res){
 		//console.log(this.ajaxUrl);
+		this.data = res.response._embedded;
 		this.__renderWordcloud(res.response._embedded);
 	}
 	
@@ -140,7 +168,7 @@ class MyWordcloud extends PolymerElement {
 			}],
 			
 			title: {
-				text: "Wordcloud of the Top 30 Words from Text Captions"
+				text: "Wordcloud of the Top " + this.wordLimit + " Words from Text Captions"
 			}
 		});
 		
@@ -160,7 +188,7 @@ class MyWordcloud extends PolymerElement {
 				}
 			}],
 			title: {
-				text: 'Wordcloud of the Top 30 Linked Hashtags'
+				text: 'Wordcloud of the Top ' + this.wordLimit + ' Linked Hashtags'
 			}
 		});
 	}
@@ -267,7 +295,7 @@ class MyWordcloud extends PolymerElement {
 		delete frequencies[""];
 
 		var sorted = Object.keys(frequencies).sort(function(a,b){return frequencies[b]-frequencies[a]});
-		for(var i = 0; i < sorted.length && i < 30; i++){
+		for(var i = 0; i < sorted.length && i < this.wordLimit; i++){
 			tempObj.name = sorted[i];
 			tempObj.weight = frequencies[sorted[i]];
 			tempObj.url = [];
@@ -311,7 +339,7 @@ class MyWordcloud extends PolymerElement {
 		var tempObj = {};
 		hashtagArr = [];
 		var sorted = Object.keys(frequency).sort(function(a,b){return frequency[b]-frequency[a]});
-		for(var i = 0; i < sorted.length && i < 30; i++){
+		for(var i = 0; i < sorted.length && i < this.wordLimit; i++){
 			tempObj.name = sorted[i];
 			tempObj.weight = frequency[sorted[i]];
 			tempObj.url = [];
