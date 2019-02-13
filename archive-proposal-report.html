@@ -1,0 +1,325 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>SMILE: A Social Media Image Listening Engine</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="Modern Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design"/>
+    <script type="application/x-javascript"> addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel='stylesheet' type='text/css'/>
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel='stylesheet' type='text/css'/>
+    <!-- Graph CSS -->
+    <link href="css/lines.css" rel='stylesheet' type='text/css'/>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <!--<link href="css/font-awesome.css" rel="stylesheet">-->
+
+    <link rel="stylesheet" type="text/css" href="css/calendar-chart.css">
+    <!-- jQuery -->
+    <script src="js/jquery.min.js"></script>
+    <!----webfonts--->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Overlock' rel='stylesheet' type='text/css'>
+    <!---//webfonts--->
+    <!-- Nav CSS -->
+    <link href="css/custom.css" rel="stylesheet">
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="js/metisMenu.min.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/dataRetrieve.js" type="module"></script>
+    <!-- Graph JavaScript -->
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+
+    <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+    <script> zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
+    ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "ee6b7db5b51705a13dc2339db3edaf6d"];</script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/variwide.js"></script>
+    <script src="https://code.highcharts.com/modules/wordcloud.js"></script>
+    <script src="https://code.highcharts.com/modules/boost.js"></script>
+    <!-- Graph JavaScript -->
+    <script src="js/d3.v3.js"></script>
+    <script src="js/rickshaw.js"></script>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
+    <script src="js/daterangepicker.js" type="module"></script>
+
+    <style>
+        .padding-10 {
+            padding: 5px;
+            margin: auto;
+        }
+        #map {
+            height: 400px;  /* The height is 400 pixels */
+            width: 100%;  /* The width is the width of the web page */
+        }
+    </style>
+</head>
+<body>
+<div id="wrapper">
+    <!-- Navigation -->
+    <nav class="top1 navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="home"><img src="smile_logo.png" style="height: 30px; display: inline;">
+                SMILE &nbsp<span style="font-size: 20px;">A Social Media Image Listener Engine</span></a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <!-- /.navbar-header -->
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-comments-o"></i><span class="badge" id="notif-count">0</span></a>
+                <ul class="dropdown-menu" id="notif-dropdowns">
+                </ul>
+            </li>
+        </ul>
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li>
+                        <a href="./dashboard.html"><i class="fa fa-dashboard fa-fw nav_icon"></i>Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="./content.html"><i class="fa fa-picture-o fa-fw nav_icon"></i>Content Analysis</a>
+                    </li>
+                    <li>
+                        <a href="./face-content.html"><i class="fa fa-smile-o fa-fw nav_icon"></i>Face Analysis</a>
+                    </li>
+                    <li>
+                        <a href="./summary.html"><i class="fa fa-file-text fa-fw nav_icon"></i>General Summary</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-clone fa-fw nav_icon"></i>Generate Reports<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="marketing-proposal.html">Marketing Proposal Template</a>
+                            </li>
+                            <li>
+                                <a href="expected-actual.html">Expected vs. Actual Monitoring</a>
+                            </li>
+                            <li>
+                                <a href="consumer-analysis.html">Face and Content Analysis Report</a>
+                            </li>
+                            <li>
+                                <a href="post-event">Post Event Report</a>
+                            </li>
+                            <!--<li>-->
+                            <!--<a href="engagement-report">Engagement Report</a>-->
+                            <!--</li>-->
+                            <li>
+                                <a href="comparison.html">Comparison Report</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="customize"><i class="fa fa-pencil-square-o fa-fw nav_icon"></i>Customize Visualizations</a>
+                    </li>
+                    <li>
+                        <a href="search-archive.html"><i class="fa fa-search fa-fw nav_icon"></i>Search Archive</a>
+                    </li>
+                    <li>
+                        <a href="calendar-event.html"><i class="fa fa-plus fa-fw nav_icon"></i>Create Calendar Event</a>
+                    </li>
+                    <li>
+                        <a href="threshold-target.html"><i class="fa fa-bullseye fa-fw nav_icon"></i>Add Threshold Target</a>
+                    </li>
+                    <li>
+                        <a href="reports-archive.html"><i class="fa fa-archive fa-fw nav_icon"></i>Reports Archive</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.sidebar-collapse -->
+        </div>
+        <!-- /.navbar-static-side -->
+    </nav>
+    <div id="page-wrapper">
+        <div class="graphs">
+
+            <div class="content_bottom">
+                <!--PUT REPORT CONTENT HERE-->
+                <div id="forPrinting" class="tab-content">
+
+                    <div class="xs form-horizontal form-group">
+                        <!--<label id="more-details" class="control-label"><h3>Report Title</h3></label>-->
+                        <div class="col-sm-12" style="text-align: center">
+                            <label id="more-details"></label><br>
+                            <label id="datetoday"></label><br><br><br>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane active" id="horizontal-form">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label for="eventName" class="col-sm-2 control-label" id="label1">Event Name</label>
+                                <div class="col-sm-8">
+                                    <input type="text" disabled class="form-control1" id="eventName" placeholder="">
+                                </div>
+                                <div class="col-sm-2">
+                                    <!--<p class="help-block">Your help text!</p>-->
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="eventDesc" class="col-sm-2 control-label" id="label2">Event Description</label>
+                                <div class="col-sm-8"><textarea disabled name="txtarea1" id="eventDesc" cols="50" rows="40" class="form-control1" placeholder=""></textarea></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="eventdaterange" class="col-sm-2 control-label" id="label3">Event Duration</label>
+                                <div class="col-sm-8">
+                                    <div class="input-group">
+                                        <!--<input type="text" class="form-control1 date-own" id="eventdaterange">-->
+                                        <input id="eventdaterange" disabled type="text" class="form-control1" name="daterange" />
+                                        <span class="input-group-addon"><i class="fa fa-calendar"></i>&nbsp </span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <!--<p class="help-block">Your help text!</p>-->
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="eventHashtags" class="col-sm-2 control-label">Suggested Hashtags</label>
+                                <div class="col-sm-8">
+                                    <input type="text" disabled class="form-control1" id="eventHashtags" placeholder="">
+                                </div>
+                                <div class="col-sm-2">
+                                    <!--<p class="help-block">Your help text!</p>-->
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="eventColorShade" class="col-sm-2 control-label">Color Shade</label>
+                                <div class="col-sm-8">
+                                    <input type="text" disabled class="form-control1" id="eventColorShade" placeholder="">
+                                </div>
+                                <div class="col-sm-2">
+                                    <!--<p class="help-block">Your help text!</p>-->
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="eventLocation" class="col-sm-2 control-label">Suggested Location</label>
+                                <div class="col-sm-8">
+                                    <input type="text" disabled class="form-control1" id="eventLocation" placeholder="">
+                                </div>
+                                <div class="col-sm-2">
+                                    <!--<p class="help-block">Your help text!</p>-->
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="eventDesc" class="col-sm-2 control-label">Other Comments</label>
+                                <div class="col-sm-8">
+                                    <textarea name="otherComments" disabled id="otherComments" cols="50" rows="40" class="form-control1"></textarea>
+                                </div>
+                            </div><br><br><br>
+
+                            <div class="form-group">
+                                <label for="preparedBy" class="col-sm-2 control-label">Prepared By: </label>
+                                <div class="col-sm-4">
+                                    <input type="text" disabled class="form-control1" id="preparedBy">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="approvedBy" class="col-sm-2 control-label">Approved By: </label>
+                                <div class="col-sm-4">
+                                    <input type="text" disabled class="form-control1" id="approvedBy">
+                                </div>
+                            </div>
+
+                            <!--<h5>Prepared By: _______________________________________</h5><br>-->
+                            <!--<h5>Approved By: _______________________________________</h5><br><br>-->
+                        </form>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <div class="pull-right">
+
+                    <a href="#">
+                        <button id="printAgain" type="button" class="btn btn_5 btn-lg btn-default">Print</button>
+                    </a>
+                    <!--<a href="calendar-event">-->
+                    <!--<button id="createNewEvent" type="button" class="btn btn_5 btn-lg btn-primary">Create New Event</button>-->
+                    <!--</a>-->
+                    <!--<a href="threshold-target">-->
+                    <!--<button type="button" class="btn btn_5 btn-lg btn-primary">Add Threshold Target</button>-->
+                    <!--</a>-->
+                </div>
+                <div class="clearfix"></div>
+
+            </div>
+
+            <div class="copy">
+                <p>Copyright &copy; 2018 SMILE</p>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h2 class="modal-title" id="title"></h2>
+                </div>
+                <div class="modal-body" id="pics"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+    <!-- /#page-wrapper -->
+</div>
+<!-- /#wrapper -->
+<!-- Bootstrap Core JavaScript -->
+<!--<script src="js/daterangepicker.js"></script>-->
+<script src="js/bootstrap.min.js"></script>
+<!--
+<script src="js/dbUtils.js" type="module"></script>
+<script src="js/scraper.js" type="module"></script>
+<script src="js/showDbPath.js" type="module"></script>
+<script src="js/reports.js" type="module"></script>
+<script src="js/printing.js"></script>
+-->
+<script src="js/view-proposal-report.js" type="module"></script>
+<script src="js/event-notif2.js" type="module"></script>
+
+<!--<script src="js/pie-highcharts.js" type="module"></script>-->
+<!--<script src="js/calendar-zingchart.js" type="module"></script>-->
+<!--<script src="js/color-highcharts.js" type="module"></script>-->
+<!--<script src="js/word-cloud-caption.js" type="module"></script>-->
+<!--<script src="js/word-cloud-related-hashtags.js" type="module"></script>-->
+<!--<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDn-kpTRu7LwAuYYbDJ3mZo2evvmH2qL9U&callback=initMap"></script>-->
+<!--<script src="js/googlemaps.js" type="module"></script>-->
+<!--<script src="js/googlemaps-core.js" type="text/javascript"></script>-->
+<script>
+    document.getElementById("more-details").innerHTML = '<label id="more-details" class="control-label"><h3 id="reportTitle">Marketing Proposal of event name</h3><h5 style="text-align: center">As of date</h5></label>';
+</script>
+</body>
+</html>
