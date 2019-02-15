@@ -36,7 +36,10 @@ class MyEmotion extends PolymerElement {
 			mediaIdArr: Array,
 			ajaxUrl: String,
 			emotionImageIDs: Object,
-			summary: String
+			summary: {
+				type: String,
+				notify: true
+			}
 		}
 	}
 	
@@ -122,35 +125,30 @@ class MyEmotion extends PolymerElement {
 	}
 	
 	__createSummary(chart) {
-		var currMax, indexOfMax, x, x2, i, numOfImages, ageRanges, xArray, x2Array;
+		var i, j, chartEmotionData, emotion, temp;
 		
-		xArray = [];
-		x2Array = [];
-		numOfImages = chart.series[0].yData;
+		chartEmotionData = chart.series[0].data;
+		emotion = [];
+		temp = {};
 		
-		ageRanges = "<center><b>Facial Emotion Recognition: Top Emotions in Images Collected</b></center><br><table class='table table-bordered'><thead class='thead-dark'><tr><th scope='col'>#</th><th scope='col'>Emotion</th><th scope='col'>Percentage</th></tr></thead><tbody>";
-		
-		for (i = 1; i <= 3; i ++) {
-			currMax = Math.max(...numOfImages);
-			console.log(currMax);
-			indexOfMax = numOfImages.indexOf(currMax);
-			console.log(indexOfMax);
-			numOfImages[indexOfMax] = 0;
-			
-			x = chart.series[0].data[indexOfMax].category;
-			x2 = Math.round(currMax);
-			
-			xArray.push(x);
-			x2Array.push(x2);
+		for (i = 0; i < chartEmotionData.length; i ++) {
+			temp.firstCol = chartEmotionData[i].category;
+			temp.secondCol = chartEmotionData[i].y;
+			emotion.push(temp);
+			temp = [];
 		}
 		
-		for (i = 0; i < xArray.length; i ++) {
-			ageRanges += "<tr><th scope='row'>" + (i + 1) + "</th><td>" + xArray[i] + "</td><td>" + x2Array[i] + "%</td></tr>";
+		for (i = 0; i < emotion.length; i ++) {
+			for (j = i; j < emotion.length; j ++) {
+				if (emotion[i].secondCol < emotion[j].secondCol) {
+					emotion.splice(i, 0, emotion.splice(j, 1)[0]);
+				}
+			}
+			emotion[i].secondCol += "%";
 		}
-		ageRanges += "</tbody></table>";
 		
-		this.summary = ageRanges;
-		console.log(this.summary);
+		this.summary = emotion;
+		//console.log(this.summary);
 	}
 	__callModal(title, data){
 		this.dispatchEvent(new CustomEvent('modal1', {detail: {title: title, imgs: data}}));

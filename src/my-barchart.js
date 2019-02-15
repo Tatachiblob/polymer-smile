@@ -51,7 +51,10 @@ class MyBarChart extends PolymerElement {
 			finalArray: Array,
 			rawMediaData: Array,
 			likesArray: Array,
-			summary: String
+			summary: {
+				type: String,
+				notify: true
+			}
 		}
 	}
 	
@@ -668,41 +671,37 @@ class MyBarChart extends PolymerElement {
 			this.likesArray[i] = Math.round(this.likesArray[i] / totalLikes * 10000) / 100;
 		}
 		
-		console.log(totalLikes);
-		console.log(this.likesArray);
+		//console.log(totalLikes);
+		//console.log(this.likesArray);
 	}
 	
 	__createSummary(chart) {
-		var currMax, indexOfMax, x, x2, i, numOfImages, ageRanges, xArray, x2Array;
+		var i, j, chartLikesData, likes, temp;
 		
-		xArray = [];
-		x2Array = [];
-		numOfImages = chart.series[0].yData;
-		
-		for (i = 1; i <= 3; i ++) {
-			currMax = Math.max(...numOfImages);
-			indexOfMax = numOfImages.indexOf(currMax);
-			numOfImages[indexOfMax] = 0;
-			
-			console.log(chart.series[0].data[indexOfMax].category);
-			x = chart.series[0].data[indexOfMax].category;
-			x2 = Math.floor(chart.series[0].data[indexOfMax].y);
-			
-			xArray.push(x);
-			x2Array.push(x2);
-		}
+		chartLikesData = chart.series[0].data;
+		likes = [];
+		temp = {};
 	
-		ageRanges = "<center><b>Image Categories: Top Categories with Most Likes</b></center><br><table class='table table-bordered'><thead class='thead-dark'><tr><th scope='col'>#</th><th scope='col'>Category</th><th scope='col'>Likes Percentage</th></tr></thead><tbody>";
-
-		for (i = 0; i < xArray.length; i ++) {
-			ageRanges += "<tr><th scope='row'>" + (i + 1) + "</th><td>" + xArray[i] + "</td><td>" + x2Array[i] + "%</td></tr>";
+		for (i = 0; i < chartLikesData.length; i ++) {
+			temp.firstCol = chartLikesData[i].category;
+			temp.secondCol = chartLikesData[i].y;
+			likes.push(temp);
+			temp = [];
 		}
-		ageRanges += "</tbody></table>";
 		
-		this.summary = ageRanges;
-		console.log(this.summary);
-
+		for (i = 0; i < likes.length; i ++) {
+			for (j = i; j < likes.length; j ++) {
+				if (likes[i].secondCol < likes[j].secondCol) {
+					likes.splice(i, 0, likes.splice(j, 1)[0]);
+				}
+			}
+			likes[i].secondCol += "%";
+		}
+		
+		this.summary = likes;
+		//console.log(this.summary);
 	}
+	
 	__createUrl(){
 		return "http://localhost:8080/smile/ig_processing_ms?filter={'hashtag':'" + this.hashtag + "'}&filter={'ig_id':{'$in':" + JSON.stringify(this.mediaIdArr) + "}}&pagesize=1000&keys={'vision':1}&keys={'ig_url':1}&keys={'ig_id':1}"
 	}

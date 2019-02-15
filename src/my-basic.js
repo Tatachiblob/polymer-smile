@@ -70,10 +70,6 @@ class MyBasic extends PolymerElement {
 		`;
 	}
 	
-	/*ready() {
-		super.ready();
-	}*/
-	
 	static get properties() {
 		return {
 			hashtag: {
@@ -87,7 +83,10 @@ class MyBasic extends PolymerElement {
 			totalLikes: String,
 			totalBrand: String,
 			totalComments: String,
-			summary: String
+			summary: {
+				type: Array,
+				notify: true
+			}
 		}
 	}
 	
@@ -158,20 +157,24 @@ class MyBasic extends PolymerElement {
 			this.totalComments = totalComments;
 		} catch (e) {}
 		
+		var tempSum = {};
+		
 		if (window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "consumer-analysis.html" || 
 			window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "post-event" || 
 			window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "expected-actual") {
-			this.summary = "<li>The total number of images scraped is " + this.totalImgs + ".</li>";
-			this.summary += "<li>The images altogether have " + this.totalLikes + " likes.</li>";
-			this.summary += "<li>There were " + this.totalBrand + " logos detected in the scraped images.</li>";
-			this.summary += "<li>The total number of user comments from all images is " + this.totalComments + ".</li><br>";
+			tempSum.imgs = "The total number of images scraped is " + this.totalImgs + ".";
+			tempSum.likes = "The images altogether have " + this.totalLikes + " likes.";
+			tempSum.brands = "There were " + this.totalBrand + " logos detected in the scraped images.";
+			tempSum.comments = "The total number of user comments from all images is " + this.totalComments + ".";
 		} else if (window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "comparison-report" || 
 				   window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "summary.html") {
-			this.summary = "<li>Total number of images: " + this.totalImgs + "</li>";
-			this.summary += "<li>Total number of likes: " + this.totalLikes + "</li>";
-			this.summary += "<li>Total number of logos: " + this.totalBrand + "</li>";
-			this.summary += "<li>Total number of comments: " + this.totalComments + "</li><br>";
+			tempSum.imgs = "Total number of images: " + this.totalImgs;
+			tempSum.likes = "Total number of likes: " + this.totalLikes;
+			tempSum.brands = "Total number of logos: " + this.totalBrand;
+			tempSum.comments = "Total number of comments: " + this.totalComments;
 		}
+		
+		this.summary = tempSum;
 		console.log(this.summary);
 	}
 	

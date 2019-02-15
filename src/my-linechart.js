@@ -37,7 +37,10 @@ class MyLinechart extends PolymerElement {
 			ajaxUrl: String,
 			modalTitle: String,
 			imgLinks: Array,
-			summary: String
+			summary: {
+				type: Array,
+				notify: true
+			}
 		}
 	}
 	
@@ -205,29 +208,36 @@ class MyLinechart extends PolymerElement {
 	}
 	
 	__createSummary(chart) {
-			console.log(chart.series);
-			console.log();
-
-			var i, calendarProcessing, calendarArray, currMax, indices, calendar;
-			
-			calendarArray = chart.series[0].yData;
-			indices = [];
-			calendarProcessing = chart.series[0].data;
-			
-			for (i = 1; i <= 3; i ++) {
-				currMax = calendarArray.indexOf(Math.max(...calendarArray));
-				indices.push(currMax);
-				calendarArray[currMax] = -1;
+		var i, j, calendarProcessing, calendar, temp;
+		
+		calendarProcessing = chart.series[0].data;
+		calendar = [];
+		temp = {};
+		
+		for (i = 0; i < calendarProcessing.length; i ++) {
+			temp.firstCol = (calendarProcessing[i].category + " " + chart.series[0].name);
+			temp.secondCol = calendarProcessing[i].y;
+			calendar.push(temp);
+			temp = [];
+		}
+		
+		var max;
+		
+		for (i = 0; i < calendar.length; i ++) {
+			for (j = i; j < calendar.length; j ++) {
+				if (calendar[i].secondCol < calendar[j].secondCol) {
+					calendar.splice(i, 0, calendar.splice(j, 1)[0]);
+				}
 			}
-			calendar = "<center><b>Volume Trend: Top Months with Most Number of Images</b></center><br><table class='table table-bordered'><thead class='thead-dark'><tr><th scope='col'>#</th><th scope='col'>Month</th><th scope='col'>No. of Images</th></tr></thead><tbody>";
-			
-			for (i = 0; i < 3; i ++) {
-				calendar += "<tr><th scope='row'>" + (i + 1) + "</th><td>" + calendarProcessing[indices[i]].category + " " + chart.series[0].name + "</td><td>" + calendarProcessing[indices[i]].y + " images</td></tr>";
+			if (calendar[i].secondCol == 1) {
+				calendar[i].secondCol += " image";
+			} else {
+				calendar[i].secondCol += " images";
 			}
-			calendar += "</tbody></table>";
-			
-			this.summary = calendar;
-			console.log(this.summary);
+		}
+		
+		this.summary = calendar;
+		//console.log(this.summary);
 	}
 	
 	__createUrl(){

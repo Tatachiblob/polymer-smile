@@ -37,7 +37,10 @@ class MyHistogram extends PolymerElement {
 			mediaIdArr: Array,
 			ajaxUrl: String,
 			ageImgs: Array,
-			summary: String
+			summary: {
+				type: String,
+				notify: true
+			}
 		}
 	}
 	
@@ -131,38 +134,34 @@ class MyHistogram extends PolymerElement {
 	}
 	
 	__createSummary(chart) {
-		var currMax, indexOfMax, x, x2, i, numOfImages, ageRanges, xArray, x2Array, x3Array;
+		var i, j, chartAgeData, age, temp;
 		
-		xArray = [];
-		x2Array = [];
-		x3Array = [];
-		numOfImages = chart.series[0].yData;
+		chartAgeData = chart.series[0].data;
+		age = [];
+		temp = {};
 		
-		ageRanges = "<center><b>Age Facial Recognition: Top Ages that Post Images Frequently</b></center><br><table class='table table-bordered'><thead class='thead-dark'><tr><th scope='col'>#</th><th scope='col'>Age range</th><th scope='col'>No. of Images</th></tr></thead><tbody>";
-		
-		for (i = 1; i <= 3; i ++) {
-			currMax = Math.max(...numOfImages);
-			x3Array.push(currMax);
-			indexOfMax = numOfImages.indexOf(currMax);
-			numOfImages[indexOfMax] = 0;
-			
-			x = Math.floor(chart.series[0].data[indexOfMax].x);
-			x2 = Math.floor(chart.series[0].data[indexOfMax].x2);
-			
-			xArray.push(x);
-			x2Array.push(x2);
+		for (i = 0; i < chartAgeData.length; i ++) {
+			temp.firstCol = Math.floor(chartAgeData[i].x) + " - " + Math.floor(chartAgeData[i].x2) + " years old";
+			temp.secondCol = chartAgeData[i].y;
+			age.push(temp);
+			temp = [];
 		}
 		
-		//xArray.sort();
-		//x2Array.sort();
-		
-		for (i = 0; i < xArray.length; i ++) {
-			ageRanges += "<tr><th scope='row'>" + (i + 1) + "</th><td>" + xArray[i] + " - " + x2Array[i] + " years old</td><td>" + x3Array[i] + " images</tr>";
+		for (i = 0; i < age.length; i ++) {
+			for (j = i; j < age.length; j ++) {
+				if (age[i].secondCol < age[j].secondCol) {
+					age.splice(i, 0, age.splice(j, 1)[0]);
+				}
+			}
+			if (age[i].secondCol == 1) {
+				age[i].secondCol += " image";
+			} else {
+				age[i].secondCol += " images";
+			}
 		}
-		ageRanges += "</tbody></table>";
 		
-		this.summary = ageRanges;
-		console.log(this.summary);
+		this.summary = age;
+		//console.log(this.summary);
 	}
 	
 	__callModal(title, data){

@@ -38,7 +38,10 @@ class MyGenderchart extends PolymerElement {
 			ajaxUrl: String,
 			maleSrc: Array,
 			femaleSrc: Array,
-			summary: String
+			summary: {
+				type: String,
+				notify: true
+			}
 		}
 	}
 	
@@ -155,43 +158,32 @@ class MyGenderchart extends PolymerElement {
 	}
 	
 	__createSummary(chart) {
-		var i, j, genderArray, gender, percentage, percentageArray, chartGenderData;
+		var i, j, chartGenderData, gender, temp;
 		
-		genderArray = [];
-		percentageArray = [];
 		chartGenderData = chart.series[0].data;
-		
-		percentage = "";
-		gender = "<center><b>Gender Facial Recognition: Gender Percentages</b></center><br><table class='table table-bordered'><thead class='thead-dark'><tr><th scope='col'>#</th><th scope='col'>Gender</th><th scope='col'>Percentage</th></tr></thead><tbody>";
+		gender = [];
+		temp = {};
 		
 		for (i = 0; i < chartGenderData.length; i ++) {
 			if (chartGenderData[i].name != "") {
-				percentageArray.push(chartGenderData[i].percentage);
+				temp.firstCol = (chartGenderData[i].name + "s");
+				temp.secondCol = Math.round(chartGenderData[i].percentage);
+				gender.push(temp);
+				temp = [];
 			}
 		}
 		
-		percentageArray.sort(function(a,b){return b-a;});
-		
-		for (i = 0; i < percentageArray.length; i ++) {
-			for (j = 0; j < chartGenderData.length; j ++) {
-				if (chartGenderData[j].percentage == percentageArray[i]) {
-					genderArray.push((chartGenderData[j].name).toLowerCase() + "s");
+		for (i = 0; i < gender.length; i ++) {
+			for (j = i; j < gender.length; j ++) {
+				if (gender[i].secondCol < gender[j].secondCol) {
+					gender.splice(i, 0, gender.splice(j, 1)[0]);
 				}
 			}
+			gender[i].secondCol += "%";
 		}
-		
-		for (i = 0; i < percentageArray.length; i ++) {
-			percentageArray[i] = Math.round(percentageArray[i]);
-		}
-		
-		for (i = 0; i < genderArray.length; i ++) {
-			gender += "<tr><th scope='row'>" + (i + 1) + "</th><td>" + genderArray[i] + "</td><td>" + percentageArray[i] + "%</td></tr>";
-		}
-		
-		gender += "</tbody></table>";
 		
 		this.summary = gender;
-		console.log(this.summary);
+		//console.log(this.summary);
 	}
 	
 	__createUrl(){
