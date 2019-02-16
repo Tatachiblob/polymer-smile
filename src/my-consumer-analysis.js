@@ -96,7 +96,7 @@ class MyDashboard extends PolymerElement {
 		<my-emotion id="emo" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}} summary={{emoSummary}}></my-emotion>
 		<my-wordcloud id="wordcloud" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}}></my-wordcloud>
 		
-		<my-modal id="mymodal" style="display:none"></my-modal>	
+		<my-modal id="mymodal"></my-modal>	
 		
 		<div class="card">
 			<li>{{basicSummary.imgs}}</li>

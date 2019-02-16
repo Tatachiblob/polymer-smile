@@ -310,50 +310,99 @@
             <!-- /#page-wrapper -->
         </div>
         <script type="text/javascript">
-            $(document).ready(function(){
-                var curHashtag = sessionStorage.getItem('hashtagInput');
-                var insights = sessionStorage.getItem('generalInsights');
-                var start = sessionStorage.getItem('startDate');
-                var end = sessionStorage.getItem('endDate');
+            $(document).ready(function(){ 
+				var i, curHashtag, insights, start, end, eventsList, currDate, unix, url;
 
-                if(insights != null){
-                    document.querySelector('my-insight-input').textValue = insights;
-                }
+				eventsList = [];
+				currDate = (new Date).getTime();
+				unix = (currDate - (currDate % 1000)) / 1000;
+				url = "http://localhost:8080/smile/event_calendar?filter={end_period:{$gte:" + unix + "}}";
 
-                if(curHashtag == null){
-                    curHashtag = "animolasalle";
-                }
+				$.ajax({
+					type: "GET",
+					url: url,
+					dataType: "json",
+					contentType: "application/json",
+					error: function(jqXHR, textStatus, errorThrown){
+						//console.log(jqXHR);
+						if(jqXHR.status == 201){
+							//document.querySelector('#successModal').open();
+							// alert('Event Created!');
+							// window.location.href = "/smile/threshold-target";
+						}else{
+							/*$('#errorTitle').text("Duplicate Event Name");
+							$('#errorMsg').html("<p>Please Enter a Different Event Name.</p>");
+							document.querySelector('#errorModal').open();*/
+							//console.log('event name duplication error');
+							// alert('Event name already in use. Please user a different event name.');
+						}
+					},
+					success: function(data){
+						eventsList = data._embedded;
+						console.log(eventsList);
+						
+						if (eventsList.length != 0) {
+							curHashtag = eventsList[0].hashtags;
+							start = eventsList[0].start_period;
+							end = eventsList[0].end_period;
+						
+							for (i = 1; i < eventsList.length; i ++) {
+								if (eventsList[i].start_period <= unix && eventsList[i].start_period < start) {
+									curHashtag = eventsList[i].hashtags;
+									start = eventsList[i].start_period;
+									end = eventsList[i].end_period;
+								}
+							}
+						}
+						
+						if(curHashtag != null){
+							insights = sessionStorage.getItem('generalInsights');
+						
+							if(insights != null){
+								document.querySelector('my-insight-input').textValue = insights;
+							}
 
-                if(start != null){
-                    document.querySelector('my-dashboard').startDate = start;
-                }
+							if(start != null){
+								document.querySelector('my-dashboard').startDate = start * 1000;
+							}
 
-                if(end != null){
-                    document.querySelector('my-dashboard').endDate = end;
-                }
+							if(end != null){
+								document.querySelector('my-dashboard').endDate = end * 1000;
+							}
 
-                $('#mainHashtag').text(curHashtag);
-                $('#dateRange').text(document.querySelector('my-dashboard').sDate + " to " + document.querySelector('my-dashboard').eDate);
+							$('#mainHashtag').text(curHashtag);
+							$('#dateRange').text(document.querySelector('my-dashboard').sDate + " to " + document.querySelector('my-dashboard').eDate);
 
-                document.querySelector('my-dashboard').setAttribute('hashtag', curHashtag);
-                document.querySelector('my-dashboard').__handleClick();
+							document.querySelector('my-dashboard').setAttribute('hashtag', curHashtag);
+							document.querySelector('my-dashboard').__handleClick();
 
-                var events = [];
-                var a = document.querySelector('iron-ajax');
-                a.generateRequest();
-                a.addEventListener('iron-ajax-response', function(e){
-                    var tempEvent = {};
-                    for(let z of e.detail.__data.response._embedded){
-                        tempEvent.title = z.event_name;
-                        tempEvent.desc = z.event_desc;
-                        tempEvent.hashtag = z.hashtags;
-                        tempEvent.start = formatDate(z.start_period);
-                        tempEvent.end = formatDate(z.end_period) + "T23:59:00";
-                        events.push(tempEvent);
-                        tempEvent = {};
-                    }
-                    renderCalendar(events);
-                }, false);
+							var events = [];
+							var a = document.querySelector('iron-ajax');
+							a.generateRequest();
+							a.addEventListener('iron-ajax-response', function(e){
+								var tempEvent = {};
+								for(let z of e.detail.__data.response._embedded){
+									tempEvent.title = z.event_name;
+									tempEvent.desc = z.event_desc;
+									tempEvent.hashtag = z.hashtags;
+									tempEvent.start = formatDate(z.start_period);
+									tempEvent.end = formatDate(z.end_period) + "T23:59:00";
+									events.push(tempEvent);
+									tempEvent = {};
+								}
+								renderCalendar(events);
+							}, false);
+						} else {
+							console.log($("#more-details")[0]);
+							$("my-dashboard").remove();
+							$("#more-details")[0].innerHTML = "<strong>There are no current events.</strong>";
+						}
+						
+						//document.querySelector('#successModal').open();
+						// alert('Event Created!');
+						//window.location.href = "/smile/threshold-target";
+					}
+				});
             });
 
             function renderCalendar(events){
