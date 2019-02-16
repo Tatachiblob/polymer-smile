@@ -28,6 +28,17 @@ class MyDashboard extends PolymerElement {
 				display: block;
 				padding: 10px;
 			}
+			
+			table {
+			  	overflow-y: scroll;
+			}
+			
+			.table-wrapper-scroll-y {
+				display: block;
+				max-height: 435px;
+				overflow-y: auto;
+				-ms-overflow-style: -ms-autohiding-scrollbar;
+			}
 		</style>
 		
 		<iron-ajax
@@ -91,7 +102,7 @@ class MyDashboard extends PolymerElement {
 			<li>{{basicSummary.imgs}}</li>
 			<li>{{basicSummary.likes}}</li>
 			<li>{{basicSummary.brands}}</li>
-			<li>{{basicSummary.comments}}</li>
+			<li>{{basicSummary.comments}}</li><br>
 			
 			<center><b>Age Facial Recognition: Top Ages that Post Images Frequently</b></center><br>
 			<div class="table-wrapper-scroll-y">
@@ -113,7 +124,7 @@ class MyDashboard extends PolymerElement {
 						</template>
 					</tbody>
 				</table>
-			</div>
+			</div><br>
 			
 			<center><b>Gender Facial Recognition: Gender Percentages</b></center><br>
 			<div class="table-wrapper-scroll-y">
