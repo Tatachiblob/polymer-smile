@@ -320,8 +320,8 @@
         <script src="./event-notif.js" type="module"></script>
         <script type="text/javascript">
             function notif(eventOid, isNew){
-                console.log("notif method inovoked");
-                console.log(eventOid + " " + isNew);
+                // console.log("notif method inovoked");
+                // console.log(eventOid + " " + isNew);
                 var url = "http://localhost:8080/smile/event_calendar/" + eventOid;
                 if(isNew == 1) {
                     $.ajax({
@@ -401,9 +401,6 @@
                             }
                         }
                     });
-
-                    console.log(events);
-
                     renderCalendar(events);
                 }, false);
 

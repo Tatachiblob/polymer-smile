@@ -5,6 +5,8 @@ import '@polymer/paper-button/paper-button';
 import '@vaadin/vaadin-grid';
 import 'highcharts/highcharts.js';
 import 'highcharts/modules/wordcloud.js';
+import 'highcharts/modules/exporting.js';
+import 'highcharts/modules/offline-exporting.js';
 import './bootstrap-style.js';
 import './shared-styles.js';
 
@@ -248,11 +250,13 @@ class MyWordcloud extends PolymerElement {
 			for(let caption of a.ig_object.edge_media_to_caption.edges){
 				var text = caption.node.text;
 				for(let b of this.__findHashtags(text)){
-					temp.hashtag = b;
-					temp.url = a.ig_object.display_url;
-					hashtagArr.push(b);
-					anotherHashtagArr.push(temp);
-					temp = {};
+					if(b != curHashtag) {
+                        temp.hashtag = b;
+                        temp.url = a.ig_object.display_url;
+                        hashtagArr.push(b);
+                        anotherHashtagArr.push(temp);
+                        temp = {};
+                    }
 				}
 			}
 		}
@@ -303,7 +307,6 @@ class MyWordcloud extends PolymerElement {
 			tempObj = {};
 		}
 
-		console.log(obj);
 		this.topCaption = obj;
 		return obj;
 	}
@@ -347,7 +350,6 @@ class MyWordcloud extends PolymerElement {
 			tempObj = {};
 		}
 
-		console.log(hashtagArr);
 		this.topHashtag = hashtagArr;
 		return hashtagArr;
 	}

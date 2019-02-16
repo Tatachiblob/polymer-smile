@@ -3,6 +3,8 @@ import '@polymer/iron-ajax/iron-ajax.js';
 import '@vaadin/vaadin-grid';
 import 'highcharts/highcharts.js';
 import 'highcharts/modules/wordcloud.js';
+import 'highcharts/modules/exporting.js';
+import 'highcharts/modules/offline-exporting.js';
 import './bootstrap-style.js';
 import './shared-styles.js';
 
