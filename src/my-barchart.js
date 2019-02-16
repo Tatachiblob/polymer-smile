@@ -152,6 +152,30 @@ class MyBarChart extends PolymerElement {
 								p.category = "happiness";
 							//console.log(this.emotionImageIDs[p.category.toLowerCase()]);
 							this.__callModal("Images with emotion of " + p.category, this.emotionImageIDs[p.category.toLowerCase()]);*/
+							let i, category, tempArray;
+								
+							tempArray = [];
+							let p = e.point;
+							console.log(p);
+							console.log(this.finalArray);
+							
+							switch (p.category) {
+								case "Friends": category = 0; break;
+								case "Selfies": category = 1; break;
+								case "Gadget": category = 2; break;
+								case "Food": category = 3; break;
+								case "Pet": category = 4; break;
+								case "Fashion": category = 5; break;
+								case "Scene/Activity": category = 6; break;
+								case "Others": category = 7; break;
+							}
+							
+							for (i = 0; i < this.finalArray[category].length; i ++) {
+								tempArray.push(this.finalArray[category][i].ig_url);
+							}
+							
+							console.log(tempArray);
+							this.__callModal(p.category, tempArray);
 						}.bind(this)
 					}
 				}

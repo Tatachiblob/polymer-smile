@@ -143,6 +143,8 @@ class MyContent extends PolymerElement {
     //Add the listeners of the element
     __createListeners(){
         this.$.labelWordcloud.addEventListener('modal1', this.__listenModal.bind(this));
+        this.$.piechart.addEventListener('modal1', this.__listenModal.bind(this));
+        this.$.barchart.addEventListener('modal1', this.__listenModal.bind(this));
     }
 
     __listenModal(event){
