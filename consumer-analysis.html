@@ -313,10 +313,11 @@
             $(document).ready(function(){ 
 				var i, curHashtag, insights, start, end, eventsList, currDate, unix, url;
 
+				console.log(start);
 				eventsList = [];
 				currDate = (new Date).getTime();
 				unix = (currDate - (currDate % 1000)) / 1000;
-				url = "http://localhost:8080/smile/event_calendar?filter={end_period:{$gte:" + unix + "}}";
+				url = "http://localhost:8080/smile/event_calendar?filter={end_period:{$gte:" + 1541200000 + "}}";
 
 				$.ajax({
 					type: "GET",
@@ -340,18 +341,22 @@
 					success: function(data){
 						eventsList = data._embedded;
 						console.log(eventsList);
+						var temp;
 						
 						if (eventsList.length != 0) {
-							curHashtag = eventsList[0].hashtags;
-							start = eventsList[0].start_period;
-							end = eventsList[0].end_period;
-						
-							for (i = 1; i < eventsList.length; i ++) {
-								if (eventsList[i].start_period <= unix && eventsList[i].start_period < start) {
-									curHashtag = eventsList[i].hashtags;
-									start = eventsList[i].start_period;
-									end = eventsList[i].end_period;
-								}
+							
+							for (i = 0; start == undefined && i < eventsList.length && eventsList[i].start_period <= unix; i ++) {
+								curHashtag = eventsList[i].hashtags;
+								start = eventsList[i].start_period;
+								end = eventsList[i].end_period;
+							}
+							
+							while (i < eventsList.length && eventsList[i].start_period < start) {
+								curHashtag = eventsList[i].hashtags;
+								start = eventsList[i].start_period;
+								end = eventsList[i].end_period;
+								
+								i ++;
 							}
 						}
 						
