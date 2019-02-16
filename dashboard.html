@@ -381,6 +381,29 @@
                         events.push(tempEvent);
                         tempEvent = {};
                     }
+
+                    $.ajax({
+                        async: false,
+                        type: "GET",
+                        url: 'http://localhost:8080/smile/user_search?filter={"search_hashtag":"' + sessionStorage.getItem('hashtagInput') + '"}',
+                        contentType: "application/json",
+                        error: function(jqXHR, textStatus, errorThrown){},
+                        success: function(data){
+                            for(let a of data._embedded) {
+                                for(let b of a.search_history) {
+                                    tempEvent.title = "Hashtag Scraped.";
+                                    tempEvent.desc = "Hashtag scraped on this day.";
+                                    tempEvent.hashtag = a.search_hashtag;
+                                    tempEvent.start = formatDate(b.searched_date);
+                                    events.push(tempEvent);
+                                    tempEvent = {};
+                                }
+                            }
+                        }
+                    });
+
+                    console.log(events);
+
                     renderCalendar(events);
                 }, false);
 
