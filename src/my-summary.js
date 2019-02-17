@@ -19,7 +19,7 @@ import './my-emotion';
 import './my-modal';
 import './my-map';
 
-class MyDashboard extends PolymerElement {
+class MySummary extends PolymerElement {
 	static get template() {
 		return html`
 		<style include="bootstrap-style"></style>
@@ -239,6 +239,7 @@ class MyDashboard extends PolymerElement {
 				</table>
 			</div>
 		
+		<button on-click="__saveSummary">Save summary</button>
 		</div>
 		`;
 	}
@@ -377,11 +378,35 @@ class MyDashboard extends PolymerElement {
 			};
 		});
 	}
+	
+	__saveSummary(event) {
+		var generalSummary = {};
 		
+		generalSummary.basicSummary = this.basicSummary; 
+		generalSummary.lineSummary = this.lineSummary;  
+		generalSummary.genderSummary = this.genderSummary; 
+		generalSummary.barSummary = this.barSummary;
+		generalSummary.ageSummary = this.ageSummary;
+		generalSummary.emoSummary = this.emoSummary;	
+		generalSummary.heatSummary = this.heatSummary;
+		
+		this.dispatchEvent(new CustomEvent('saveSummary', {detail: {summary: generalSummary}}));
+	}
+	
+	__retrieveSummary(generalSummary) {
+		this.basicSummary = generalSummary.basicSummary; 
+		this.lineSummary = generalSummary.lineSummary;  
+		this.genderSummary = generalSummary.genderSummary; 
+		this.barSummary = generalSummary.barSummary;
+		this.ageSummary = generalSummary.ageSummary;
+		this.emoSummary = generalSummary.emoSummary;	
+		this.heatSummary = generalSummary.heatSummary;
+	}
+	
 	__createUrl(hashtag, startDate, endDate){
 		return "http://localhost:8080/smile/ig_media?filter={'hashtag':'" + hashtag + "'}&filter={'ig_object.taken_at_timestamp':{'$gte':" + startDate + "}}&filter={'ig_object.taken_at_timestamp':{'$lte':" + endDate + "}}&keys={'ig_object.id':1}&keys={'ig_object.display_url':1}&keys={'ig_object.taken_at_timestamp':1}&keys={'ig_object.edge_liked_by':1}&keys={'ig_object.edge_media_to_comment':1}&pagesize=1000"
 	}
 
 }
 
-window.customElements.define('my-dashboard', MyDashboard);
+window.customElements.define('my-summary', MySummary);

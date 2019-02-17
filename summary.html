@@ -291,7 +291,7 @@
                             </div>
                         </center>
 
-                        <my-dashboard></my-dashboard>
+                        <my-summary></my-summary>
                         <div class="card" style="display:none">
                             <div id="calendar_events" style="font-family: 'Roboto';"></div>
                         </div>
@@ -333,18 +333,18 @@
                 }
 
                 if(start != null){
-                    document.querySelector('my-dashboard').startDate = start;
+                    document.querySelector('my-summary').startDate = start;
                 }
 
                 if(end != null){
-                    document.querySelector('my-dashboard').endDate = end;
+                    document.querySelector('my-summary').endDate = end;
                 }
 
                 $('#mainHashtag').text(curHashtag);
-                $('#dateRange').text(document.querySelector('my-dashboard').sDate + " to " + document.querySelector('my-dashboard').eDate);
+                $('#dateRange').text(document.querySelector('my-summary').sDate + " to " + document.querySelector('my-summary').eDate);
 
-                document.querySelector('my-dashboard').setAttribute('hashtag', curHashtag);
-                document.querySelector('my-dashboard').__handleClick();
+                document.querySelector('my-summary').setAttribute('hashtag', curHashtag);
+                document.querySelector('my-summary').__handleClick();
 
                 var events = [];
                 var a = document.querySelector('iron-ajax');
@@ -364,7 +364,7 @@
                 }, false);
             });
 			
-			document.querySelector('my-dashboard').addEventListener('calendarDates', function(event){
+			document.querySelector('my-summary').addEventListener('calendarDates', function(event){
 
                     var calendarDates = formatChartData(event.detail.calendarDates);
                     initializeCalendarConfig(calendarDates);
@@ -417,10 +417,15 @@
 					summary += "]";
 					console.log(calendar);
 					//this.summary = calendar;
-					//document.querySelector('my-dashboard').$.heatSum.setAttribute("heatSummary", calendar); 
-					document.querySelector('my-dashboard').setAttribute("heat-Summary", summary); 
-					//console.log(document.querySelector('my-dashboard').heatSummary);
+					//document.querySelector('my-summary').$.heatSum.setAttribute("heatSummary", calendar); 
+					document.querySelector('my-summary').setAttribute("heat-Summary", summary); 
+					//console.log(document.querySelector('my-summary').heatSummary);
                 });
+				
+			document.querySelector('my-summary').addEventListener('saveSummary', function(event){
+				//Input code here
+				console.log(event.detail.summary)
+			});
 			
             function renderCalendar(events){
                 $('#calendar_events').fullCalendar({
@@ -442,8 +447,8 @@
 
             function saveComment(){
                 var insights = document.querySelector('my-insight-input').textValue;
-                var start = document.querySelector('my-dashboard').startDate;
-                var end = document.querySelector('my-dashboard').endDate;
+                var start = document.querySelector('my-summary').startDate;
+                var end = document.querySelector('my-summary').endDate;
 
                 sessionStorage.setItem('generalInsights', insights);
                 sessionStorage.setItem('startDate', start);
