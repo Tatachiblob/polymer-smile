@@ -172,7 +172,7 @@ class MyDashboard extends PolymerElement {
 		this.$.age.addEventListener('modal1', this.__listenModal.bind(this));
 		this.$.wordcloud.addEventListener('modal1', this.__listenModal.bind(this));
 		this.$.wordcloud.addEventListener('modal1', this.__listenModal.bind(this));
-		this.$.piechart.addEventListener('modal1', this.__listenModal.bind(this));
+		this.$.piechart.addEventListener('modal2', this.__listenModal2.bind(this));
 	}
 	
 	__listenModal(event){
