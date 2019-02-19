@@ -169,7 +169,7 @@ class MyGenderchart extends PolymerElement {
 				temp.firstCol = (chartGenderData[i].name + "s");
 				temp.secondCol = Math.round(chartGenderData[i].percentage);
 				gender.push(temp);
-				temp = [];
+				temp = {};
 			}
 		}
 		
