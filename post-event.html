@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="generator" content="Polymer Starter Kit">
+        <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+        <title>SMILE: A Social Media Image Listening Engine</title>
+        <meta name="description" content="My App description">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+        <base href="/">
+
+        <link rel="icon" href="images/favicon.ico">
+
+        <!-- See https://goo.gl/OOhYW5 -->
+        <link rel="manifest" href="manifest.json">
+
+        <!-- See https://goo.gl/qRE0vM -->
+        <meta name="theme-color" content="#3f51b5">
+
+        <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="application-name" content="My App">
+
+        <!-- Add to homescreen for Safari on iOS -->
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="apple-mobile-web-app-title" content="My App">
+
+        <!-- Homescreen icons -->
+        <link rel="apple-touch-icon" href="images/manifest/icon-48x48.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="images/manifest/icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="96x96" href="images/manifest/icon-96x96.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="images/manifest/icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="192x192" href="images/manifest/icon-192x192.png">
+
+        <!-- Tile icon for Windows 8 (144x144 + tile color) -->
+        <meta name="msapplication-TileImage" content="images/manifest/icon-144x144.png">
+        <meta name="msapplication-TileColor" content="#3f51b5">
+        <meta name="msapplication-tap-highlight" content="no">
+
+        <!-- Calendar Zingchart CSS -->
+        <link rel="stylesheet" type="text/css" href="css/calendar-chart.css">
+        <!-- Bootstrap Core CSS -->
+        <link href="css/bootstrap.min.css" rel='stylesheet' type='text/css'/>
+        <!-- Custom CSS -->
+        <link href="css/style.css" rel='stylesheet' type='text/css'/>
+        <!-- Graph CSS -->
+        <link href="css/lines.css" rel='stylesheet' type='text/css'/>
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+        <!--<link href="css/font-awesome.css" rel="stylesheet">-->
+        <!-- jQuery -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <!----webfonts--->
+        <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet'type='text/css'>
+        <!---//webfonts--->
+        <!-- Nav CSS -->
+        <link href="css/custom.css" rel="stylesheet">
+
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+        <link rel='stylesheet' href='fullcalendar/fullcalendar.css' />
+        <script src='fullcalendar/fullcalendar.js'></script>
+
+        <script>
+        window.MyAppGlobals = { rootPath: '/' };
+        // Load and register pre-caching Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('service-worker.js', {
+                    scope: MyAppGlobals.rootPath
+                });
+            });
+        }
+        </script>
+
+        <!-- Load webcomponents-loader.js to check and load any polyfills your browser needs -->
+        <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+
+        <!-- Load your application shell -->
+        <script type="module" src="src/my-post-event.js"></script>
+        <script type="module" src="src/my-insight-input.js"></script>
+        <script type="module" src="node_modules/@polymer/iron-ajax/iron-ajax.js"></script>
+
+        <!-- Add any global styles for body, document, etc. -->
+        <style>
+            .card {
+                margin: 24px;
+                padding: 16px;
+                color: #757575;
+                border-radius: 5px;
+                background-color: #fff;
+                box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+            }
+            .dropdown-menu{
+                max-width: 400px;
+            }
+            .dropdown-menu li div {
+                display: block;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .padding-10 {
+                padding: 5px;
+                margin: auto;
+            }
+            /* makes the font 33% larger relative to the icon container */
+            .icon-lg {
+                font-size: 4em;
+                line-height: 0.75em;
+                vertical-align: -15%;
+            }
+
+            .form-inline .input-group {
+                width: auto;
+            }
+            #map {
+                height: 400px;  /* The height is 400 pixels */
+                width: 100%;  /* The width is the width of the web page */
+            }
+
+            /** SPINNER CREATION **/
+            #loadMe{
+                margin-top:25vh;
+            }
+            .loader {
+                position: relative;
+                text-align: center;
+                margin: 15px auto 35px auto;
+                z-index: 9999;
+                display: block;
+                width: 80px;
+                height: 80px;
+                border: 10px solid rgba(87, 172, 83, .3);
+                border-radius: 50%;
+                border-top-color: #57ac53;
+                animation: spin 1s ease-in-out infinite;
+                -webkit-animation: spin 1s ease-in-out infinite;
+            }
+
+            @keyframes spin {
+                to {
+                    -webkit-transform: rotate(360deg);
+                }
+            }
+
+            @-webkit-keyframes spin {
+                to {
+                    -webkit-transform: rotate(360deg);
+                }
+            }
+
+            .card {
+                margin: 24px;
+                padding: 16px;
+                color: #757575;
+                border-radius: 5px;
+                background-color: #fff;
+                box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+            }
+			
+			.navbar-default{
+				z-index: 100;
+			}
+        </style>
+    </head>
+    <body>
+        <iron-ajax
+            id="eventAjax"
+            url="http://localhost:8080/smile/event_calendar"
+            method="GET"
+            handle-as="json"
+            on-response="handleResponse"
+            debounce-duration="300">
+        </iron-ajax>
+
+        <div id="wrapper">
+            <!-- Navigation -->
+            <nav class="top1 navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="home"><img src="smile_logo.png" style="height: 30px; display: inline;">
+                        SMILE &nbsp<span style="font-size: 20px;">A Social Media Image Listener Engine</span></a>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <!-- /.navbar-header -->
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-comments-o"></i><span class="badge" id="notif-count">0</span></a>
+                        <ul class="dropdown-menu" id="notif-dropdowns">
+                        </ul>
+                    </li>
+
+                </ul>
+                <div class="navbar-default sidebar" role="navigation">
+                    <div class="sidebar-nav navbar-collapse">
+                        <ul class="nav" id="side-menu">
+                            <li>
+                                <a href="./dashboard.html"><i class="fa fa-dashboard fa-fw nav_icon"></i>Dashboard</a>
+                            </li>
+                            <li>
+                                <a href="./content.html"><i class="fa fa-picture-o fa-fw nav_icon"></i>Content Analysis</a>
+                            </li>
+                            <li>
+                                <a href="./face-content.html"><i class="fa fa-smile-o fa-fw nav_icon"></i>Face Analysis</a>
+                            </li>
+                            <li>
+                                <a href="./summary.html"><i class="fa fa-file-text fa-fw nav_icon"></i>General Summary</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-clone fa-fw nav_icon"></i>Generate Reports<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="marketing-proposal.html">Marketing Proposal Template</a>
+                                    </li>
+                                    <li>
+                                        <a href="expected-actual.html">Expected vs. Actual Monitoring</a>
+                                    </li>
+                                    <li>
+                                        <a href="consumer-analysis.html">Face and Content Analysis Report</a>
+                                    </li>
+                                    <li>
+                                        <a href="post-event">Post Event Report</a>
+                                    </li>
+                                    <!--<li>-->
+                                    <!--<a href="engagement-report">Engagement Report</a>-->
+                                    <!--</li>-->
+                                    <li>
+                                        <a href="comparison.html">Comparison Report</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="customize"><i class="fa fa-pencil-square-o fa-fw nav_icon"></i>Customize Visualizations</a>
+                            </li>
+                            <li>
+                                <a href="search-archive.html"><i class="fa fa-search fa-fw nav_icon"></i>Search Archive</a>
+                            </li>
+                            <li>
+                                <a href="calendar-event.html"><i class="fa fa-plus fa-fw nav_icon"></i>Create Calendar Event</a>
+                            </li>
+                            <li>
+                                <a href="threshold-target.html"><i class="fa fa-bullseye fa-fw nav_icon"></i>Add Threshold Target</a>
+                            </li>
+                            <li>
+                                <a href="reports-archive.html"><i class="fa fa-archive fa-fw nav_icon"></i>Reports Archive</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /.sidebar-collapse -->
+                </div>
+                <!-- /.navbar-static-side -->
+            </nav>
+            <div id="page-wrapper">
+                <div class="graphs">
+                    <div class="col_12">
+                        <div class="xs form-horizontal form-group">
+                            <label for="focusedinput" class="col-sm-2 control-label"><h3>Search</h3></label>
+                            <div class="col-sm-8">
+                                <input id="searchBar" type="text" class="form-control1" id="focusedinput"
+                                       placeholder='Enter hashtag here... e.g. "animolasalle"'>
+                            </div>
+                            <div class="col-sm-2">
+                                <p class="help-block">No need to put '#'</p>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="xs form-horizontal form-group form-inline">
+                            <div class="col-sm-12">
+                            </div>
+                        </div>
+
+                        <div class="clearfix"></div>
+                    </div>
+
+                    <div class="content_bottom">
+                        <center>
+                            <div class="col-sm-12">
+                                <label id="more-details"><strong>Face and Content Analysis Report for #<span id="mainHashtag"></span> from <span id="dateRange"></span></strong></label>
+                            </div>
+                        </center>
+
+                        <my-dashboard></my-dashboard>
+                        <div class="card" style="display:none">
+                            <div id="calendar_events" style="font-family: 'Roboto';"></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <my-insight-input></my-insight-input>
+                                <div class="pull-right">
+                                    <button type="button" class="btn btn_5 btn-lg btn-primary" onclick="saveComment()">Next: View Content Analysis >></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="copy">
+                        <p>Copyright &copy; 2018 SMILE</p>
+                    </div>
+                </div>
+            </div>
+            <!-- /#page-wrapper -->
+        </div>
+        <script type="text/javascript">
+            $(document).ready(function(){ 
+				var i, curHashtag, insights, start, end, eventsList, currDate, unix, url;
+
+				console.log(start);
+				eventsList = [];
+				currDate = (new Date).getTime();
+				unix = (currDate - (currDate % 1000)) / 1000;
+				url = "http://localhost:8080/smile/event_calendar?filter={end_period:{$lte:" + unix + "}}";
+
+				$.ajax({
+					type: "GET",
+					url: url,
+					dataType: "json",
+					contentType: "application/json",
+					error: function(jqXHR, textStatus, errorThrown){
+						//console.log(jqXHR);
+						if(jqXHR.status == 201){
+							//document.querySelector('#successModal').open();
+							// alert('Event Created!');
+							// window.location.href = "/smile/threshold-target";
+						}else{
+							/*$('#errorTitle').text("Duplicate Event Name");
+							$('#errorMsg').html("<p>Please Enter a Different Event Name.</p>");
+							document.querySelector('#errorModal').open();*/
+							//console.log('event name duplication error');
+							// alert('Event name already in use. Please user a different event name.');
+						}
+					},
+					success: function(data){
+						eventsList = data._embedded;
+						console.log(eventsList);
+						var temp;
+						
+						if (eventsList.length != 0) {
+							
+							for (i = 0; end == undefined && i < eventsList.length && eventsList[i].end_period <= unix; i ++) {
+								curHashtag = eventsList[i].hashtags;
+								start = eventsList[i].start_period;
+								end = eventsList[i].end_period;
+							}
+							
+							while (i < eventsList.length && eventsList[i].end_period > end) {
+								curHashtag = eventsList[i].hashtags;
+								start = eventsList[i].start_period;
+								end = eventsList[i].end_period;
+								
+								i ++;
+							}
+							
+							console.log(start);
+							console.log(end);
+						}
+						
+						if(curHashtag != null){
+							insights = sessionStorage.getItem('generalInsights');
+						
+							if(insights != null){
+								document.querySelector('my-insight-input').textValue = insights;
+							}
+
+							if(start != null){
+								document.querySelector('my-dashboard').startDate = start * 1000;
+							}
+
+							if(end != null){
+								document.querySelector('my-dashboard').endDate = end * 1000;
+							}
+
+							$('#mainHashtag').text(curHashtag);
+							$('#dateRange').text(document.querySelector('my-dashboard').sDate + " to " + document.querySelector('my-dashboard').eDate);
+
+							document.querySelector('my-dashboard').setAttribute('hashtag', curHashtag);
+							document.querySelector('my-dashboard').__handleClick();
+
+							var events = [];
+							var a = document.querySelector('iron-ajax');
+							a.generateRequest();
+							a.addEventListener('iron-ajax-response', function(e){
+								var tempEvent = {};
+								for(let z of e.detail.__data.response._embedded){
+									tempEvent.title = z.event_name;
+									tempEvent.desc = z.event_desc;
+									tempEvent.hashtag = z.hashtags;
+									tempEvent.start = formatDate(z.start_period);
+									tempEvent.end = formatDate(z.end_period) + "T23:59:00";
+									events.push(tempEvent);
+									tempEvent = {};
+								}
+								renderCalendar(events);
+							}, false);
+						} else {
+							console.log($("#more-details")[0]);
+							$("my-dashboard").remove();
+							$("#more-details")[0].innerHTML = "<strong>There are no current events.</strong>";
+						}
+						
+						//document.querySelector('#successModal').open();
+						// alert('Event Created!');
+						//window.location.href = "/smile/threshold-target";
+					}
+				});
+            });
+
+            function renderCalendar(events){
+                $('#calendar_events').fullCalendar({
+                    height: 480,
+                    width: 550,
+                    events: events,
+                    displayEventTime: false,
+                    eventRender: function(eventObj, el) {
+                        $(el).popover({
+                            title: eventObj.title,
+                            content: "#" + eventObj.hashtag + ".\n" + eventObj.desc,
+                            trigger: 'hover',
+                            placement: 'top',
+                            container: 'body'
+                        });
+                    },
+                });
+            }
+
+            function saveComment(){
+                var insights = document.querySelector('my-insight-input').textValue;
+                var start = document.querySelector('my-dashboard').startDate;
+                var end = document.querySelector('my-dashboard').endDate;
+
+                sessionStorage.setItem('generalInsights', insights);
+                sessionStorage.setItem('startDate', start);
+                sessionStorage.setItem('endDate', end);
+
+                window.location.href = './content.html';
+            }
+
+            function formatDate(date) {
+                var d = new Date(date * 1000),
+                    month = '' + (d.getMonth() + 1),
+                    day = '' + d.getDate(),
+                    year = d.getFullYear();
+
+                if (month.length < 2) month = '0' + month;
+                if (day.length < 2) day = '0' + day;
+
+                return [year, month, day].join('-');
+            }
+        </script>
+    </body>
+</html>

@@ -115,7 +115,7 @@ class MyGenderchart extends PolymerElement {
 		});
 		
 		if (window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "consumer-analysis.html" || 
-			window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "post-event" || 
+			window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "post-event.html" || 
 			window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "expected-actual" || 
 			window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "summary.html" || 
 			window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "dashboard.html") {

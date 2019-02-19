@@ -160,7 +160,7 @@ class MyBasic extends PolymerElement {
 		var tempSum = {};
 		
 		if (window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "consumer-analysis.html" || 
-			window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "post-event" || 
+			window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "post-event.html" || 
 			window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "expected-actual") {
 			tempSum.imgs = "The total number of images scraped is " + this.totalImgs + ".";
 			tempSum.likes = "The images altogether have " + this.totalLikes + " likes.";

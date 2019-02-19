@@ -118,7 +118,7 @@ class MyEmotion extends PolymerElement {
 		});
 		
 		if (window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "consumer-analysis.html" || 
-			window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "post-event" || 
+			window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "post-event.html" || 
 			window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "summary.html") {
 			this.__createSummary(myChart);
 		}
