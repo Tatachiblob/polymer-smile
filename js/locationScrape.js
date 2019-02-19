@@ -3,6 +3,7 @@ import { getDbPath } from './dbPath.js'
 
 export function instagramLocation(hashtag){
     var igMedia = getIGMediaNew(hashtag);
+    var middleProxy = "http://localhost:8084/com.arraylist.smile/api/v1/status?url=";
     var instagramCall = '', shortCode = '', igObject;
     var locationRestBody = [], locationName, locationRegion, tempLocationObj;
     var tempBody;
@@ -14,7 +15,7 @@ export function instagramLocation(hashtag){
             $.ajax({
                 async: false,
                 type: "GET",
-                url: instagramCall,
+                url: middleProxy + instagramCall,
                 dataType: "json",
                 success: function (response) {
                     igObject = response.graphql.shortcode_media;

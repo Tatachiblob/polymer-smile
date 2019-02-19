@@ -18,7 +18,7 @@ $(document).ready(function(){
 
     // Number of images needed for aggregation & visualization
 
-    var IMAGES_LIMIT = 200; // change to 1000 after development stage
+    var IMAGES_LIMIT = 100; // change to 1000 after development stage
 
     // Safe number of posts that can be scraped in Instagram per minute
     var IG_LIMIT = 3000;
@@ -33,6 +33,7 @@ $(document).ready(function(){
     var GOOGLE_CLOUDVISION_LIMIT = 20;
 
     // Instagram REST API URL call
+    var middleProxy = "http://localhost:8084/com.arraylist.smile/api/v1/status?url=";
     var url = "https://www.instagram.com/explore/tags/";
 
     // MongoDB REST API URL domain
@@ -125,7 +126,7 @@ $(document).ready(function(){
                         instagramLocation(hashtagInput);
                         alert("Yay! Done scraping!");
                         // redirect to dashboard
-                        window.location.href = "/smile/dashboard";
+                        window.location.href = "../dashboard.html";
 
                         //searchResultView.innerHTML = "<p>" + MSComputerVisionAPIResults + "</p><p>" + MSFaceAPIResults + "</p>";
                     }
@@ -169,7 +170,7 @@ $(document).ready(function(){
                 async: false,   // if this is true, then limitReached will not reflect the results
                 contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
                 type: 'GET',
-                url: sendUrl,
+                url: middleProxy + sendUrl,
                 success: function (data, textStatus, jqXHR) {
                     // get the image and details
                     totalPosts = data.graphql.hashtag.edge_hashtag_to_media.count;

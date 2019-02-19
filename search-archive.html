@@ -365,6 +365,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
             finalBody = {};
         }
+
+        if (typeof(Storage) !== "undefined") {
+            sessionStorage.setItem("hashtagInput", hashtag);
+        }
+
+        location.href = "http://localhost:8081/dashboard.html";
     }
 
     function timeConverter(UNIX_timestamp){
