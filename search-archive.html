@@ -300,8 +300,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     }
 
     function update(hashtag){
-        var domain = window.dbPath();
+        var domain = "http://localhost:8080";
         var rest = domain + "/smile/ig_media?filter={'hashtag':'" + hashtag + "'}&pagesize=1000";
+        var middleProxy = "http://localhost:8084/com.arraylist.smile/api/v1/status?url=";
         var igRest = '';
         var igShortCodes = [], tempShortCode = {};
 
@@ -327,7 +328,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             $.ajax({
                 async: false,
                 type: "GET",
-                url: igRest,
+                url: middleProxy + igRest,
                 dataType: "json",
                 success: function(response){
                     response = response.graphql.shortcode_media;
