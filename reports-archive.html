@@ -210,8 +210,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <tr>
                             <th>#</th>
                             <th>Report name</th>
-                            <th>Report start date</th>
-                            <th>Report end date</th>
                             <th>Created on</th>
                             <th></th>
                         </tr>
@@ -359,18 +357,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             success: function(response){
                 summaryReports = response._embedded;
                 for(var i = 0; i < summaryReports.length; i++){
-                    eventName = summaryReports[i].summaryReportName;
-                    createDate = summaryReports[i].created_at.$numberLong;
+                    eventName = summaryReports[i].title;
+                    createDate = summaryReports[i].created_timestamp.$numberLong;
                     createDate = createDate.slice(0, createDate.length - 3);
-                    startDate = summaryReports[i].start;
-                    endDate = summaryReports[i].end;
                     url = summaryReports[i]._id.$oid;
 
                     if(i % 2 == 0){
-                        tbodyHtml += '<tr class="active"><th scope="row">' + (i + 1) + '</th><td>' + eventName + '</td><td>' + timeConverter(startDate) + '</td><td>' + timeConverter(endDate) + '</td><td>' + timeConverter(createDate) + '<td><button class="btn btn-sm btn-default" onclick="redSummaryReport(\'' + url + '\')">View</button></td></tr>';
+                        tbodyHtml += '<tr class="active"><th scope="row">' + (i + 1) + '</th><td>' + eventName + '</td><td>' + timeConverter(createDate) + '<td><button class="btn btn-sm btn-default" onclick="redSummaryReport(\'' + url + '\')">View</button></td></tr>';
                     }
                     else{
-                        tbodyHtml += '<tr><th scope="row">' + (i + 1) + '</th><td>' + eventName + '</td><td>' +  timeConverter(startDate) + '</td><td>' + timeConverter(endDate) + '</td><td>' + timeConverter(createDate) + '<td><button class="btn btn-sm btn-default" onclick="redSummaryReport(\'' + url + '\')">View</button></td></tr>';
+                        tbodyHtml += '<tr><th scope="row">' + (i + 1) + '</th><td>' + eventName + '</td><td>' + timeConverter(createDate) + '<td><button class="btn btn-sm btn-default" onclick="redSummaryReport(\'' + url + '\')">View</button></td></tr>';
                     }
                 }
 
@@ -393,7 +389,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     }
 
     function redSummaryReport(oid){
-        location.href = "/SMILE/archive-summary-report.html?oid=" + oid;
+        location.href = "./archive-summary-report.html?oid=" + oid;
     }
 
     function timeConverter(UNIX_timestamp){

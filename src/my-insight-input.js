@@ -14,7 +14,7 @@ class MyInisghtInput extends PolymerElement {
          
          <div class="card">
             <h1>Insights</h1>
-            <paper-textarea rows="5" max-rows="5" value="{{textValue}}" label="Input your insights" always-float-label></paper-textarea>
+            <paper-textarea id="textAreaInput" rows="5" max-rows="5" value="{{textValue}}" label="Input your insights" always-float-label></paper-textarea>
          </div>
         `;
     }
@@ -26,6 +26,10 @@ class MyInisghtInput extends PolymerElement {
                 value: ""
             }
         }
+    }
+
+    disableTextArea(){
+        this.$.textAreaInput.disabled = true;
     }
 
 }

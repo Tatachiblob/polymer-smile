@@ -357,6 +357,8 @@
                     var generalSummary = document.querySelector('my-summary').__saveSummary();
                     generalSummary.insights = insights;
                     generalSummary.title = title;
+                    generalSummary.hashtag = document.querySelector('my-summary').hashtag;
+                    generalSummary.created_timestamp = new Date().getTime();
 
                     $.ajax({
                         async: false,
