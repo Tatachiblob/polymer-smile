@@ -78,7 +78,7 @@ class MyPieChart extends PolymerElement {
 	
 	__handleResponse2(event, res){
 		//console.log(res.response);
-		console.log(res.response._embedded);
+		//console.log(res.response._embedded);
 		this.finalArray = this.__mappingGoogleLabels(res.response._embedded, this.finalArray);
 		
 		this.__renderPieChart(res.response._embedded);
@@ -114,12 +114,9 @@ class MyPieChart extends PolymerElement {
 					point:{
 						events:{
 							click: function(e) {
-								let i, category, tempArray;
+								var h, i, p, category, tempArray, key;
 								
-								tempArray = [];
-								let p = e.point;
-								console.log(p);
-								console.log(this.finalArray);
+								p = e.point;
 								
 								switch (p.name) {
 									case "Friends": category = 0; break;
@@ -132,38 +129,27 @@ class MyPieChart extends PolymerElement {
 									case "Others": category = 7; break;
 								}
 								
-								for (i = 0; i < this.finalArray[category].length; i ++) {
-									tempArray.push(this.finalArray[category][i].ig_url);
+								tempArray = [];
+								h = 0;
+								
+								for (key in this.occurences[category]) {
+									if (this.occurences[category][key].length > 0) {
+										tempArray[h] = [];
+										tempArray[h].desc = key;
+										tempArray[h].ig = [];
+										
+										for (i = 0; i < this.occurences[category][key].length; i ++) {
+											tempArray[h].ig[i] = [];
+											tempArray[h].ig[i].desc = key;
+											tempArray[h].ig[i].ig_url = this.occurences[category][key][i];
+										}
+										
+										h ++;
+									}
 								}
 								
 								console.log(tempArray);
 								this.__callModal(p.name, tempArray);
-								/*var imagesArray = getCategoryImages(this.index);
-								console.log(imagesArray);
-								var i, tempstring, images = "", node;
-
-								for (node of Object.keys(imagesArray)) {
-									let image = imagesArray[node];
-									
-									if (image.length > 0) {
-										tempstring = '<div class="row">';
-										
-										for (i = 0; i < image.length; i ++) {
-											tempstring += '<div class="col-md-2 col-xs-4 col-sm-4 padding-10"><img src="' + image[i] + '" height="90" width="90"></div>';
-										
-											if ((i + 1) % 6 == 0) {
-												tempstring += '</div><div class="row">';
-											}
-										}
-										
-										tempstring += '</div>';
-										images += node + " - " + image.length + "<br>" + tempstring;
-									}
-								}
-								
-								document.getElementById("title").innerHTML = this.name + " Category Images";
-								document.getElementById("pics").innerHTML = images + '</div>';
-								$('#myModal').modal('show');*/
 							}.bind(this)
 						}
 					}
@@ -172,7 +158,7 @@ class MyPieChart extends PolymerElement {
 	}
 	
 	__callModal(title, data){
-		this.dispatchEvent(new CustomEvent('modal1', {detail: {title: title, imgs: data}}));
+		this.dispatchEvent(new CustomEvent('modal2', {detail: {title: title, imgs: data}}));
 	}
 	
 	__mappingLabels(igProcessingData) {
@@ -619,8 +605,8 @@ class MyPieChart extends PolymerElement {
 			}
 		} catch (e) {}
 		
-		console.log(mappingArray);
-		console.log(mappingArrayGoogle);
+		//console.log(mappingArray);
+		//console.log(mappingArrayGoogle);
 		
 		for (i = 0; i < mappingArray.length; i ++) {
 			array1 = mappingArray[i];
@@ -641,8 +627,9 @@ class MyPieChart extends PolymerElement {
 				}
 			}
 		}
-		//console.log(this.occurences);
+		console.log(this.occurences);
 		//console.log(mappingArray);
+		
 		return mappingArray;
 	}
 	
