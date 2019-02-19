@@ -86,6 +86,8 @@
         <script type="module" src="src/my-summary.js"></script>
         <script type="module" src="src/my-insight-input.js"></script>
         <script type="module" src="node_modules/@polymer/iron-ajax/iron-ajax.js"></script>
+        <script type="module" src="node_modules/@polymer/paper-dialog/paper-dialog.js"></script>
+        <script type="module" src="node_modules/@polymer/paper-button/paper-button.js"></script>
 
         <!-- Add any global styles for body, document, etc. -->
         <style>
@@ -168,9 +170,38 @@
 			.navbar-default{
 				z-index: 100;
 			}
+
+            paper-dialog.colored {
+                border: 2px solid;
+                border-color: #ebcccc; ;
+                background-color: #f2dede ;
+                color: #a94442 ;
+            }
+
+            paper-dialog.success{
+                border: 2px solid;
+                border-color: #d0e9c6; ;
+                background-color: #dff0d8 ;
+                color: #3c763d ;
+            }
         </style>
     </head>
     <body>
+        <paper-dialog id="errorModal" class="colored" modal>
+            <h2 id="errorTitle" style="padding:10px;margin:10px;"></h2>
+            <hr/>
+            <div id="errorMsg"></div>
+            <div class="buttons">
+                <paper-button dialog-confirm autofocus>Tap me to close</paper-button>
+            </div>
+        </paper-dialog>
+
+        <paper-dialog id="successModal" class="success" modal>
+            <h2 style="padding:10px;margin:10px;">Report Template Created!</h2>
+            <div class="buttons">
+                <paper-button id="successBtn" dialog-confirm autofocus>Tap me to close</paper-button>
+            </div>
+        </paper-dialog>
         <iron-ajax
             id="eventAjax"
             url="http://localhost:8080/smile/event_calendar"
@@ -304,6 +335,7 @@
                             <div class="col-md-12">
                                 <my-insight-input></my-insight-input>
                                 <div class="pull-right">
+                                    <button type="button" class="btn btn_5 btn-lg btn-default" onclick="saveIntoDb()">Save Summary Report</button>
                                     <button type="button" class="btn btn_5 btn-lg btn-primary" onclick="saveComment()">Next: Create Proposal >></button>
                                 </div>
                             </div>
@@ -318,6 +350,44 @@
             <!-- /#page-wrapper -->
         </div>
         <script type="text/javascript">
+            function saveIntoDb(){
+                let title = prompt('Enter Summary Title');
+                if(title) {
+                    var insights = document.querySelector('my-insight-input').textValue;
+                    var generalSummary = document.querySelector('my-summary').__saveSummary();
+                    generalSummary.insights = insights;
+                    generalSummary.title = title;
+
+                    $.ajax({
+                        async: false,
+                        url: "http://localhost:8080/smile/summary_report",
+                        type: "POST",
+                        contentType: "application/json",
+                        data: JSON.stringify(generalSummary),
+                        success: function(result){
+                            $('#successMsg').html("<p>General Summary Created!</p>");
+                            document.querySelector('#successModal').open();
+                        },
+                        error: function(jqXHR, textStatus, errorThrown){
+                            if(jqXHR.status == 201){
+                                $('#successMsg').html("<p>General Summary Created!</p>");
+                                document.querySelector('#successModal').open();
+                            }
+                            else{
+                                $('#errorTitle').text("Duplicate Title");
+                                $('#errorMsg').html("<p>Please Enter General Summary Report Title.</p>");
+                                document.querySelector('#errorModal').open();
+                            }
+                        }
+                    });
+
+                } else{
+                    $('#errorTitle').text("Incomplete Input");
+                    $('#errorMsg').html("<p>Please Enter the Report Title.</p>");
+                    document.querySelector('#errorModal').open();
+                }
+            }
+
             $(document).ready(function(){
                 var curHashtag = sessionStorage.getItem('hashtagInput');
                 var insights = sessionStorage.getItem('generalInsights');
@@ -421,11 +491,6 @@
 					document.querySelector('my-summary').setAttribute("heat-Summary", summary); 
 					//console.log(document.querySelector('my-summary').heatSummary);
                 });
-				
-			document.querySelector('my-summary').addEventListener('saveSummary', function(event){
-				//Input code here
-				console.log(event.detail.summary)
-			});
 			
             function renderCalendar(events){
                 $('#calendar_events').fullCalendar({

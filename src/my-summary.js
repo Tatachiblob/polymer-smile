@@ -377,7 +377,7 @@ class MySummary extends PolymerElement {
 		});
 	}
 	
-	__saveSummary(event) {
+	__saveSummary() {
 		var generalSummary = {};
 		
 		generalSummary.basicSummary = this.basicSummary; 
@@ -388,7 +388,7 @@ class MySummary extends PolymerElement {
 		generalSummary.emoSummary = this.emoSummary;	
 		generalSummary.heatSummary = this.heatSummary;
 		
-		this.dispatchEvent(new CustomEvent('saveSummary', {detail: {summary: generalSummary}}));
+		return generalSummary;
 	}
 	
 	__retrieveSummary(generalSummary) {
