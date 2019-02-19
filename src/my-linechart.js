@@ -218,7 +218,7 @@ class MyLinechart extends PolymerElement {
 			temp.firstCol = (calendarProcessing[i].category + " " + chart.series[0].name);
 			temp.secondCol = calendarProcessing[i].y;
 			calendar.push(temp);
-			temp = [];
+			temp = {};
 		}
 		
 		var max;

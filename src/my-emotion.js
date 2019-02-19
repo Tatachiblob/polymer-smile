@@ -135,7 +135,7 @@ class MyEmotion extends PolymerElement {
 			temp.firstCol = chartEmotionData[i].category;
 			temp.secondCol = chartEmotionData[i].y;
 			emotion.push(temp);
-			temp = [];
+			temp = {};
 		}
 		
 		for (i = 0; i < emotion.length; i ++) {

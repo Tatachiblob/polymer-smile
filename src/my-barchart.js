@@ -710,7 +710,7 @@ class MyBarChart extends PolymerElement {
 			temp.firstCol = chartLikesData[i].category;
 			temp.secondCol = chartLikesData[i].y;
 			likes.push(temp);
-			temp = [];
+			temp = {};
 		}
 		
 		for (i = 0; i < likes.length; i ++) {

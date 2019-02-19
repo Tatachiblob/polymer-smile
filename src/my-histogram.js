@@ -144,7 +144,7 @@ class MyHistogram extends PolymerElement {
 			temp.firstCol = Math.floor(chartAgeData[i].x) + " - " + Math.floor(chartAgeData[i].x2) + " years old";
 			temp.secondCol = chartAgeData[i].y;
 			age.push(temp);
-			temp = [];
+			temp = {};
 		}
 		
 		for (i = 0; i < age.length; i ++) {
