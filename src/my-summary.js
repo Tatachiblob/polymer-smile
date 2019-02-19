@@ -238,8 +238,6 @@ class MySummary extends PolymerElement {
 					</tbody>
 				</table>
 			</div>
-		
-		<button on-click="__saveSummary">Save summary</button>
 		</div>
 		`;
 	}
