@@ -310,6 +310,41 @@
             <!-- /#page-wrapper -->
         </div>
         <script type="text/javascript">
+            function saveIntoDb(){
+                var reportTitle = $('#more-details').text();
+                var createdDate = Math.round(new Date().getTime() / 1000);
+                var start = parseInt(sessionStorage.getItem("startTimestamp")), end = parseInt(sessionStorage.getItem("endTimestamp")), hashtagReport = sessionStorage.getItem("hashtagReport"), eventOid = sessionStorage.getItem("eventOid");
+
+                var restUrl = "http://localhost:8080/smile/expected_actual_reports";
+                var restBody = {
+                    "report_title": reportTitle,
+                    "created_date": createdDate,
+                    "start_period": start,
+                    "end_period": end,
+                    "hashtag": hashtagReport,
+                    "event_oid":eventOid,
+                    "actualLikes": sessionStorage.getItem("actualLikes"),
+                    "expectedLikes": sessionStorage.getItem("expectedLikes"),
+                    "actualCount": sessionStorage.getItem("actualCount"),
+                    "expectedCount": sessionStorage.getItem("expectedCount"),
+                    "insights": $('#expActInsights').val()
+                };
+                console.log(reportTitle);
+
+                $.ajax({
+                    async: true,
+                    type: "POST",
+                    url: restUrl,
+                    data: JSON.stringify(restBody),
+                    contentType: "application/json",
+                    complete: function (xhr, status) {
+                        console.log(xhr);
+                        console.log(status);
+                    }
+                });
+                location.href = "./consumer-analysis.html";
+            }
+
             $(document).ready(function(){ 
 				var i, curHashtag, insights, start, end, eventsList, currDate, unix, url;
 

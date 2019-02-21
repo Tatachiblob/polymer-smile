@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="677e1531-0824-4bd1-b5e6-56ec4ec22b4e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expected-actual.html" beforeDir="false" afterPath="$PROJECT_DIR$/expected-actual.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/archive-expected-actual.html" beforeDir="false" afterPath="$PROJECT_DIR$/archive-expected-actual.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/consumer-analysis.html" beforeDir="false" afterPath="$PROJECT_DIR$/consumer-analysis.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -18,7 +18,7 @@
     <session id="2120677672">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="22" />
+          <entry key="project.closed" value="23" />
           <entry key="project.open.time.10" value="3" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.12" value="2" />
@@ -40,7 +40,7 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="css" value="1" />
-          <entry key="html" value="72" />
+          <entry key="html" value="76" />
           <entry key="js" value="160" />
           <entry key="rnc" value="1" />
         </counts>
@@ -48,21 +48,21 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="1" />
-          <entry key="HTML" value="72" />
+          <entry key="HTML" value="76" />
           <entry key="JavaScript" value="160" />
           <entry key="RNG Compact" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="15103" />
+          <entry key="html" value="15138" />
           <entry key="js" value="12958" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="2" />
-          <entry key="HTML" value="15719" />
+          <entry key="HTML" value="15754" />
           <entry key="JavaScript" value="12340" />
         </counts>
       </usages-collector>
@@ -95,16 +95,54 @@
         <entry file="file://$PROJECT_DIR$/search-archive.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="208">
-              <caret line="298" column="8" selection-start-line="298" selection-start-column="8" selection-end-line="298" selection-end-column="63" />
+              <caret line="298" column="11" lean-forward="true" selection-start-line="298" selection-start-column="11" selection-end-line="298" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/expected-actual.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="368">
+              <caret line="371" column="51" lean-forward="true" selection-start-line="340" selection-start-column="8" selection-end-line="371" selection-end-column="51" />
+              <folding>
+                <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/consumer-analysis.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="167">
+              <caret line="313" column="50" selection-start-line="313" selection-start-column="43" selection-end-line="313" selection-end-column="50" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/summary.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="215">
+              <caret line="359" column="89" selection-start-line="359" selection-start-column="89" selection-end-line="359" selection-end-column="89" />
+              <folding>
+                <element signature="n#style#0;n#head#0;n#html#0;n#!!top" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/expected-actual.html">
+        <entry file="file://$PROJECT_DIR$/archive-expected-actual.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-666">
-              <caret line="383" column="16" lean-forward="true" selection-start-line="383" selection-start-column="16" selection-end-line="383" selection-end-column="16" />
+            <state relative-caret-position="426">
+              <caret line="211" column="31" selection-start-line="211" selection-start-column="31" selection-end-line="211" selection-end-column="31" />
               <folding>
                 <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
@@ -129,9 +167,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>paper-dialog</find>
-      <find>errorModal</find>
-      <find>crea</find>
       <find>summary</find>
       <find>initialize</find>
       <find>more-</find>
@@ -149,7 +184,6 @@
       <find>src=&quot;js</find>
       <find>redExpected</find>
       <find>likes</find>
-      <find>saveIntoDb</find>
       <find>saven</find>
       <find>actualLikes</find>
       <find>event.de</find>
@@ -157,8 +191,12 @@
       <find>polymer</find>
       <find>insights</find>
       <find>ico</find>
-      <find>location</find>
       <find>session</find>
+      <find>location</find>
+      <find>saveIntoDb</find>
+      <find>location.</find>
+      <find>location.href</find>
+      <find>a href=</find>
     </findStrings>
     <replaceStrings>
       <replace>report</replace>
@@ -170,7 +208,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/style.js" />
         <option value="$PROJECT_DIR$/src/my-linechart.js" />
         <option value="$PROJECT_DIR$/src/font-awesome.js" />
         <option value="$PROJECT_DIR$/src/my-caption.js" />
@@ -219,8 +256,9 @@
         <option value="$PROJECT_DIR$/archive-summary-report.html" />
         <option value="$PROJECT_DIR$/src/my-summary-archive.js" />
         <option value="$PROJECT_DIR$/reports-archive.html" />
-        <option value="$PROJECT_DIR$/archive-expected-actual.html" />
         <option value="$PROJECT_DIR$/expected-actual.html" />
+        <option value="$PROJECT_DIR$/consumer-analysis.html" />
+        <option value="$PROJECT_DIR$/archive-expected-actual.html" />
       </list>
     </option>
   </component>
@@ -315,12 +353,12 @@
       <workItem from="1550489320056" duration="2000" />
       <workItem from="1550552457965" duration="10866000" />
       <workItem from="1550742197799" duration="4662000" />
-      <workItem from="1550760280918" duration="1632000" />
+      <workItem from="1550760280918" duration="2607000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="144759000" />
+    <option name="totallyTimeSpent" value="145734000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -373,13 +411,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://C:/xampp/htdocs/SMILE/js/calendar-event.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="78" column="10" selection-start-line="78" selection-start-column="10" selection-end-line="78" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/my-piechart.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="497">
@@ -662,13 +693,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/summary.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="623">
-          <caret line="359" column="89" selection-start-line="359" selection-start-column="89" selection-end-line="359" selection-end-column="89" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/archive-proposal-report.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="422">
@@ -687,13 +711,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="419">
           <caret line="320" column="11" lean-forward="true" selection-start-line="311" selection-start-column="8" selection-end-line="320" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/archive-expected-actual.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-442">
-          <caret line="253" column="12" selection-start-line="253" selection-start-column="12" selection-end-line="253" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -717,14 +734,46 @@
     <entry file="file://$PROJECT_DIR$/search-archive.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
-          <caret line="298" column="8" selection-start-line="298" selection-start-column="8" selection-end-line="298" selection-end-column="63" />
+          <caret line="298" column="11" lean-forward="true" selection-start-line="298" selection-start-column="11" selection-end-line="298" selection-end-column="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/expected-actual.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-666">
-          <caret line="383" column="16" lean-forward="true" selection-start-line="383" selection-start-column="16" selection-end-line="383" selection-end-column="16" />
+        <state relative-caret-position="368">
+          <caret line="371" column="51" lean-forward="true" selection-start-line="340" selection-start-column="8" selection-end-line="371" selection-end-column="51" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/consumer-analysis.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="313" column="50" selection-start-line="313" selection-start-column="43" selection-end-line="313" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/summary.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="359" column="89" selection-start-line="359" selection-start-column="89" selection-end-line="359" selection-end-column="89" />
+          <folding>
+            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/archive-expected-actual.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="426">
+          <caret line="211" column="31" selection-start-line="211" selection-start-column="31" selection-end-line="211" selection-end-column="31" />
           <folding>
             <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
