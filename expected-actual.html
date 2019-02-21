@@ -327,12 +327,14 @@
 <script type="text/javascript">
     function printPage2(id){
         //saveIntoDb();
+        var insights = $('#expActInsights').val();
         var restorepage = $('body').html();
         var printcontent = $('#' + id).clone();
         $('body').empty().html(printcontent);
         window.print();
         $('body').html(restorepage);
         document.getElementById("more-details").innerHTML = '<label id="more-details" class="control-label"><h3>'+ sessionStorage.getItem("expectedReportTitle") +'</h3></label>';
+        $('#expActInsights').val(insights);
     }
 
     function saveIntoDb(){
@@ -348,6 +350,10 @@
             "end_period": end,
             "hashtag": hashtagReport,
             "event_oid":eventOid,
+            "actualLikes": sessionStorage.getItem("actualLikes"),
+            "expectedLikes": sessionStorage.getItem("expectedLikes"),
+            "actualCount": sessionStorage.getItem("actualCount"),
+            "expectedCount": sessionStorage.getItem("expectedCount"),
             "insights": $('#expActInsights').val()
         };
         console.log(reportTitle);
@@ -383,6 +389,10 @@
 
             sessionStorage.setItem("startTimestamp", event.detail.startTimestamp);
             sessionStorage.setItem("endTimestamp", event.detail.endTimestamp);
+            sessionStorage.setItem("actualLikes", event.detail.actualLikes);
+            sessionStorage.setItem("expectedLikes", event.detail.expectedLikes);
+            sessionStorage.setItem("actualCount", event.detail.actualCount);
+            sessionStorage.setItem("expectedCount", event.detail.expectedCount);
             sessionStorage.setItem("hashtagReport", event.detail.eventHashtag);
             sessionStorage.setItem("eventOid", eventOid);
 

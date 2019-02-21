@@ -286,7 +286,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     createDate = expectedActual[i].created_date;
                     startDate = expectedActual[i].start_period;
                     endDate = expectedActual[i].end_period;
-                    url = expectedActual[i].event_oid;
+                    url = expectedActual[i]._id.$oid;
                     aexpActInsights = expectedActual[i].insights;
 
                     if(i % 2 == 0){

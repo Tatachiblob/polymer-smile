@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>SMILE: A Social Media Image Listening Engine</title>
+    <link rel="icon" href="images/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="keywords" content="Modern Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
@@ -31,14 +32,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!---//webfonts--->
     <!-- Nav CSS -->
     <link href="css/custom.css" rel="stylesheet">
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="js/metisMenu.min.js"></script>
-    <script src="js/custom.js"></script>
-    <script src="js/dataRetrieve.js" type="module"></script>
-    <!-- Graph JavaScript -->
-
-    <script src="js/d3.v3.js"></script>
-    <script src="js/rickshaw.js"></script>
 
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
@@ -190,20 +183,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                     <div id="panelRow"></div>
 
-                    <div class="row">
-
+                    <div class="row set_display">
                         <div class="col-md-6">
-                            <div class="col-md-12 span_4">
-                                <div id="LikesGraph" class="col_2"></div>
-                            </div>
+                            <div id="likesGraph"></div>
                         </div>
-
                         <div class="col-md-6">
-                            <div class="col-md-12 span_4">
-                                <div id="VolumeGraph" class="col_2"></div>
-                            </div>
+                            <div id="volumeGraph"></div>
                         </div>
-
                     </div>
 
                     <div class="clearfix"></div>
@@ -241,12 +227,137 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- /#wrapper -->
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
-<script src="js/event-notif2.js" type="module"></script>
-<script src="js/printing2.js"></script>
-<script src="js/bar-zingchart-expected.js" type="module"></script>
 <script>
-    $("#excelsior").html(sessionStorage.getItem("archExpectedActualTitle"));
-    $("#expActInsights").val(sessionStorage.getItem("expActInsights"));
+    $(document).ready(function(){
+        var curUrl = new URL(window.location.href);
+        var expectedActualOid = curUrl.searchParams.get('event').toString();
+        var restUrl = "http://localhost:8080/smile/expected_actual_reports/" + expectedActualOid;
+        var expectedActual = {};
+        var actualLikes = 0, expectedLikes = 0, actualConut = 0, expectedCount = 0;
+
+        $.ajax({
+            async: false,
+            url: restUrl,
+            type: "GET",
+            dataType: 'json',
+            success: function(data, textStatus, jqXHR) {
+                expectedActual = data;
+                actualLikes = parseInt(data.actualLikes);
+                expectedLikes = parseInt(data.expectedLikes);
+                actualCount = parseInt(data.actualCount);
+                expectedCount = parseInt(data.expectedCount);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {}
+        });
+
+        $("#excelsior").text(expectedActual.report_title);
+        $("#expActInsights").text(expectedActual.insights);
+        console.log(expectedActual);
+        if(actualLikes <= expectedLikes){
+            panelRowHtml = '<div class="row"><div class="col-md-6"><div class="col-md-12 span_4" role="alert"><div class="col_2 alert alert-danger"><strong>Oh snap!</strong> Your expected Likes is less than the actual Likes.</div></div></div>';
+        }else{
+            panelRowHtml = '<div class="row"><div class="col-md-6"><div class="col-md-12 span_4" role="alert"><div class="col_2 alert alert-success"><strong>Well done!</strong> You reached the target Likes!</div></div></div>';
+        }
+        if(actualCount <= expectedCount){
+            panelRowHtml += '<div class="col-md-6"><div class="col-md-12 span_4" role="alert"><div class="col_2 alert alert-danger"><strong>Oh snap!</strong> Your expected Volume of Posts is less than the actual Posts.</div></div></div></div>';
+        }else{
+            panelRowHtml += '<div class="col-md-6"><div class="col-md-12 span_4" role="alert"><div class="col_2 alert alert-success"><strong>Well done!</strong> You reached the target Volume of Posts!</div></div></div></div>';
+        }
+
+        $('#panelRow').html(panelRowHtml);
+
+        new Highcharts.chart('likesGraph', {
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Total Volume of Likes'
+            },
+            subtitle: {
+                text: 'Source: WorldClimate.com'
+            },
+            xAxis: {
+                categories: [
+                    ''
+                ],
+                crosshair: true
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Number of likes'
+                }
+            },
+            tooltip: {
+                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                    '<td style="padding:0"><b>{point.y:.0f} </b></td></tr>',
+                footerFormat: '</table>',
+                shared: true,
+                useHTML: true
+            },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
+                }
+            },
+            series: [{
+                name: 'Expected',
+                data: [expectedLikes]
+            }, {
+                name: 'Actual',
+                data: [actualLikes]
+            }]
+        });
+
+        new Highcharts.chart('volumeGraph', {
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Total Volume of Posts'
+            },
+            subtitle: {
+                text: 'Source: WorldClimate.com'
+            },
+            xAxis: {
+                categories: [
+                    ''
+                ],
+                crosshair: true
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Number of posts'
+                }
+            },
+            tooltip: {
+                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                    '<td style="padding:0"><b>{point.y:.0f} </b></td></tr>',
+                footerFormat: '</table>',
+                shared: true,
+                useHTML: true
+            },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
+                }
+            },
+            series: [{
+                name: 'Expected',
+                data: [expectedCount]
+
+            }, {
+                name: 'Actual',
+                data: [actualCount]
+
+            }]
+        });
+    });
 </script>
 </body>
 </html>
