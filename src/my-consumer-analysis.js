@@ -298,6 +298,17 @@ class MyDashboard extends PolymerElement {
 		});
 	}
 	
+	__saveSummary() {
+		var consumerSummary = {};
+		
+		consumerSummary.basicSummary = this.basicSummary;
+		consumerSummary.genderSummary = this.genderSummary; 
+		consumerSummary.ageSummary = this.ageSummary;
+		consumerSummary.emoSummary = this.emoSummary;
+		
+		return consumerSummary;
+	}
+	
 	__createUrl(hashtag, startDate, endDate){
 		return "http://localhost:8080/smile/ig_media?filter={'hashtag':'" + hashtag + "'}&filter={'ig_object.taken_at_timestamp':{'$gte':" + startDate + "}}&filter={'ig_object.taken_at_timestamp':{'$lte':" + endDate + "}}&keys={'ig_object.id':1}&keys={'ig_object.display_url':1}&keys={'ig_object.edge_liked_by':1}&keys={'ig_object.edge_media_to_comment':1}&pagesize=1000"
 	}
