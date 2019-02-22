@@ -359,7 +359,7 @@
 				eventsList = [];
 				currDate = (new Date).getTime();
 				unix = (currDate - (currDate % 1000)) / 1000;
-				url = "http://localhost:8080/smile/event_calendar?filter={end_period:{$gte:" + 1541956000 + "}}";
+				url = "http://localhost:8080/smile/event_calendar?filter={end_period:{$gte:" + unix + "}}";
 
 				$.ajax({
 					type: "GET",
