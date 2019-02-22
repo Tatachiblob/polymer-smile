@@ -223,6 +223,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
             </div>
 
+			<div class="content_bottom">
+                <!--<h3>Recent Searches</h3>-->
+                <div class="bs-example4" data-example-id="contextual-table">
+                    <h3>Consumer Analysis Reports</h3>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Report name</th>
+                            <th>Created on</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody id="consumerReportsTable">
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="clearfix"></div>
+
+            </div>
+			
             <div class="copy">
                 <p>Copyright &copy; 2018 SMILE</p>
             </div>
@@ -260,6 +282,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         getDataExpectedActual();
         getMarketingReports();
         getSummaryReports();
+		getConsumerReports();
     });
 
     function getDataExpectedActual(){
@@ -375,6 +398,40 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         });
     }
 
+    function getConsumerReports(){
+        var domain = "http://localhost:8080";
+        var rest = domain + "/smile/consumer_analysis_reports?keys={'html':0}";
+        var consumerReports = {};
+
+        var tbodyHtml = "";
+        var eventName, createDate, startDate, endDate, url;
+
+        $.ajax({
+            async: false,
+            type: "GET",
+            url: rest,
+            dataType: "json",
+            success: function(response){
+                consumerReports = response._embedded;
+                for(var i = 0; i < consumerReports.length; i++){
+                    eventName = consumerReports[i].report_title
+                    createDate = consumerReports[i].created_timestamp.$numberLong;
+                    createDate = createDate.slice(0, createDate.length - 3);
+                    url = consumerReports[i]._id.$oid;
+
+                    if(i % 2 == 0){
+                        tbodyHtml += '<tr class="active"><th scope="row">' + (i + 1) + '</th><td>' + eventName + '</td><td>' + timeConverter(createDate) + '<td><button class="btn btn-sm btn-default" onclick="redConsumerReport(\'' + url + '\')">View</button></td></tr>';
+                    }
+                    else{
+                        tbodyHtml += '<tr><th scope="row">' + (i + 1) + '</th><td>' + eventName + '</td><td>' + timeConverter(createDate) + '<td><button class="btn btn-sm btn-default" onclick="redConsumerReport(\'' + url + '\')">View</button></td></tr>';
+                    }
+                }
+
+                $('#consumerReportsTable').html(tbodyHtml);
+            }
+        });
+    }
+
     function redExpectedActual(hashtag, eventName, expActInsights){
         // Check browser support
         sessionStorage.setItem("archExpectedActualTitle","Expected vs. Actual Report for " + eventName + " event");
@@ -390,6 +447,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
     function redSummaryReport(oid){
         location.href = "./archive-summary-report.html?oid=" + oid;
+    }
+
+    function redConsumerReport(oid){
+        location.href = "./archive-consumer-analysis-report.html?oid=" + oid;
     }
 
     function timeConverter(UNIX_timestamp){

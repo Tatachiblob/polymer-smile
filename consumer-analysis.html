@@ -287,7 +287,7 @@
                             </div>
                         </center>
 
-                        <my-dashboard></my-dashboard>
+                        <my-consumer-analysis></my-consumer-analysis>
                         <div class="card" style="display:none">
                             <div id="calendar_events" style="font-family: 'Roboto';"></div>
                         </div>
@@ -311,23 +311,30 @@
         </div>
         <script type="text/javascript">
             function saveIntoDb(){
-                var reportTitle = $('#more-details').text();
                 var createdDate = Math.round(new Date().getTime() / 1000);
-                var start = parseInt(sessionStorage.getItem("startTimestamp")), end = parseInt(sessionStorage.getItem("endTimestamp")), hashtagReport = sessionStorage.getItem("hashtagReport"), eventOid = sessionStorage.getItem("eventOid");
+                //var start = parseInt(sessionStorage.getItem("startTimestamp")), end = parseInt(sessionStorage.getItem("endTimestamp")), hashtagReport = sessionStorage.getItem("hashtagReport"), eventOid = sessionStorage.getItem("eventOid");
 
-                var restUrl = "http://localhost:8080/smile/expected_actual_reports";
+				var eventOid = sessionStorage.getItem("eventOid");
+				var insights = document.querySelector('my-insight-input').textValue;
+				var consumerSummary = document.querySelector('my-consumer-analysis').__saveSummary();
+				var hashtag = document.querySelector('my-consumer-analysis').hashtag;
+                var reportTitle = "Face and Content Analysis Report for #" + hashtag + "from  " + document.querySelector('my-consumer-analysis').sDate + " to " + document.querySelector('my-consumer-analysis').eDate;
+				var start = document.querySelector('my-consumer-analysis').startDate;
+				var end = document.querySelector('my-consumer-analysis').endDate;
+				
+                var restUrl = "http://localhost:8080/smile/consumer_analysis_reports";
                 var restBody = {
                     "report_title": reportTitle,
-                    "created_date": createdDate,
+                    "created_timestamp": new Date().getTime(),
                     "start_period": start,
                     "end_period": end,
-                    "hashtag": hashtagReport,
-                    "event_oid":eventOid,
-                    "actualLikes": sessionStorage.getItem("actualLikes"),
-                    "expectedLikes": sessionStorage.getItem("expectedLikes"),
-                    "actualCount": sessionStorage.getItem("actualCount"),
-                    "expectedCount": sessionStorage.getItem("expectedCount"),
-                    "insights": $('#expActInsights').val()
+					"basicSummary": consumerSummary.basicSummary,
+					"genderSummary": consumerSummary.genderSummary,
+					"ageSummary": consumerSummary.ageSummary,
+					"emoSummary": consumerSummary.emoSummary,
+                    "hashtag": hashtag,
+                    "event_oid": eventOid,
+                    "insights": insights
                 };
                 console.log(reportTitle);
 
@@ -403,18 +410,18 @@
 							}
 
 							if(start != null){
-								document.querySelector('my-dashboard').startDate = start * 1000;
+								document.querySelector('my-consumer-analysis').startDate = start * 1000;
 							}
 
 							if(end != null){
-								document.querySelector('my-dashboard').endDate = end * 1000;
+								document.querySelector('my-consumer-analysis').endDate = end * 1000;
 							}
 
 							$('#mainHashtag').text(curHashtag);
-							$('#dateRange').text(document.querySelector('my-dashboard').sDate + " to " + document.querySelector('my-dashboard').eDate);
+							$('#dateRange').text(document.querySelector('my-consumer-analysis').sDate + " to " + document.querySelector('my-consumer-analysis').eDate);
 
-							document.querySelector('my-dashboard').setAttribute('hashtag', curHashtag);
-							document.querySelector('my-dashboard').__handleClick();
+							document.querySelector('my-consumer-analysis').setAttribute('hashtag', curHashtag);
+							document.querySelector('my-consumer-analysis').__handleClick();
 
 							var events = [];
 							var a = document.querySelector('iron-ajax');
@@ -434,7 +441,7 @@
 							}, false);
 						} else {
 							console.log($("#more-details")[0]);
-							$("my-dashboard").remove();
+							$("my-consumer-analysis").remove();
 							$("#more-details")[0].innerHTML = "<strong>There are no current events.</strong>";
 						}
 						
@@ -465,8 +472,8 @@
 
             function saveComment(){
                 var insights = document.querySelector('my-insight-input').textValue;
-                var start = document.querySelector('my-dashboard').startDate;
-                var end = document.querySelector('my-dashboard').endDate;
+                var start = document.querySelector('my-consumer-analysis').startDate;
+                var end = document.querySelector('my-consumer-analysis').endDate;
 
                 sessionStorage.setItem('generalInsights', insights);
                 sessionStorage.setItem('startDate', start);

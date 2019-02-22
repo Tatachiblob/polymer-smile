@@ -166,15 +166,16 @@ class MyBasic extends PolymerElement {
 			tempSum.likes = "The images altogether have " + this.totalLikes + " likes.";
 			tempSum.brands = "There were " + this.totalBrand + " logos detected in the scraped images.";
 			tempSum.comments = "The total number of user comments from all images is " + this.totalComments + ".";
+			this.summary = tempSum;
 		} else if (window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "comparison-report" || 
 				   window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "summary.html") {
 			tempSum.imgs = "Total number of images: " + this.totalImgs;
 			tempSum.likes = "Total number of likes: " + this.totalLikes;
 			tempSum.brands = "Total number of logos: " + this.totalBrand;
 			tempSum.comments = "Total number of comments: " + this.totalComments;
+			this.summary = tempSum;
 		}
 		
-		this.summary = tempSum;
 		console.log(this.summary);
 	}
 	

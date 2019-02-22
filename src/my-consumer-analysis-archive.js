@@ -50,16 +50,16 @@ class MyDashboard extends PolymerElement {
 			debounce-duration="300">
 		</iron-ajax>
 		
-		<iron-ajax
+		<!--<iron-ajax
 			id="hashtagAjax"
 			url="http://localhost:8080/smile/ig_media/_aggrs/group_hashtag"
 			method="GET"
 			handle-as="json"
 			on-response="__handleHashtagResponse"
 			debounce-duration="300">
-		</iron-ajax>
+		</iron-ajax>-->
 		
-		<div class="row">
+		<div class="row" style="display:none">
 			<div class="card col-11">
 				<div class="row">
                     <div class="col-md-3">
@@ -175,8 +175,6 @@ class MyDashboard extends PolymerElement {
 	
 	ready() {
 		super.ready();
-		this.$.hashtagAjax.generateRequest();
-		this.__createListeners();
 	}
 	
 	static get properties(){
@@ -298,16 +296,24 @@ class MyDashboard extends PolymerElement {
 		});
 	}
 	
-	__saveSummary() {
-		var consumerSummary = {};
+	
+    setStats(generalSummary){
+		console.log(generalSummary);
 		
-		consumerSummary.basicSummary = this.basicSummary;
-		consumerSummary.genderSummary = this.genderSummary; 
-		consumerSummary.ageSummary = this.ageSummary;
-		consumerSummary.emoSummary = this.emoSummary;
-		
-		return consumerSummary;
-	}
+        this.hashtag = generalSummary.hashtag;
+		this.startDate = generalSummary.start_period;
+		this.endDate = generalSummary.end_period;
+        this.basicSummary = generalSummary.basicSummary;
+        this.genderSummary = generalSummary.genderSummary;
+        this.ageSummary = generalSummary.ageSummary;
+        this.emoSummary = generalSummary.emoSummary;
+		//this.$.hashtagAjax.generateRequest();
+		this.__handleClick();
+		this.__createListeners();
+		console.log(this.hashtag);
+		console.log(this.startDate);
+		console.log(this.endDate);
+    }
 	
 	__createUrl(hashtag, startDate, endDate){
 		return "http://localhost:8080/smile/ig_media?filter={'hashtag':'" + hashtag + "'}&filter={'ig_object.taken_at_timestamp':{'$gte':" + startDate + "}}&filter={'ig_object.taken_at_timestamp':{'$lte':" + endDate + "}}&keys={'ig_object.id':1}&keys={'ig_object.display_url':1}&keys={'ig_object.edge_liked_by':1}&keys={'ig_object.edge_media_to_comment':1}&pagesize=1000"
@@ -315,4 +321,4 @@ class MyDashboard extends PolymerElement {
 
 }
 
-window.customElements.define('my-consumer-analysis', MyDashboard);
+window.customElements.define('my-consumer-analysis-archive', MyDashboard);
