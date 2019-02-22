@@ -132,23 +132,36 @@ class MyPieChart extends PolymerElement {
 								tempArray = [];
 								h = 0;
 								
-								for (key in this.occurences[category]) {
-									if (this.occurences[category][key].length > 0) {
-										tempArray[h] = [];
-										tempArray[h].desc = key;
-										tempArray[h].ig = [];
-										
-										for (i = 0; i < this.occurences[category][key].length; i ++) {
-											tempArray[h].ig[i] = [];
-											tempArray[h].ig[i].desc = key;
-											tempArray[h].ig[i].ig_url = this.occurences[category][key][i];
+								if (category == 7) {
+									tempArray[h] = [];
+									tempArray[h].desc = "Uncategorized images";
+									tempArray[h].ig = [];
+									
+									for (i = 0; i < this.finalArray[category].length; i ++) {
+										tempArray[h].ig[i] = [];
+										tempArray[h].ig[i].desc = "Uncategorized images";
+										tempArray[h].ig[i].ig_url = this.finalArray[category][i].ig_url;
+									}
+								} else {
+									for (key in this.occurences[category]) {
+										if (this.occurences[category][key].length > 0) {
+											tempArray[h] = [];
+											tempArray[h].desc = key;
+											tempArray[h].ig = [];
+											
+											for (i = 0; i < this.occurences[category][key].length; i ++) {
+												tempArray[h].ig[i] = [];
+												tempArray[h].ig[i].desc = key;
+												tempArray[h].ig[i].ig_url = this.occurences[category][key][i];
+											}
+											
+											h ++;
 										}
-										
-										h ++;
 									}
 								}
 								
 								console.log(tempArray);
+								console.log(this.finalArray);
 								this.__callModal(p.name, tempArray);
 							}.bind(this)
 						}
