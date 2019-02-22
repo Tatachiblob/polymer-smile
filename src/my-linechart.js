@@ -124,8 +124,9 @@ class MyLinechart extends PolymerElement {
 						events: {
 							click: function(e) {
 								//console.log(imgLinks[this.series.name.toString() + " " + this.x]);
-								let p = e.point
-								this.__callModal("Temporary Line Chart", this.imgLinks[p.series.name.toString() + " " + p.x]);
+								let p = e.point;
+								console.log(p);
+								this.__callModal("Images for " + p.category  + " " + p.series.name, this.imgLinks[p.series.name.toString() + " " + p.x]);
 							}.bind(this)
 						}
 					},

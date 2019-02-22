@@ -19,7 +19,7 @@ class MyModal extends PolymerElement {
 		</style>
 		
 		<paper-dialog id="dialog">
-			<h2>{{title}} - [[imgs.length]]</h2>
+			<h2 style="margin-top:20px;">{{title}} - [[imgs.length]] image/s</h2> 
 			<paper-dialog-scrollable>
 				<template is="dom-repeat" items="[[imgs]]" as="imgSrc">
 					<iron-image style="width:150px; height:150px; background-color: lightgray;"
@@ -35,7 +35,7 @@ class MyModal extends PolymerElement {
 			<h1>{{title}}</h1>
 			<paper-dialog-scrollable>
 				<template is="dom-repeat" items="[[imgs]]" as="img">
-					<h2>[[img.desc]] - [[img.ig.length]]</h2>
+					<h2>[[img.desc]] - [[img.ig.length]] image/s</h2>
 					<template is="dom-repeat" items="[[img.ig]]" as="ig">
 						<iron-image style="width:150px; height:150px; background-color: lightgray;"
 							sizing="cover" preload fade src="{{ig.ig_url}}" alt="Image cannot be loaded"></iron-image>

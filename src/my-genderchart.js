@@ -103,9 +103,9 @@ class MyGenderchart extends PolymerElement {
 							console.log('Category: '+ p.name +', value: '+ p.y);
 							
 							if(p.name == "Male"){
-								this.__callModal("Temporary Gender(Male) Chart", this.maleSrc);
+								this.__callModal("Images containing Males", this.maleSrc);
 							}else if(p.name == "Female"){
-								this.__callModal("Temporary Gender(Female) Chart", this.femaleSrc);
+								this.__callModal("Images containing Females", this.femaleSrc);
 							}
 							
 						}.bind(this)
