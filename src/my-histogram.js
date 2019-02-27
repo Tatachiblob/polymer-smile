@@ -40,9 +40,12 @@ class MyHistogram extends PolymerElement {
 			summary: {
 				type: String,
 				notify: true
-			}
+			},
+			histogramChart: Object
 		}
 	}
+
+	getHistogram(){return this.histogramChart;}
 	
 	generateAgeRequest(){
 		this.ajaxUrl = this.__createUrl();
@@ -124,7 +127,7 @@ class MyHistogram extends PolymerElement {
 				}
 			}
 		});
-		
+		this.histogramChart = myChart;
 		if (window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "consumer-analysis.html" || 
 			window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "post-event.html" || 
 			window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "expected-actual" || 

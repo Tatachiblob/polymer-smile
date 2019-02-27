@@ -48,7 +48,8 @@ class MyPieChart extends PolymerElement {
 			emotionImageIDs: Object,
 			mapped: Boolean,
 			occurences: Array,
-			finalArray: Array
+			finalArray: Array,
+			pieChart: Object
 		}
 	}
 	
@@ -58,6 +59,8 @@ class MyPieChart extends PolymerElement {
 		this.occurences = [[], [], [], [], [], [], []];
 		this.finalArray = [[], [], [], [], [], [], [], []];
 	}
+
+	getPieChart(){return this.pieChart;}
 
 	generatePieRequest(){
 		this.ajaxUrl = this.__createUrl();
@@ -85,7 +88,7 @@ class MyPieChart extends PolymerElement {
 	}
 	
 	__renderPieChart(data){
-			Highcharts.chart(this.$.pieChart, {
+			this.pieChart = Highcharts.chart(this.$.pieChart, {
 				chart: {
 					height: 400,
 				},

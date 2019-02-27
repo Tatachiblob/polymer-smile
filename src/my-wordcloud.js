@@ -129,7 +129,9 @@ class MyWordcloud extends PolymerElement {
 			wordLimit: {
 				type: Number,
 				value: 30,
-			}
+			},
+			captionWordcloud: Object,
+			hashtagWordcloud: Object
 		}
 	}
 	
@@ -137,6 +139,9 @@ class MyWordcloud extends PolymerElement {
 		this.ajaxUrl = this.__createUrl();
 		this.$.wordcloudCaptionHashtagAjax.generateRequest();
 	}
+
+	getCaptionWordcloud(){return this.captionWordcloud;}
+	getHashtagWordcloud(){return this.hashtagWordcloud;}
 
 	__wordcloudLimit(){
 		this.wordLimit = Math.abs(this.wordLimit);
@@ -152,7 +157,7 @@ class MyWordcloud extends PolymerElement {
 	
 	__renderWordcloud(data){
 		
-		Highcharts.chart(this.$.wordcloudCaption, {
+		this.captionWordcloud = Highcharts.chart(this.$.wordcloudCaption, {
 			series: [{
 				type: 'wordcloud',
 				turboThreshold: 100000,
@@ -174,7 +179,7 @@ class MyWordcloud extends PolymerElement {
 			}
 		});
 		
-		Highcharts.chart(this.$.wordcloudHashtag, {
+		this.hashtagWordcloud = Highcharts.chart(this.$.wordcloudHashtag, {
 			series: [{
 				type: 'wordcloud',
 				data: this.__getHashtagLabels(data),

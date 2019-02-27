@@ -133,7 +133,19 @@ class MyDashboard extends PolymerElement {
             eDate: String
 		}
 	}
-	
+
+	getChartObjects(){
+		let chartObjs = {};
+		chartObjs.lineChart = this.$.linechart.getLineChart();
+        chartObjs.pieChart = this.$.piechart.getPieChart();
+        chartObjs.captionWordcloud = this.$.wordcloud.getCaptionWordcloud();
+        chartObjs.hashtagWordcloud = this.$.wordcloud.getHashtagWordcloud();
+        chartObjs.genderChart = this.$.gender.getGenderChart();
+        chartObjs.histogram = this.$.age.getHistogram();
+
+		return chartObjs;
+	}
+
 	__handleResponse(event, res){
 		this.mediaIdArr = [];
 		res = res.response._embedded;

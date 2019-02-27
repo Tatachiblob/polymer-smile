@@ -39,9 +39,12 @@ class MyEmotion extends PolymerElement {
 			summary: {
 				type: String,
 				notify: true
-			}
+			},
+			emotionChart: Object
 		}
 	}
+
+	getEmotionChart(){return this.emotionChart;}
 	
 	generateEmoRequest(){
 		this.ajaxUrl = this.__createUrl();
@@ -116,6 +119,7 @@ class MyEmotion extends PolymerElement {
 				}
 			}]
 		});
+		this.emotionChart = myChart;
 		
 		if (window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "consumer-analysis.html" || 
 			window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "post-event.html" || 

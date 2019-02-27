@@ -40,9 +40,12 @@ class MyLinechart extends PolymerElement {
 			summary: {
 				type: Array,
 				notify: true
-			}
+			},
+			lineChart: Object
 		}
 	}
+
+	getLineChart(){return this.lineChart;}
 	
 	generateLinechartRequest(){
 		//console.log("Generating Request my-linechart");
@@ -138,6 +141,7 @@ class MyLinechart extends PolymerElement {
 			//series:[{}]
 			series: this.__getTotalNoOfPosts(data)
 		});
+		this.lineChart = myChart;
 		//myChart.series[0].setData(this.__getTotalNoOfPosts(data));
 		
 		if (window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "engagement-report" || 

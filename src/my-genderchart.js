@@ -41,7 +41,8 @@ class MyGenderchart extends PolymerElement {
 			summary: {
 				type: String,
 				notify: true
-			}
+			},
+			genderChart: Object
 		}
 	}
 	
@@ -49,6 +50,8 @@ class MyGenderchart extends PolymerElement {
 		this.ajaxUrl = this.__createUrl();
 		this.$.genderAjax.generateRequest();
 	}
+
+	getGenderChart(){return this.genderChart;}
 	
 	__handleResponse(event, res){
 		this.__renderGenderchart(res.response._embedded);
@@ -113,7 +116,7 @@ class MyGenderchart extends PolymerElement {
 				}
 			}]
 		});
-		
+		this.genderChart = myChart;
 		if (window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "consumer-analysis.html" || 
 			window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "post-event.html" || 
 			window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "expected-actual" || 

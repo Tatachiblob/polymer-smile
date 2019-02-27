@@ -54,7 +54,8 @@ class MyBarChart extends PolymerElement {
 			summary: {
 				type: String,
 				notify: true
-			}
+			},
+			barChart: Object
 		}
 	}
 	
@@ -70,6 +71,8 @@ class MyBarChart extends PolymerElement {
 		this.ajaxUrl = this.__createUrl();
 		this.$.barAjax.generateRequest();
 	}
+
+	getBarChart(){return this.barChart;}
 	
 	setRawMediaData(rawMediaData){this.rawMediaData = rawMediaData;}
 	
@@ -181,6 +184,7 @@ class MyBarChart extends PolymerElement {
 				}
 			}]
 		});
+		this.barChart = myChart;
 		console.log(myChart);
 		if (window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "engagement-report" || 
 			window.location.href.slice(window.location.href.lastIndexOf("/") + 1) == "summary.html") {
