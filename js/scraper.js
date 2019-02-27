@@ -18,7 +18,7 @@ $(document).ready(function(){
 
     // Number of images needed for aggregation & visualization
 
-    var IMAGES_LIMIT = 100; // change to 1000 after development stage
+    var IMAGES_LIMIT = 50; // change to 1000 after development stage
 
     // Safe number of posts that can be scraped in Instagram per minute
     var IG_LIMIT = 3000;

@@ -93,7 +93,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <!-- Load your application shell -->
     <script type="module" src="src/my-comparison.js"></script>
-    <script type="module" src="src/my-dashboard.js"></script>
+      <script type="module" src="src/my-dashboard.js"></script>
+    <script type="module" src="src/my-chart-collection.js"></script>
 
     <!-- Add any global styles for body, document, etc. -->
     <style>
@@ -107,26 +108,35 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </style>
   </head>
   <body>
-    <my-dashboard hashtag="animolasalle"></my-dashboard>
-    <button id="print">Print</button>
+  <button id="print">Print</button>
+  <!--<my-dashboard></my-dashboard>-->
+  <div id="chartCollection"></div>
   </body>
   <script type="text/javascript">
+      $(document).ready(function(){
+          $('#chartCollection').html('<my-chart-collection hidden hashtag="animolasalle" start-date="1514764800" end-date="1546214400"></my-chart-collection>');
+      });
+
       $('#print').click(function(){
-          console.log("Hello");
-          var chartObjs = document.querySelector('my-dashboard').getChartObjects();
+          var chartObjs = document.querySelector('my-chart-collection').getChartObjects();
+
+          console.log(chartObjs);
+
           chartObjs.lineChart = chartObjs.lineChart.getSVG();
-          chartObjs.pieeChart = chartObjs.pieChart.getSVG();
+          chartObjs.pieChart = chartObjs.pieChart.getSVG();
           chartObjs.histogram = chartObjs.histogram.getSVG();
           chartObjs.captionWordcloud = chartObjs.captionWordcloud.getSVG();
           chartObjs.genderChart = chartObjs.genderChart.getSVG();
           chartObjs.hashtagWordcloud = chartObjs.hashtagWordcloud.getSVG();
+          console.log(chartObjs);
 
           var restorePage = $('body').html();
-          var printContent = chartObjs.lineChart + chartObjs.pieeChart + chartObjs.histogram + chartObjs.genderChart + chartObjs.captionWordcloud
+          var printContent = chartObjs.lineChart + chartObjs.pieChart + chartObjs.histogram + chartObjs.genderChart + chartObjs.captionWordcloud
                             + chartObjs.hashtagWordcloud;
           $('body').empty().html(printContent);
           window.print();
           $('body').html(restorePage);
+
       });
   </script>
 </html>

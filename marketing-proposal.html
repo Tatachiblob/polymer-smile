@@ -198,21 +198,6 @@
 </head>
 <body>
 <div id="wrapper">
-    <paper-dialog id="errorModal" class="colored" modal>
-        <h2 id="errorTitle" style="padding:10px;margin:10px;"></h2>
-        <hr/>
-        <div id="errorMsg"></div>
-        <div class="buttons">
-            <paper-button dialog-confirm autofocus>Tap me to close</paper-button>
-        </div>
-    </paper-dialog>
-
-    <paper-dialog id="successModal" class="success" modal>
-        <h2 style="padding:10px;margin:10px;">Report Template Created!</h2>
-        <div class="buttons">
-            <a href="./calendar-event.html"><paper-button id="successBtn" dialog-confirm autofocus>Tap me to close</paper-button></a>
-        </div>
-    </paper-dialog>
     <!-- Navigation -->
     <nav class="top1 navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
@@ -456,6 +441,21 @@
     </div>
     <!-- /#page-wrapper -->
 </div>
+<paper-dialog id="errorModal" class="colored" modal>
+    <h2 id="errorTitle" style="padding:10px;margin:10px;"></h2>
+    <hr/>
+    <div id="errorMsg"></div>
+    <div class="buttons">
+        <paper-button dialog-confirm autofocus>Tap me to close</paper-button>
+    </div>
+</paper-dialog>
+
+<paper-dialog id="successModal" class="success" modal>
+    <h2 style="padding:10px;margin:10px;">Report Template Created!</h2>
+    <div class="buttons">
+        <a href="./calendar-event.html"><paper-button id="successBtn" dialog-confirm autofocus>Tap me to close</paper-button></a>
+    </div>
+</paper-dialog>
 <script type="text/javascript">
     $(document).ready(function(){
         document.getElementById("more-details").innerHTML = '<label id="more-details" class="control-label"><h3 id="proposalTitle">Event Proposal Template</h3></label>';
@@ -486,15 +486,6 @@
         $('#createNewEvent').click(function(){
             if(!marketChecker()){
                 var url = 'http://localhost:8080/smile/marketing_reports';
-                /*
-                console.log($('#eventName').val());
-                console.log(dateFormatter(document.querySelector('#start').value));
-                console.log(dateFormatter(document.querySelector('#end').value));
-                //console.log($('#eventdaterange').val());
-                console.log($('#eventColorShade').val());
-                console.log($('#eventLocation').val());
-                */
-
                 var marketingReport = {};
                 var start = dateFormatter(document.querySelector('#start').value);
                 var end = dateFormatter(document.querySelector('#end').value);
@@ -515,8 +506,8 @@
                 else
                     marketingReport.approved_by = "";
                 marketingReport.type= $('#proposalType').val();
-                marketingReport.data_start_time = Math.round(new Date(new Date().getFullYear(), 0, 1).getTime() / 1000);
-                marketingReport.data_end_time = Math.round(new Date().getTime() / 1000);
+                marketingReport.data_start_time = sessionStorage.startDate;
+                marketingReport.data_end_time = sessionStorage.endDate;
                 marketingReport.created_timestamp = new Date().getTime();
 
                 $.ajax({
@@ -546,10 +537,9 @@
                         }
                     }
                 });
-
-                console.log(marketingReport);
+                //console.log(marketingReport);
             }
-            console.log('clicked');
+            // console.log('clicked');
         });
     });
 
@@ -600,7 +590,7 @@
             marketingReport.approved_by = "";
         marketingReport.type= $('#proposalType').val();
 
-        console.log(marketingReport);
+        // console.log(marketingReport);
 
         var restorepage = $('body').html();
         $('#toBeHidden').remove();

@@ -101,7 +101,7 @@ class MySummary extends PolymerElement {
 		<my-map id="googleMap" hashtag={{hashtag}} media-Id-Arr={{mediaIdArr}} style="display:none"></my-map>
 		<my-modal id="mymodal" style="display:none"></my-modal>	
 
-		<div class="card">
+		<div id="entireSummary" class="card">
 			<li>{{basicSummary.imgs}}</li>
 			<li>{{basicSummary.likes}}</li>
 			<li>{{basicSummary.brands}}</li>
@@ -247,6 +247,10 @@ class MySummary extends PolymerElement {
 		this.$.hashtagAjax.generateRequest();
 		this.__createListeners();
 	}
+
+	returnEntireSummary(){
+		return this.$.entireSummary;
+	}
 	
 	static get properties(){
 		return{
@@ -314,6 +318,19 @@ class MySummary extends PolymerElement {
 	__handleHashtagResponse(event, res){
 		this.availHashtags = res.response._embedded;
 	}
+
+    getChartObjects(){
+        let chartObjs = {};
+        chartObjs.lineChart = this.$.linechart.getLineChart();
+        chartObjs.captionWordcloud = this.$.wordcloud.getCaptionWordcloud();
+        chartObjs.hashtagWordcloud = this.$.wordcloud.getHashtagWordcloud();
+        chartObjs.genderChart = this.$.gender.getGenderChart();
+        chartObjs.histogram = this.$.age.getHistogram();
+        chartObjs.pieChart = this.$.piechart.getPieChart();
+        chartObjs.barChart = this.$.barchart.getBarChart();
+        chartObjs.emo = this.$.emo.getEmotionChart();
+        return chartObjs;
+    }
 	
 	//Add the generateRequest of the element.
 	__generateElementRequest(){

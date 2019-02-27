@@ -187,21 +187,6 @@
         </style>
     </head>
     <body>
-        <paper-dialog id="errorModal" class="colored" modal>
-            <h2 id="errorTitle" style="padding:10px;margin:10px;"></h2>
-            <hr/>
-            <div id="errorMsg"></div>
-            <div class="buttons">
-                <paper-button dialog-confirm autofocus>Tap me to close</paper-button>
-            </div>
-        </paper-dialog>
-
-        <paper-dialog id="successModal" class="success" modal>
-            <h2 style="padding:10px;margin:10px;">Report Template Created!</h2>
-            <div class="buttons">
-                <paper-button id="successBtn" dialog-confirm autofocus>Tap me to close</paper-button>
-            </div>
-        </paper-dialog>
         <iron-ajax
             id="eventAjax"
             url="http://localhost:8080/smile/event_calendar"
@@ -335,6 +320,7 @@
                             <div class="col-md-12">
                                 <my-insight-input></my-insight-input>
                                 <div class="pull-right">
+                                    <button type="button" class="btn btn_5 btn-lg btn-default" onclick="printPage()">Print Report</button>
                                     <button type="button" class="btn btn_5 btn-lg btn-default" onclick="saveIntoDb()">Save Summary Report</button>
                                     <button type="button" class="btn btn_5 btn-lg btn-primary" onclick="saveComment()">Next: Create Proposal >></button>
                                 </div>
@@ -349,7 +335,52 @@
             </div>
             <!-- /#page-wrapper -->
         </div>
+        <paper-dialog id="errorModal" class="colored" modal>
+            <h2 id="errorTitle" style="padding:10px;margin:10px;"></h2>
+            <hr/>
+            <div id="errorMsg"></div>
+            <div class="buttons">
+                <paper-button dialog-confirm autofocus>Tap me to close</paper-button>
+            </div>
+        </paper-dialog>
+
+        <paper-dialog id="successModal" class="success" modal>
+            <h2 style="padding:10px;margin:10px;">Report Template Created!</h2>
+            <div class="buttons">
+                <paper-button id="successBtn" dialog-confirm autofocus>Tap me to close</paper-button>
+            </div>
+        </paper-dialog>
         <script type="text/javascript">
+            function printPage(){
+                let preparedBy = prompt('Prepared By');
+                if(preparedBy) {
+                    var restorepage = $('body').html();
+                    var chartObjs = document.querySelector('my-summary').getChartObjects();
+
+                    chartObjs.lineChart = chartObjs.lineChart.getSVG();
+                    chartObjs.pieChart = chartObjs.pieChart.getSVG();
+                    chartObjs.histogram = chartObjs.histogram.getSVG();
+                    chartObjs.captionWordcloud = chartObjs.captionWordcloud.getSVG();
+                    chartObjs.genderChart = chartObjs.genderChart.getSVG();
+                    chartObjs.hashtagWordcloud = chartObjs.hashtagWordcloud.getSVG();
+                    chartObjs.emo = chartObjs.emo.getSVG();
+                    chartObjs.barChart = chartObjs.barChart.getSVG();
+
+                    var printcontent = document.querySelector('my-summary').returnEntireSummary();
+
+                    $('body').empty().html('<br/><br/><center><h1>General Summary for #' + sessionStorage.getItem('hashtagInput') + '</h1></center><br/>').append('<center><h3>Prepared By: '+preparedBy+'</h3></center>')
+                        .append(printcontent).append(chartObjs.lineChart).append(chartObjs.pieChart).append(chartObjs.histogram)
+                        .append(chartObjs.captionWordcloud).append(chartObjs.hashtagWordcloud).append(chartObjs.genderChart).append(chartObjs.emo)
+                        .append(chartObjs.barChart);
+                    window.print();
+                    $('body').html(restorepage);
+                } else{
+                    $('#errorTitle').text("Incomplete Input");
+                    $('#errorMsg').html("<p>Please enter the person who prepared the report.</p>");
+                    document.querySelector('#errorModal').open();
+                }
+            }
+
             function saveIntoDb(){
                 let title = prompt('Enter Summary Title');
                 if(title) {
