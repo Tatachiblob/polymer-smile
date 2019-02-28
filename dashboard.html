@@ -391,8 +391,8 @@
                         success: function(data){
                             for(let a of data._embedded) {
                                 for(let b of a.search_history) {
-                                    tempEvent.title = "Hashtag Scraped.";
-                                    tempEvent.desc = "Hashtag scraped on this day.";
+                                    tempEvent.title = "#" + a.search_hashtag + " Scraped";
+                                    tempEvent.desc = "Collected on this day.";
                                     tempEvent.hashtag = a.search_hashtag;
                                     tempEvent.start = formatDate(b.searched_date);
                                     events.push(tempEvent);
@@ -439,10 +439,12 @@
             }
 
             function saveComment(){
+                var curHashtag = document.querySelector('my-dashboard').hashtag;
                 var insights = document.querySelector('my-insight-input').textValue;
                 var start = document.querySelector('my-dashboard').startDate;
                 var end = document.querySelector('my-dashboard').endDate;
 
+                sessionStorage.setItem('hashtagInput', curHashtag);
                 sessionStorage.setItem('generalInsights', insights);
                 sessionStorage.setItem('startDate', start);
                 sessionStorage.setItem('endDate', end);

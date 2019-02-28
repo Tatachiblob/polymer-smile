@@ -368,7 +368,7 @@
 
                     var printcontent = document.querySelector('my-summary').returnEntireSummary();
 
-                    $('body').empty().html('<br/><br/><center><h1>General Summary for #' + sessionStorage.getItem('hashtagInput') + '</h1></center><br/>').append('<center><h3>Prepared By: '+preparedBy+'</h3></center>')
+                    $('body').empty().html('<br/><br/><center><h1>General Summary for #' + sessionStorage.getItem('hashtagInput') + '</h1></center><br/>').append('<center><h3>Prepared By: '+preparedBy+'</h3></center><center><h4>Created Date: '+new Date().toDateString()+'</h4></center>')
                         .append(printcontent).append(chartObjs.lineChart).append(chartObjs.pieChart).append(chartObjs.histogram)
                         .append(chartObjs.captionWordcloud).append(chartObjs.hashtagWordcloud).append(chartObjs.genderChart).append(chartObjs.emo)
                         .append(chartObjs.barChart);
