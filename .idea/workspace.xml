@@ -2,23 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="677e1531-0824-4bd1-b5e6-56ec4ec22b4e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/archive-consumer-analysis-report.html" beforeDir="false" afterPath="$PROJECT_DIR$/archive-consumer-analysis-report.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/archive-expected-actual.html" beforeDir="false" afterPath="$PROJECT_DIR$/archive-expected-actual.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/archive-proposal-report.html" beforeDir="false" afterPath="$PROJECT_DIR$/archive-proposal-report.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/archive-summary-report.html" beforeDir="false" afterPath="$PROJECT_DIR$/archive-summary-report.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/calendar-event.html" beforeDir="false" afterPath="$PROJECT_DIR$/calendar-event.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comparison.html" beforeDir="false" afterPath="$PROJECT_DIR$/comparison.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/consumer-analysis.html" beforeDir="false" afterPath="$PROJECT_DIR$/consumer-analysis.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content.html" beforeDir="false" afterPath="$PROJECT_DIR$/content.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/expected-actual.html" beforeDir="false" afterPath="$PROJECT_DIR$/expected-actual.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/face-content.html" beforeDir="false" afterPath="$PROJECT_DIR$/face-content.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/marketing-proposal.html" beforeDir="false" afterPath="$PROJECT_DIR$/marketing-proposal.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/post-event.html" beforeDir="false" afterPath="$PROJECT_DIR$/post-event.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/reports-archive.html" beforeDir="false" afterPath="$PROJECT_DIR$/reports-archive.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/search-archive.html" beforeDir="false" afterPath="$PROJECT_DIR$/search-archive.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/threshold-target.html" beforeDir="false" afterPath="$PROJECT_DIR$/threshold-target.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -57,7 +41,7 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="css" value="1" />
-          <entry key="html" value="114" />
+          <entry key="html" value="115" />
           <entry key="js" value="187" />
           <entry key="rnc" value="1" />
         </counts>
@@ -65,21 +49,21 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="1" />
-          <entry key="HTML" value="114" />
+          <entry key="HTML" value="115" />
           <entry key="JavaScript" value="187" />
           <entry key="RNG Compact" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="17787" />
+          <entry key="html" value="17797" />
           <entry key="js" value="15304" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="2" />
-          <entry key="HTML" value="18413" />
+          <entry key="HTML" value="18423" />
           <entry key="JavaScript" value="14676" />
         </counts>
       </usages-collector>
@@ -97,18 +81,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/expected-actual.html">
+        <entry file="file://$PROJECT_DIR$/reports-archive.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="229" column="51" selection-start-line="229" selection-start-column="51" selection-end-line="229" selection-end-column="51" />
-              <folding>
-                <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="300">
+              <caret line="150" column="78" selection-start-line="150" selection-start-column="78" selection-end-line="150" selection-end-column="78" />
             </state>
           </provider>
         </entry>
@@ -205,7 +181,6 @@
         <option value="$PROJECT_DIR$/summary.html" />
         <option value="$PROJECT_DIR$/threshold-target.html" />
         <option value="$PROJECT_DIR$/post-event.html" />
-        <option value="$PROJECT_DIR$/reports-archive.html" />
         <option value="$PROJECT_DIR$/search-archive.html" />
         <option value="$PROJECT_DIR$/consumer-analysis.html" />
         <option value="$PROJECT_DIR$/face-content.html" />
@@ -218,6 +193,7 @@
         <option value="$PROJECT_DIR$/dashboard.html" />
         <option value="$PROJECT_DIR$/content.html" />
         <option value="$PROJECT_DIR$/expected-actual.html" />
+        <option value="$PROJECT_DIR$/reports-archive.html" />
       </list>
     </option>
   </component>
@@ -329,12 +305,12 @@
       <workItem from="1551262540603" duration="14191000" />
       <workItem from="1551310628068" duration="3468000" />
       <workItem from="1551332186836" duration="1076000" />
-      <workItem from="1551942285183" duration="3319000" />
+      <workItem from="1551942285183" duration="3969000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="173268000" />
+    <option name="totallyTimeSpent" value="173918000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -680,13 +656,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/reports-archive.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="99" column="51" selection-start-line="99" selection-start-column="41" selection-end-line="99" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/search-archive.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
@@ -768,13 +737,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2748">
-          <caret line="233" column="59" selection-start-line="233" selection-start-column="59" selection-end-line="233" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/expected-actual.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
@@ -787,6 +749,20 @@
             <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2748">
+          <caret line="233" column="59" selection-start-line="233" selection-start-column="59" selection-end-line="233" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reports-archive.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="150" column="78" selection-start-line="150" selection-start-column="78" selection-end-line="150" selection-end-column="78" />
         </state>
       </provider>
     </entry>
