@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>SMILE: A Social Media Image Listening Engine</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="Modern Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design"/>
+    <script type="application/x-javascript"> addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
+
+
+    <!-- Calendar Zingchart CSS -->
+    <link rel="stylesheet" type="text/css" href="css/calendar-chart.css">
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel='stylesheet' type='text/css'/>
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel='stylesheet' type='text/css'/>
+    <link href="css/index-style.css" rel='stylesheet' type='text/css'/>
+    <!-- Graph CSS -->
+    <link href="css/lines.css" rel='stylesheet' type='text/css'/>
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="js/jquery.min.js"></script>
+    <!----webfonts--->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet'
+          type='text/css'>
+    <!---//webfonts--->
+    <!-- Nav CSS -->
+    <link href="css/custom.css" rel="stylesheet">
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="js/metisMenu.min.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/dataRetrieve.js" type="module"></script>
+    <!-- Graph JavaScript -->
+    <script src="js/d3.v3.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/variwide.js"></script>
+    <script src="https://code.highcharts.com/modules/wordcloud.js"></script>
+
+    <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+    <script> zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
+    ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "ee6b7db5b51705a13dc2339db3edaf6d"];</script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+    <script src="js/rickshaw.js"></script>
+
+    <style>
+        .padding-10 {
+            padding: 5px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+<div id="wrapper">
+    <!-- Navigation -->
+    <nav class="top1 navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0px; margin-top: 0px;">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="index.html"><img src="smile_logo.png" style="height: 30px; display: inline;">
+                SMILE &nbsp<span style="font-size: 20px;">A Social Media Image Listener Engine</span></a>
+
+        </div>
+    </nav>
+    <div class="header">
+        <div class="container">
+            <div class="header-main home">
+                <div class="logo">
+                    <a href="home"><img src="smile_logo.png" alt="" style="height: 150px; display: inline; margin-left: 50px;margin-top: 10px;" /></a>
+                </div>
+            </div>
+            <div class="header-bottom">
+                <h1>"A picture is worth a billion data points"</h1>
+                <div class="xs form-horizontal form-group">
+                    <label for="focusedinput" class="col-sm-2 control-label"><h3 style="color: #fff;">Search</h3></label>
+                    <div class="col-sm-8">
+                        <input id="searchBar" type="text" class="form-control1" id="focusedinput"
+                               placeholder='Enter hashtag here... e.g. "animolasalle"'>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="graphs">
+        <div class="content_bottom">
+            <div class="copy">
+                <p>Copyright &copy; 2018 SMILE</p>
+            </div>
+        </div>
+    </div>
+    <!-- Loading Modal -->
+    <div class="modal fade" id="loadMe" tabindex="-1" role="dialog" aria-labelledby="loadMeLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <div class="loader"></div>
+                    <div clas="loader-txt">
+                        <p>Collecting and processing images... <br><br><small>This might take a while to finish, please wait.</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /#wrapper -->
+<script src="js/bootstrap.min.js"></script>
+<script src="js/dbUtils.js" type="module"></script>
+<script src="js/dbUtils2.js" type="module"></script>
+<script src="js/scraper.js" type="module"></script>
+<script src="js/showDbPath.js" type="module"></script>
+</body>
+</html>
