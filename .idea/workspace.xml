@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="677e1531-0824-4bd1-b5e6-56ec4ec22b4e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/calendar-event.html" beforeDir="false" afterPath="$PROJECT_DIR$/calendar-event.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/expected-actual.html" beforeDir="false" afterPath="$PROJECT_DIR$/expected-actual.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -42,7 +42,7 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="css" value="1" />
-          <entry key="html" value="86" />
+          <entry key="html" value="88" />
           <entry key="js" value="187" />
           <entry key="rnc" value="1" />
         </counts>
@@ -50,21 +50,21 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="1" />
-          <entry key="HTML" value="86" />
+          <entry key="HTML" value="88" />
           <entry key="JavaScript" value="187" />
           <entry key="RNG Compact" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="17769" />
+          <entry key="html" value="17772" />
           <entry key="js" value="15304" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="2" />
-          <entry key="HTML" value="18395" />
+          <entry key="HTML" value="18398" />
           <entry key="JavaScript" value="14676" />
         </counts>
       </usages-collector>
@@ -81,6 +81,23 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/expected-actual.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="174">
+              <caret line="418" column="18" selection-start-line="418" selection-start-column="18" selection-end-line="418" selection-end-column="18" />
+              <folding>
+                <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/marketing-proposal.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -93,7 +110,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/page.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="606">
@@ -143,7 +160,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>getLineChart</find>
       <find>Tap</find>
       <find>session</find>
       <find>curH</find>
@@ -173,6 +189,7 @@
       <find>append</find>
       <find>dbPath</find>
       <find>modal</find>
+      <find>source</find>
     </findStrings>
     <replaceStrings>
       <replace>report</replace>
@@ -196,7 +213,6 @@
         <option value="$PROJECT_DIR$/comparison.html" />
         <option value="$PROJECT_DIR$/src/my-marketing.js" />
         <option value="C:/xampp/htdocs/SMILE/calendar-event.html" />
-        <option value="$PROJECT_DIR$/calendar-event.html" />
         <option value="$PROJECT_DIR$/threshold-target.html" />
         <option value="$PROJECT_DIR$/src/my-column-chart.js" />
         <option value="$PROJECT_DIR$/src/my-expected-actual.js" />
@@ -215,7 +231,6 @@
         <option value="$PROJECT_DIR$/archive-summary-report.html" />
         <option value="$PROJECT_DIR$/src/my-summary-archive.js" />
         <option value="$PROJECT_DIR$/reports-archive.html" />
-        <option value="$PROJECT_DIR$/expected-actual.html" />
         <option value="$PROJECT_DIR$/consumer-analysis.html" />
         <option value="$PROJECT_DIR$/archive-expected-actual.html" />
         <option value="$PROJECT_DIR$/js/scraper.js" />
@@ -235,6 +250,8 @@
         <option value="$PROJECT_DIR$/src/my-map.js" />
         <option value="$PROJECT_DIR$/summary.html" />
         <option value="$PROJECT_DIR$/page.html" />
+        <option value="$PROJECT_DIR$/calendar-event.html" />
+        <option value="$PROJECT_DIR$/expected-actual.html" />
       </list>
     </option>
   </component>
@@ -277,6 +294,11 @@
               <item name="polymer-smile" type="b2602c69:ProjectViewProjectNode" />
               <item name="polymer-smile" type="462c0819:PsiDirectoryNode" />
               <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="polymer-smile" type="b2602c69:ProjectViewProjectNode" />
+              <item name="polymer-smile" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -341,12 +363,12 @@
       <workItem from="1551262540603" duration="14191000" />
       <workItem from="1551310628068" duration="3468000" />
       <workItem from="1551332186836" duration="1076000" />
-      <workItem from="1551942285183" duration="1329000" />
+      <workItem from="1551942285183" duration="2799000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="171278000" />
+    <option name="totallyTimeSpent" value="172748000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -542,13 +564,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/calendar-event.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="470" column="44" lean-forward="true" selection-start-line="470" selection-start-column="44" selection-end-line="471" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/archive-summary-report.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="419">
@@ -567,13 +582,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="28" column="28" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/expected-actual.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6307">
-          <caret line="371" column="51" selection-start-line="340" selection-start-column="8" selection-end-line="371" selection-end-column="51" />
         </state>
       </provider>
     </entry>
@@ -715,13 +723,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6681">
-          <caret line="393" column="88" selection-start-line="393" selection-start-column="88" selection-end-line="393" selection-end-column="88" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/marketing-proposal.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5644">
@@ -769,6 +770,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/calendar-event.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="623">
+          <caret line="385" column="15" selection-start-line="385" selection-start-column="15" selection-end-line="385" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/page.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="606">
@@ -780,6 +788,28 @@
             <element signature="n#style#0;n#img#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#h3#0;n#label#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="e#11455#11461#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6681">
+          <caret line="393" column="88" selection-start-line="393" selection-start-column="88" selection-end-line="393" selection-end-column="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/expected-actual.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="418" column="18" selection-start-line="418" selection-start-column="18" selection-end-line="418" selection-end-column="18" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

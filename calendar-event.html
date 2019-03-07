@@ -207,29 +207,6 @@
     </style>
 </head>
 <body>
-<iron-ajax
-        id="eventAjax"
-        url="http://localhost:8080/smile/event_calendar"
-        method="GET"
-        handle-as="json"
-        on-response="handleResponse"
-        debounce-duration="300">
-</iron-ajax>
-<paper-dialog id="errorModal" class="colored" modal>
-    <h2 id="errorTitle" style="padding:10px;margin:10px;"></h2>
-    <hr/>
-    <div id="errorMsg"></div>
-    <div class="buttons">
-        <paper-button dialog-confirm autofocus>Tap me to close</paper-button>
-    </div>
-</paper-dialog>
-
-<paper-dialog id="successModal" class="success" modal>
-    <h2 style="padding:10px;margin:10px;">Event Created!</h2>
-    <div class="buttons">
-        <a href="./threshold-target.html"><paper-button id="successBtn" dialog-confirm autofocus>Tap me to close</paper-button></a>
-    </div>
-</paper-dialog>
 <div id="wrapper">
     <!-- Navigation -->
     <nav class="top1 navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
@@ -384,6 +361,29 @@
     </div>
     <!-- /#page-wrapper -->
 </div>
+<iron-ajax
+        id="eventAjax"
+        url="http://localhost:8080/smile/event_calendar"
+        method="GET"
+        handle-as="json"
+        on-response="handleResponse"
+        debounce-duration="300">
+</iron-ajax>
+<paper-dialog id="errorModal" class="colored" modal>
+    <h2 id="errorTitle" style="padding:10px;margin:10px;"></h2>
+    <hr/>
+    <div id="errorMsg"></div>
+    <div class="buttons">
+        <paper-button dialog-confirm autofocus>Tap me to close</paper-button>
+    </div>
+</paper-dialog>
+
+<paper-dialog id="successModal" class="success" modal>
+    <h2 style="padding:10px;margin:10px;">Event Created!</h2>
+    <div class="buttons">
+        <a href="./threshold-target.html"><paper-button id="successBtn" dialog-confirm autofocus>Tap me to close</paper-button></a>
+    </div>
+</paper-dialog>
 <script type="text/javascript">
     $(document).ready(function(){
         document.querySelector('#start').default = new Date((new Date().getFullYear()), 0, 1);
