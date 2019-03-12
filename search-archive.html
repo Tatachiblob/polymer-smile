@@ -337,6 +337,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     tempBody.restBody.edge_liked_by = response.edge_media_preview_like.count;
                     tempBody.restBody.edge_media_preview_like = response.edge_media_preview_like.count;
                     tempBody.restBody.edge_media_to_comment = response.edge_media_to_comment.count;
+                    tempBody.restBody.display_url = response.display_url;
                     restBodies.push(tempBody);
                     tempBody = {};
                 }
@@ -350,6 +351,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 "ig_object.edge_liked_by.count": body.restBody.edge_liked_by,
                 "ig_object.edge_media_preview_like.count": body.restBody.edge_media_preview_like,
                 "ig_object.edge_media_to_comment.count": body.restBody.edge_media_to_comment,
+                "ig_object.display_url": body.restBody.display_url
             };
             console.log(JSON.stringify(finalBody));
             console.log(tempUrl)
