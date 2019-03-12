@@ -57,6 +57,36 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             padding: 5px;
             margin: auto;
         }
+        /** SPINNER CREATION **/
+        #loadMe{
+            margin-top:25vh;
+        }
+        .loader {
+            position: relative;
+            text-align: center;
+            margin: 15px auto 35px auto;
+            z-index: 9999;
+            display: block;
+            width: 80px;
+            height: 80px;
+            border: 10px solid rgba(87, 172, 83, .3);
+            border-radius: 50%;
+            border-top-color: #57ac53;
+            animation: spin 1s ease-in-out infinite;
+            -webkit-animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        @-webkit-keyframes spin {
+            to {
+                -webkit-transform: rotate(360deg);
+            }
+        }
     </style>
 </head>
 <body>
